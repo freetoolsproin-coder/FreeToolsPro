@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+
+.inputbg{background: #f4f4f4; border: 1px solid #ccc; box-shadow: inset 1px 0px 4px #6a6a6a;}
+select option{background:#a15fb6; color:#000;}
+.lucide-user, .lucide-gauge, .lucide-droplet, .lucide-brain, .lucide-percent, .lucide-indian-rupee, .lucide-receipt-indian-rupee, .lucide-circle-gauge{width:18px; height:18px;}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradient 12s ease infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+.animate-shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.input {
+  @apply w-full p-4 rounded-xl border border-gray-200 bg-white/80
+  text-gray-700 shadow-sm
+  focus:outline-none focus:ring-4 focus:ring-emerald-300/40
+  dark:bg-gray-800 dark:text-white dark:border-gray-700;
+}
+
+.glass-container {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.glow-text {
+  text-shadow: 0 0 8px #d1c4e9, 0 0 16px #7e57c2;
+}
+
+.btn-run {
+  background: linear-gradient(90deg,#7e57c2,#5e35b1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.btn-run:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #7e57c2, 0 0 24px #512da8;
+}
+.stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px #a78bfa, 0 0 20px #7c3aed;
+}
+
+.to-purple-700 {
+    --tw-gradient-to: oklch(0.68 0.13 65.78)!important;}
+.via-blue-600 {
+   --tw-gradient-via: oklch(0.94 0 0);
+    --tw-gradient-via-stops: var(--tw-gradient-position), oklch(1 0 0) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), oklch(1 0 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+}
+.btnButtons{background: #d28429; color: #fff; border: 1px solid #c0600a;}
+img.h-14{height:44px!important;}
+.subtitle{color:#b84e00;}
+.subtitle span{color:#ce8929;}
+.hover\:shadow-xl {
+    &:hover {
+        @media (hover: hover){border:1px solid #d2984d;}
+    }
+  }
+.subCategory{color:#3a6164;}
+.desktopNav a{font-weight:normal; display:flex; justify-content: center; align-items: center; gap:.4rem;}
+.desktopNav a:hover{color:#ce9131;}
+
+.mobNav a{font-weight:normal; display:flex; justify-content: center; align-items: center; gap:.4rem;}
+.mobNav a:hover{color:#ce9131;}
+
+/* tailwind.css */
+.nav-active {
+  @apply text-indigo-600;
+  text-shadow: 0 0 12px rgba(99,102,241,.6);
+}
+.cookiebg{background:#272727;}
+.bg-organe-500{background:#d28429 !important;}
+
+.orange-text{color:#d28429;}
+.devTools a svg{color:#d28429; font-size:3rem; text-align:center; margin:auto;}
+.text-blue-600, .border-blue-600 {
+    color: oklch(0.68 0.14 64.72);
+}
+.border-blue-600{border-color:oklch(0.68 0.14 64.72);}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabs button {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+main, body{background:#eee;}
+.bg-green{background:#ecfdf6!important;}
+.bg-gray{background:}
+.glass-cardbg{background:rgb(61 129 101)}
+.text-emerald-400{color:#fff!important;}
+.bg-black{background:#000;}
+

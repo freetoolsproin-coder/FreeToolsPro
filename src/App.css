@@ -1,0 +1,95 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.glass-card {
+  @apply relative w-full max-w-md p-8 rounded-3xl bg-white/70 backdrop-blur-xl shadow-xl;
+}
+.title {
+  @apply text-2xl font-extrabold text-center mb-4;
+}
+.input {
+  @apply w-full p-4 mb-3 rounded-xl border focus:ring-4;
+}
+.btn {
+  @apply w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600;
+}
+.result {
+  @apply mt-5 p-4 rounded-xl bg-green-100/70 text-center;
+}
+
+.glass-label {
+  @apply block mb-1 text-sm font-medium text-gray-600;
+}
+
+/* Input */
+.glass-input {
+  @apply w-full rounded-xl bg-white/70 backdrop-blur-md
+  border border-white/40
+  px-4 py-4 text-gray-800
+  shadow-inner
+  transition-all duration-200
+  focus:outline-none focus:ring-4 focus:ring-emerald-400/40
+  focus:border-emerald-400;
+}
+
+/* Prefix (₹) */
+.input-prefix {
+  @apply absolute left-3 top-1/2 -translate-y-1/2
+  bg-emerald-100 text-emerald-700
+  px-2 py-1 rounded-lg text-sm font-semibold;
+}
+
+/* Suffix (% / Years) */
+.input-suffix {
+  @apply absolute right-3 top-1/2 -translate-y-1/2
+  bg-emerald-100 text-emerald-700
+  px-2 py-1 rounded-lg text-xs font-semibold;
+}
+
+.glass-input:focus {
+  box-shadow: 0 0 0 4px rgba(16,185,129,0.25),
+              inset 0 2px 6px rgba(0,0,0,0.05);
+}
+.input-error {
+  @apply ring-4 ring-red-400/30 border-red-400;
+}
