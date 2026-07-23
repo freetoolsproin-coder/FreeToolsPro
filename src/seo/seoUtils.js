@@ -1,5 +1,5 @@
 export const generateSeoCopy = (toolName) => ({
-  title: `${toolName} Online – Free & Instant | Freetoolspro`,
-  description: `Use our Free ${toolName} tool online. Fast, Secure, Mobile-Friendly and no sign-up required.`,
-  keywords: `${toolName}, free ${toolName}, online ${toolName}`,
+  title: `${toolName} Online – Free & Instant | FreeToolsPro`,
+  description: `Use our free ${toolName} tool online. Fast, secure, mobile-friendly, and no sign-up required.`,
+  keywords: `${toolName}, free ${toolName}, online ${toolName}, FreeToolsPro`,
 });

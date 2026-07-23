@@ -1,26 +1,14 @@
 import { Helmet } from "react-helmet-async";
+import { buildFaqSchema } from "../seo/schemaFactory";
 
-export default function FaqSchema({ faqs = [] }) {
-  if (!faqs.length) return null;
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  };
+/** FAQPage JSON-LD. Prefer pageUrl so @id matches the tool canonical. */
+export default function FaqSchema({ faqs = [], pageUrl }) {
+  const schema = buildFaqSchema(faqs, pageUrl);
+  if (!schema) return null;
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(schema)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
     </Helmet>
   );
 }

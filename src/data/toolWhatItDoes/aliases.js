@@ -1,0 +1,23 @@
+/** Route aliases where currentToolPath differs from canonical toolDefinitions path */
+export const TOOL_PATH_ALIASES = {
+  "/developer-tools/date-diff": "/developer-tools/date-difference",
+  "/developer-tools/ip-address": "/developer-tools/ip-lookup",
+  "/developer-tools/ip-address-checker": "/developer-tools/ip-lookup",
+  "/calculators/emi-calculator-amm": "/calculators/emi-calculator",
+  "/developer-tools/sql-beautifier": "/developer-tools/sql-formatter",
+  "/social-media-tools/ai-prompt-improver": "/social-media-tools/ai-prompt-optimizer",
+  "/text-tools/sort-lines-za": "/text-tools/sort-lines-az",
+  "/text-tools/unwrap-text": "/text-tools/wrap-text",
+  "/text-tools/outdent-text": "/text-tools/indent-text",
+  "/text-tools/remove-line-numbers": "/text-tools/number-lines",
+  "/developer-tools/robots-txt-generator": "/developer-tools/robots-generator",
+  "/image-tools/image-to-text": "/image-tools/image-to-text-extractor",
+  "/social-media-tools/you-tube-money-calculator": "/social-media-tools/youtube-money-calculator",
+  "/social-media-tools/instagram-downloader": "/social-media-tools/instagram-video-downloader",
+  "/tools/youtube-thumbnail-downloader": "/social-media-tools/youtube-thumbnail-downloader",
+  "/tools/ai-bio-generator": "/social-media-tools/ai-bio-generator",
+  "/merge-pdf": "/pdf-tools/pdf-merger",
+  "/pdf-tools": "/pdf-tools/pdf-converter",
+  "/text-tools/date-add-subtract-calculator": "/calculators/date-add-subtract-calculator",
+  "/trending-tools/ai-content-checker": "/trending-tools/ai-content-detector",
+};

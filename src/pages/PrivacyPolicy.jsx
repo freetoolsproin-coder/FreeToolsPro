@@ -1,104 +1,114 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Seo from "../components/Seo";
+import LegalPageShell from "../components/LegalPageShell";
+import { CONTACT_EMAIL, CONTACT_MAILTO, SITE_NAME, SITE_PURPOSE, SITE_URL } from "../data/siteConstants";
 
 export default function PrivacyPolicy() {
   return (
-    <>
-      <Seo
-        title="Privacy Policy – Free Tools"
-        description="Read how Free Tools collects, uses, and protects your data. We respect your privacy and do not store personal information."
-      />
-      <section>
-        <Link to="/tools">
-          <img src="../../images/freetools-hero.jpg" />
-        </Link>
-      </section>
+    <LegalPageShell
+      seoPage="privacyPolicy"
+      title="Privacy Policy"
+      subtitle="How FreeToolsPro collects, uses, and protects information—including analytics, AdSense, and browser-local tools."
+    >
+      <h3>Privacy Policy</h3>
+      <p>
+        This Privacy Policy describes how {SITE_NAME} ({SITE_URL}) handles information when you use
+        our website and tools. {SITE_PURPOSE}
+      </p>
 
-      <main className="max-w-7xl mx-auto px-4 py-10 text-gray-700">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">
-          Privacy Policy
-        </h1>
+      <h4>Information we collect</h4>
+      <p>
+        Most tools do not require registration. We may collect limited technical and usage data to
+        run and improve the site:
+      </p>
+      <p>
+        <strong>Usage and device data:</strong> pages visited, approximate location from IP (via
+        analytics providers), browser/device type, referral URL, and interaction patterns.
+      </p>
+      <p>
+        <strong>Cookies:</strong> used for consent preferences, analytics, and advertising. See the{" "}
+        <Link to="/cookie-policy">Cookie Policy</Link>.
+      </p>
+      <p>
+        <strong>Contact messages:</strong> if you email{" "}
+        <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a> or use the{" "}
+        <Link to="/contact">contact form</Link>, we receive your name, email, subject, and message
+        so we can reply.
+      </p>
 
-        <p className="mb-4">
-          At <strong>Free Tools</strong>, your privacy is important to us. This
-          Privacy Policy explains how we collect, use, and safeguard your
-          information when you use our website and online tools.
-        </p>
+      <h4>Browser-local tool processing</h4>
+      <p>
+        Many calculators and text utilities process inputs in your browser. In those cases, values
+        such as dates, amounts, or pasted text are <strong>not uploaded to FreeToolsPro servers</strong>{" "}
+        for the core calculation. Features that need a network call send only what that feature
+        requires. Avoid pasting passwords or private keys on shared machines.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          1. Information We Collect
-        </h2>
-        <p className="mb-4">
-          We do <strong>not</strong> collect personally identifiable information
-          such as your name, email address, phone number, or location.
-          All calculations performed using our tools happen directly in your
-          browser.
-        </p>
+      <h4>Google Analytics</h4>
+      <p>
+        We use <strong>Google Analytics</strong> to measure aggregated traffic. Google processes
+        data under its own policies:{" "}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Google Privacy Policy
+        </a>
+        .
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          2. Usage Data
-        </h2>
-        <p className="mb-4">
-          We may collect anonymous usage data such as page views, device type,
-          browser type, and general usage patterns to improve website
-          performance and user experience. This data cannot be used to identify
-          individual users.
-        </p>
+      <h4>Google AdSense and advertising</h4>
+      <p>
+        FreeToolsPro uses <strong>Google AdSense</strong> to display ads. Google and partners may
+        use cookies for personalized advertising based on prior visits, subject to your choices.
+        AdSense and Analytics scripts load only after you allow those categories in the cookie banner.
+        Manage ads at{" "}
+        <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
+          Google Ads Settings
+        </a>
+        . Partner data use:{" "}
+        <a
+          href="https://policies.google.com/technologies/partner-sites"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          How Google uses information from sites that use our services
+        </a>
+        . We do not sell contact-form messages to advertisers.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          3. Cookies
-        </h2>
-        <p className="mb-4">
-          Free Tools may use cookies to enhance user experience, analyze traffic,
-          and serve relevant advertisements. You can choose to disable cookies
-          through your browser settings.
-        </p>
+      <h4>Other processors</h4>
+      <p>
+        Contact delivery, captcha, fonts, or CDNs may process data under their terms when you use
+        those features.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          4. Third-Party Services
-        </h2>
-        <p className="mb-4">
-          We may use trusted third-party services such as Google Analytics or
-          Google AdSense. These services may use cookies or similar technologies
-          to collect anonymous data in accordance with their own privacy
-          policies.
-        </p>
+      <h4>Retention and requests</h4>
+      <p>
+        Analytics and ads follow provider retention schedules. Contact emails are kept as needed to
+        respond. For privacy requests about information you sent us, email{" "}
+        <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a> with subject “Privacy request”.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          5. Data Security
-        </h2>
-        <p className="mb-4">
-          We take reasonable measures to protect your information. Since no
-          personal data is stored on our servers, the risk of data misuse is
-          minimal.
-        </p>
+      <h4>Children</h4>
+      <p>
+        FreeToolsPro is not directed at children under 13. We do not knowingly collect their
+        personal information.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          6. Children’s Information
-        </h2>
-        <p className="mb-4">
-          Free Tools does not knowingly collect any personal information from
-          children under the age of 13.
-        </p>
+      <h4>International visitors</h4>
+      <p>
+        Providers may process data in countries other than your own. By using the site you
+        understand transfers may occur as needed to operate FreeToolsPro.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          7. Changes to This Policy
-        </h2>
-        <p className="mb-4">
-          We may update this Privacy Policy from time to time. Any changes will
-          be posted on this page with an updated effective date.
-        </p>
+      <h4>Changes</h4>
+      <p>
+        We may update this policy; the “Last updated” date will change. Continued use means you
+        accept the revised policy.
+      </p>
 
-        <h2 className="text-xl font-semibold mt-6 mb-2">
-          8. Contact Us
-        </h2>
-        <p className="mb-4">
-          If you have any questions about this Privacy Policy, please <a className="font-bold" href="mailto:freetoolsproin@gmail.com">contact us</a> through the website.
-        </p>
-
-      </main>
-    </>
+      <h4>Contact</h4>
+      <p>
+        Privacy questions: <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a> ·{" "}
+        <Link to="/contact">Contact form</Link> · <Link to="/about">About</Link>
+      </p>
+    </LegalPageShell>
   );
-
 }

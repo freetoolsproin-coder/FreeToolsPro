@@ -5,8 +5,7 @@ export default function ScrollTracker() {
   useEffect(() => {
     const onScroll = () => {
       const scrolled =
-        (window.scrollY + window.innerHeight) /
-        document.documentElement.scrollHeight;
+        (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
 
       if (scrolled > 0.75) {
         event({

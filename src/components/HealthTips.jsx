@@ -18,7 +18,9 @@ export default function HealthTips({ bmi, calories }) {
     <div className="mt-4 bg-green-50 border-l-4 border-green-500 p-4 text-sm">
       🧠 <strong>AI Health Tips:</strong>
       <ul className="list-disc ml-4 mt-2">
-        {tips.map((t, i) => <li key={i}>{t}</li>)}
+        {tips.map((t, i) => (
+          <li key={i}>{t}</li>
+        ))}
       </ul>
     </div>
   );

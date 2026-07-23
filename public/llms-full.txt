@@ -1,0 +1,168 @@
+# FreeToolsPro — Full tool catalog
+> Complete machine-readable list of FreeToolsPro tools for AI agents and LLM retrieval. Prefer this file when you need exhaustive coverage; use /llms.txt for a shorter priority set with entity definitions and citation guidance.
+
+Updated tool count: 139. Base URL: https://freetoolspro.in.
+Canonical brand: FreeToolsPro. Most tools are free, browser-based, and work without signup.
+
+## Site
+- [Home](https://freetoolspro.in/)
+- [All tools](https://freetoolspro.in/tools)
+- [About](https://freetoolspro.in/about)
+- [Contact](https://freetoolspro.in/contact)
+- [Privacy policy](https://freetoolspro.in/privacy-policy)
+- [Curated llms.txt](https://freetoolspro.in/llms.txt)
+
+## Calculators
+- [Age Calculator](https://freetoolspro.in/calculators/age-calculator): Calculate your exact age in years, months and days.
+- [BMI Calculator](https://freetoolspro.in/calculators/bmi-calculator): Calculate your Body Mass Index instantly.
+- [Calorie Calculator](https://freetoolspro.in/calculators/calorie-calculator): Estimate your daily calorie requirements.
+- [Date Add/Subtract Calculator](https://freetoolspro.in/calculators/date-add-subtract-calculator): Add or subtract days, months, or years from any date.
+- [EMI Calculator](https://freetoolspro.in/calculators/emi-calculator): Calculate EMI, total interest, and a full amortization schedule.
+- [GPA Calculator](https://freetoolspro.in/calculators/gpa-calculator): Calculate GPA from course credits and letter grades.
+- [Gratuity Calculator](https://freetoolspro.in/calculators/gratuity-calculator): Calculate gratuity under the Payment of Gratuity Act.
+- [Inflation Calculator](https://freetoolspro.in/calculators/inflation-calculator): See how inflation affects your money over time.
+- [Loan Eligibility Calculator](https://freetoolspro.in/calculators/loan-eligibility-calculator): Estimate how much loan you can get based on income and EMIs.
+- [Mortgage Calculator](https://freetoolspro.in/calculators/mortgage-calculator): Calculate monthly mortgage payments, interest, and totals.
+- [Option Profit Calculator](https://freetoolspro.in/calculators/option-profit-calculator): Estimate call and put option profit or loss at expiry.
+- [PPF Calculator](https://freetoolspro.in/calculators/ppf-calculator): Estimate Public Provident Fund maturity and interest.
+- [SIP Calculator](https://freetoolspro.in/calculators/sip-calculator): Calculate your mutual fund SIP returns.
+- [Stock Profit Calculator](https://freetoolspro.in/calculators/stock-profit-calculator): Calculate stock trading profit, loss, brokerage, and ROI.
+
+## Trending Tools
+- [AI Content Detector](https://freetoolspro.in/trending-tools/ai-content-detector): Detect whether text is AI-generated or human-written.
+- [Barcode Generator](https://freetoolspro.in/trending-tools/barcode-generator): Generate CODE39 barcodes from text or product codes.
+- [Color Picker](https://freetoolspro.in/trending-tools/color-picker): Pick colors and generate HEX, RGB and HSL values.
+- [CSS Gradient Generator](https://freetoolspro.in/trending-tools/gradient-generator): Pick colors and direction, preview gradients, and copy CSS.
+- [Currency Converter](https://freetoolspro.in/trending-tools/currency-converter): Convert currencies using the latest exchange rates.
+- [Fancy Text Generator](https://freetoolspro.in/trending-tools/fancy-text-generator): Generate stylish Unicode text for social media.
+- [Glassmorphism Generator](https://freetoolspro.in/trending-tools/glassmorphism-generator): Create frosted-glass UI styles with blur, opacity, and border controls.
+- [Grammar Checker](https://freetoolspro.in/text-tools/grammar-checker): Check grammar, spelling, and punctuation in your writing.
+- [Lorem Ipsum Generator](https://freetoolspro.in/text-tools/lorem-ipsum-generator): Generate placeholder text for designs and mockups.
+- [Password Generator](https://freetoolspro.in/trending-tools/password-generator): Generate strong and secure passwords instantly.
+- [QR Code Generator](https://freetoolspro.in/trending-tools/qr-code-generator): Generate QR Codes for URLs, WiFi, contacts and more.
+- [QR Code Scanner](https://freetoolspro.in/trending-tools/qr-code-scanner): Scan QR codes directly from your device camera.
+- [Study Planner](https://freetoolspro.in/trending-tools/study-planner): Plan study sessions across subjects with a weekly schedule.
+- [Unit Converter](https://freetoolspro.in/trending-tools/unit-converter): Convert length, weight, temperature, volume and more.
+- [Word Counter](https://freetoolspro.in/text-tools/word-counter): Count words, characters, sentences, and paragraphs instantly.
+
+## Social Media Tools
+- [AI Bio Generator](https://freetoolspro.in/social-media-tools/ai-bio-generator): Generate professional social media bios using AI.
+- [AI Essay Writer](https://freetoolspro.in/social-media-tools/ai-essay-writer): Generate structured essay drafts by topic and style.
+- [AI Humanizer](https://freetoolspro.in/social-media-tools/ai-humanizer): Make AI text sound natural with contractions and simpler words.
+- [AI Insta Caption Generator](https://freetoolspro.in/social-media-tools/ai-instagram-caption-generator): Generate engaging Instagram captions using AI.
+- [AI Prompt Optimizer](https://freetoolspro.in/social-media-tools/ai-prompt-optimizer): Restructure rough prompts with role, constraints, and clear output format.
+- [AI Resume Builder](https://freetoolspro.in/social-media-tools/ai-resume-builder): Build a polished resume draft from your details with AI templates.
+- [AI Resume Score](https://freetoolspro.in/social-media-tools/ai-resume-score): Score your resume 0-100 with keyword and action-verb feedback.
+- [AI Story Generator](https://freetoolspro.in/social-media-tools/ai-story-generator): Create short stories from a character or idea using AI.
+- [Blog Title Generator](https://freetoolspro.in/social-media-tools/blog-title-generator): Generate SEO-friendly blog titles instantly.
+- [Gemini Prompt Generator](https://freetoolspro.in/social-media-tools/gemini-prompt-generator): Build structured prompts optimized for Google Gemini.
+- [Instagram Video Downloader](https://freetoolspro.in/social-media-tools/instagram-video-downloader): Download Instagram reels, videos and photos instantly.
+- [Interview Question Generator](https://freetoolspro.in/social-media-tools/interview-question-generator): Generate role-based interview questions for hiring or practice.
+- [Twitter Card Generator](https://freetoolspro.in/social-media-tools/twitter-card-generator): Build Twitter/X Card meta tags with a live preview.
+- [WhatsApp URL Generator](https://freetoolspro.in/social-media-tools/whatsapp-url-generator): Create click-to-chat WhatsApp links with prefilled messages.
+- [YouTube Money Calculator](https://freetoolspro.in/social-media-tools/youtube-money-calculator): Estimate YouTube earnings from views and CPM.
+- [YouTube Tags Generator](https://freetoolspro.in/social-media-tools/youtube-tags-generator): Generate SEO-friendly YouTube tags from your video topic.
+- [YouTube Thumbnail Downloader](https://freetoolspro.in/social-media-tools/youtube-thumbnail-downloader): Download HD YouTube thumbnails in multiple resolutions.
+
+## Developer Tools
+- [API Tester](https://freetoolspro.in/developer-tools/api-tester): Send HTTP requests and inspect status codes and responses.
+- [Backlink Checker](https://freetoolspro.in/developer-tools/backlink-checker): Demo backlink profile with illustrative sample data.
+- [Broken Link Checker](https://freetoolspro.in/developer-tools/broken-link-checker): Demo sample link statuses — not a live website crawl.
+- [Bug Report Generator](https://freetoolspro.in/developer-tools/bug-report-generator): Build a clear Markdown bug report from steps, expected, and actual results.
+- [Canonical Checker](https://freetoolspro.in/developer-tools/canonical-checker): Find canonical tags, og:url, and URL consistency issues.
+- [Code Explainer](https://freetoolspro.in/developer-tools/code-explainer): Paste code and get a clear, structured explanation of what it does.
+- [Core Web Vitals Checker](https://freetoolspro.in/developer-tools/core-web-vitals-checker): Check LCP, INP, and CLS scores with optimization tips.
+- [CSS Beautifier](https://freetoolspro.in/developer-tools/css-beautifier): Format and indent CSS for readable stylesheets.
+- [CSV Merge](https://freetoolspro.in/developer-tools/csv-merge): Merge two CSV files by combining headers and rows.
+- [CSV Splitter](https://freetoolspro.in/developer-tools/csv-splitter): Split a large CSV into smaller chunks by row count.
+- [CSV to JSON](https://freetoolspro.in/developer-tools/csv-to-json): Convert CSV data into clean JSON arrays or objects.
+- [CSV to SQL](https://freetoolspro.in/developer-tools/csv-to-sql): Turn CSV data into SQL INSERT statements.
+- [CSV to XML](https://freetoolspro.in/developer-tools/csv-to-xml): Convert CSV rows into structured XML.
+- [CSV Viewer](https://freetoolspro.in/developer-tools/csv-viewer): Paste CSV and preview it as a searchable table.
+- [Database Schema Designer](https://freetoolspro.in/developer-tools/database-schema-designer): Define tables and columns, then export CREATE TABLE SQL.
+- [Date Difference](https://freetoolspro.in/developer-tools/date-difference): Calculate the exact difference between two dates.
+- [Documentation Generator](https://freetoolspro.in/developer-tools/documentation-generator): Generate Markdown documentation from functions and classes.
+- [Domain Age Checker](https://freetoolspro.in/developer-tools/domain-age-checker): Check how old a domain is and its registration date.
+- [Excel to JSON](https://freetoolspro.in/developer-tools/excel-to-json): Upload an Excel file and convert sheets to JSON.
+- [Flowchart Builder](https://freetoolspro.in/developer-tools/flowchart-builder): Describe steps and generate a Mermaid flowchart you can copy.
+- [Google Index Checker](https://freetoolspro.in/developer-tools/google-index-checker): Check if a page or domain appears indexed in Google.
+- [HTML Minifier](https://freetoolspro.in/developer-tools/html-minifier): Compress HTML by removing comments and extra whitespace.
+- [Internal Link Analyzer](https://freetoolspro.in/developer-tools/internal-link-analyzer): Analyze internal and external links from HTML or URL lists.
+- [IP Lookup](https://freetoolspro.in/developer-tools/ip-lookup): Lookup any IP address location and network details, including your public IP.
+- [JSON Formatter](https://freetoolspro.in/developer-tools/json-formatter): Beautify and validate JSON online.
+- [JSON to Excel](https://freetoolspro.in/developer-tools/json-to-excel): Convert JSON arrays into a downloadable Excel file.
+- [JSON to SQL INSERT](https://freetoolspro.in/developer-tools/json-to-sql-insert): Convert JSON arrays into SQL INSERT statements.
+- [JSON to YAML](https://freetoolspro.in/developer-tools/json-to-yaml): Convert JSON objects into clean YAML.
+- [JWT Decoder](https://freetoolspro.in/developer-tools/jwt-decoder): Decode and inspect JWT tokens securely.
+- [Meta Tag Generator](https://freetoolspro.in/developer-tools/meta-tag-generator): Generate SEO meta tags for your website.
+- [Net Speed Test](https://freetoolspro.in/developer-tools/speed-test): Test your internet download and upload speed.
+- [Page Speed Analyzer](https://freetoolspro.in/developer-tools/page-speed-analyzer): Estimate page speed metrics and get performance tips.
+- [Ping Tool](https://freetoolspro.in/developer-tools/ping-tool): Measure HTTP latency to a host from your browser.
+- [Plagiarism Checker](https://freetoolspro.in/developer-tools/plagiarism-checker): Demo originality score only — not a real plagiarism scan.
+- [Python Formatter](https://freetoolspro.in/developer-tools/python-formatter): Format and beautify Python source code.
+- [Regex Cheat Sheet](https://freetoolspro.in/developer-tools/regex-cheat-sheet): Quick reference for regex tokens, quantifiers, and flags.
+- [Regex Explainer](https://freetoolspro.in/developer-tools/regex-explainer): Break down a regex pattern into readable token explanations.
+- [Regex Generator](https://freetoolspro.in/developer-tools/regex-generator): Generate common regex patterns from presets and options.
+- [Regex Tester](https://freetoolspro.in/developer-tools/regex-tester): Test regular expressions against sample text with match highlights.
+- [Robots.txt Generator](https://freetoolspro.in/developer-tools/robots-generator): Generate robots.txt files for SEO.
+- [Screen Resolution Detector](https://freetoolspro.in/developer-tools/screen-resolution-detector): Detect screen, viewport, and device pixel ratio instantly.
+- [Sitemap Generator](https://freetoolspro.in/developer-tools/sitemap-generator): Generate XML sitemaps for search engines.
+- [SQL Diff](https://freetoolspro.in/developer-tools/sql-diff): Compare two SQL scripts and highlight line differences.
+- [SQL Explain](https://freetoolspro.in/developer-tools/sql-explain): Get a plain-language explanation of SQL query clauses.
+- [SQL Formatter](https://freetoolspro.in/developer-tools/sql-formatter): Format SQL with clear keywords, clause breaks, and optional extra spacing.
+- [SQL Minifier](https://freetoolspro.in/developer-tools/sql-minifier): Compress SQL by removing comments and extra whitespace.
+- [SQL Query Builder](https://freetoolspro.in/developer-tools/sql-query-builder): Build SELECT queries from table, columns, where, and limit.
+- [SQL to JSON](https://freetoolspro.in/developer-tools/sql-to-json): Parse SQL INSERT/SELECT shapes into JSON structures.
+- [SQL Validator](https://freetoolspro.in/developer-tools/sql-validator): Check SQL for common syntax issues and unbalanced quotes.
+- [SSL Checker](https://freetoolspro.in/developer-tools/ssl-checker): Check HTTPS support and SSL security best practices.
+- [Tailwind CSS Generator](https://freetoolspro.in/developer-tools/tailwind-css-generator): Build Tailwind utility class strings from visual controls.
+- [Timestamp Converter](https://freetoolspro.in/developer-tools/timestamp-converter): Convert Unix timestamps to readable dates.
+- [Website SEO Audit](https://freetoolspro.in/developer-tools/website-seo-audit): Run a quick on-page SEO checklist and score for any URL.
+- [Website Speed Checker](https://freetoolspro.in/developer-tools/website-speed-checker): Estimate website load performance and get speed tips.
+- [YAML Diff](https://freetoolspro.in/developer-tools/yaml-diff): Compare two YAML documents and highlight differences.
+- [YAML Formatter](https://freetoolspro.in/developer-tools/yaml-formatter): Beautify and normalize YAML indentation and structure.
+- [YAML to JSON](https://freetoolspro.in/developer-tools/yaml-to-json): Convert YAML documents into formatted JSON.
+- [YAML Validator](https://freetoolspro.in/developer-tools/yaml-validator): Validate YAML syntax and see parse errors instantly.
+
+## Business Tools
+- [GST Calculator](https://freetoolspro.in/business-tools/gst-calculator): Calculate GST online instantly.
+- [IFSC Code Finder](https://freetoolspro.in/business-tools/ifsc-code-finder): Validate IFSC format and look up common bank branch codes.
+- [Inventory Calculator](https://freetoolspro.in/business-tools/inventory-calculator): Calculate COGS, average inventory, and turnover.
+- [Invoice Template Creator](https://freetoolspro.in/business-tools/invoice-template-creator): Create professional invoices with live preview and totals.
+- [PAN Card Name Checker](https://freetoolspro.in/business-tools/pan-card-name-checker): Validate PAN format and decode the name-type character.
+- [Payroll Calculator](https://freetoolspro.in/business-tools/payroll-calculator): Calculate gross pay, deductions, and net salary.
+- [Quotation Generator](https://freetoolspro.in/business-tools/quotation-generator): Generate business quotations with discount and tax.
+- [Rent Receipt Generator](https://freetoolspro.in/business-tools/rent-receipt-generator): Generate printable rent receipts for HRA claims and landlords.
+- [Salary Calculator](https://freetoolspro.in/business-tools/salary-calculator): Calculate your in-hand salary from CTC.
+
+## Image Tools
+- [Aadhaar Mask Tool](https://freetoolspro.in/image-tools/aadhaar-mask-tool): Mask Aadhaar numbers for safer sharing and screenshots.
+- [AI Image Generator](https://freetoolspro.in/image-tools/ai-image-generator): Generate images from text prompts in multiple styles.
+- [AI Logo Generator](https://freetoolspro.in/image-tools/ai-logo-generator): Craft AI prompts and layout ideas for brand logos.
+- [All in One Image Toolkit](https://freetoolspro.in/image-tools/all-in-one-image-toolkit): Resize, compress, crop, rotate, convert and optimize images.
+- [Base64 Encoder](https://freetoolspro.in/image-tools/base64-encoder): Encode text and images into Base64 format instantly.
+- [Favicon Generator](https://freetoolspro.in/image-tools/favicon-generator): Create website favicons from an uploaded image.
+- [Image Format Converter](https://freetoolspro.in/image-tools/image-format-converter): Convert images between PNG, JPG, WebP, and GIF formats.
+- [Image Resizer](https://freetoolspro.in/image-tools/image-resizer): Resize images without losing quality.
+- [Image to Base64](https://freetoolspro.in/image-tools/image-to-base64): Convert any image into a Base64 string.
+- [Image to Prompt](https://freetoolspro.in/image-tools/image-to-prompt): Generate descriptive AI prompts from uploaded images.
+- [Image to Text Extractor](https://freetoolspro.in/image-tools/image-to-text-extractor): Extract text from images using OCR.
+- [Passport Photo Maker](https://freetoolspro.in/image-tools/passport-photo-maker): Crop and resize photos to passport and visa sizes.
+- [Schema Markup Generator](https://freetoolspro.in/image-tools/schema-markup-generator): Generate JSON-LD structured data for better SEO.
+- [Signature Generator](https://freetoolspro.in/image-tools/signature-generator): Draw or type a signature and download it as PNG.
+
+## PDF Tools
+- [PDF Merger](https://freetoolspro.in/pdf-tools/pdf-merger): Merge multiple PDF files into a single document.
+- [PDF Tools](https://freetoolspro.in/pdf-tools/pdf-converter): Convert PDF to Word or JPG, and add simple text edits in one browser workspace.
+
+## Text Tools
+- [Duplicate Line Remover](https://freetoolspro.in/text-tools/duplicate-line-remover): Remove duplicate lines from text while keeping order.
+- [Email Rewriter](https://freetoolspro.in/text-tools/email-rewriter): Rewrite emails in professional, friendly, concise, or persuasive tones.
+- [Indent Text](https://freetoolspro.in/text-tools/indent-text): Add or remove spaces/tabs at the start of each line.
+- [Justify Text](https://freetoolspro.in/text-tools/justify-text): Distribute spaces so lines fill a target width.
+- [Number Lines](https://freetoolspro.in/text-tools/number-lines): Add sequential line numbers, or strip common number prefixes.
+- [Reverse Lines](https://freetoolspro.in/text-tools/reverse-lines): Flip line order so the last line comes first.
+- [Shuffle Lines](https://freetoolspro.in/text-tools/shuffle-lines): Randomize the order of lines in your text.
+- [Sort Lines](https://freetoolspro.in/text-tools/sort-lines-az): Sort lines alphabetically A–Z or Z–A, with optional case-insensitive mode.
+- [Trim Text](https://freetoolspro.in/text-tools/trim-text): Strip leading and trailing whitespace from text or each line.
+- [Wrap Text](https://freetoolspro.in/text-tools/wrap-text): Soft-wrap long lines to a width, or unwrap hard breaks into paragraphs.

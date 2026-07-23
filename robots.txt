@@ -1,4 +1,42 @@
+# FreeToolsPro robots.txt
+# GEO: AI assistants should also read https://freetoolspro.in/llms.txt
+
 User-agent: *
 Allow: /
 
+# Explicit allow for major AI / answer-engine crawlers (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://freetoolspro.in/sitemap.xml
+
+# LLM / GEO manifests (ChatGPT-ready)
+# llms.txt: https://freetoolspro.in/llms.txt
+# llms-full.txt: https://freetoolspro.in/llms-full.txt

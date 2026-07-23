@@ -6,14 +6,9 @@ export default function RouteTracker() {
   const location = useLocation();
 
   useEffect(() => {
-    pageview(location.pathname + location.search);
-  }, [location]);
-
-  useEffect(() => {
-    // Example: Google Analytics
-    window.gtag?.("config", "G-XXXXXXX", {
-      page_path: location.pathname,
-    });
+    const path = location.pathname + location.search;
+    pageview(path);
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [location]);
 
   return null;

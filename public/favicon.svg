@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none" role="img" aria-label="FreeToolsPro">
+  <rect width="72" height="72" rx="14" fill="#e8f4fa"/>
+  <g transform="translate(3.5 0.5) scale(1.02)">
+    <circle cx="32.7692" cy="36.5503" r="5.04142" fill="#000D53"/>
+    <path d="M10.9231 26.8876C16.1203 -4.81057 50.101 -4.15019 55.8757 26.8876" stroke="#004864" stroke-width="0.9"/>
+    <circle cx="56.2959" cy="27.7278" r="2.52071" fill="#2CB3F1"/>
+    <circle cx="10.9231" cy="27.7278" r="2.52071" fill="#2CB3F1"/>
+    <path d="M2.52071 2.52069H63.0178" stroke="#004864" stroke-width="0.9"/>
+    <circle cx="2.52071" cy="2.52071" r="2.52071" fill="#2CB3F1"/>
+    <path d="M32.7692 5.04141L52.9349 45.3728C49.3763 46.003 42.259 48.3976 42.259 52.9349" stroke="#023C8B" stroke-width="0.9"/>
+    <path d="M32.7692 5.04141L12.6036 45.3728C16.1622 46.003 23.2795 48.3976 23.2795 52.9349" stroke="#023C8B" stroke-width="0.9"/>
+    <path d="M22.6864 52.9349L42.8521 52.9349" stroke="#023C8B" stroke-width="0.9"/>
+    <path d="M21.426 59.2367H44.1124V69.5799C44.1124 70.1322 43.6647 70.5799 43.1124 70.5799H22.426C21.8737 70.5799 21.426 70.1322 21.426 69.5799V59.2367Z" fill="#000D53"/>
+    <rect x="15.1243" y="51.6746" width="34.0296" height="7.56213" rx="3.78107" fill="#2CB3F1"/>
+    <circle cx="32.7692" cy="2.52071" r="2.52071" fill="#2CB3F1"/>
+    <circle cx="63.0178" cy="2.52071" r="2.52071" fill="#2CB3F1"/>
+  </g>
+</svg>

@@ -1,35 +1,29 @@
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
-export default function GlassToolCard({
-  title,
-  desc,
-  to,
-  icon: Icon,
-}) {
+export default function GlassToolCard({ title, desc, to, icon }) {
   return (
     <Link
       to={to}
-      className="group relative block bg-white p-6 rounded-2xl shadow hover:shadow-xl transition text-center"
+      className="group bg-white p-6 gap-6 rounded-2xl shadow hover:shadow-xl transition flex items-center"
     >
-      {Icon && (
-        <div className="text-4xl mb-6 flex justify-center">
-          <Icon size={40} />
-        </div>
-      )}
+      <div className="text-3xl flex items-center">
+        {typeof icon === "string" ? (
+          <span className="text-5xl">{icon}</span>
+        ) : (
+          icon &&
+          (() => {
+            const Icon = icon;
+            return <Icon size={40} />;
+          })()
+        )}
+      </div>
 
-      <h3 className="text-black font-semibold text-lg mb-1">
-        {title}
-      </h3>
-
-      <p className="text-sm text-gray-800 leading-relaxed">
-        {desc}
-      </p>
-
-      <span className="
-        pointer-events-none absolute inset-x-0 bottom-0 h-px
-        bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent
-        opacity-0 group-hover:opacity-100 transition
-      " />
+      <div className="text-left">
+        <h4 className="font-semibold mb-1">{title}</h4>
+        <p className="text-sm text-gray-600">{desc}</p>
+      </div>
+      <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-slate-400 transition group-hover:translate-x-1 group-hover:text-sky-600" />
     </Link>
   );
 }

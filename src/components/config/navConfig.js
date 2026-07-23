@@ -39,7 +39,7 @@ export const NAV_ITEMS = [
     icon: Brain,
   },
   {
-    path: "/emi-calculator",
+    path: "/calculators/emi-calculator",
     label: "EMI",
     fullLabel: "EMI Calculator",
     description: "Calculate loan EMI instantly",

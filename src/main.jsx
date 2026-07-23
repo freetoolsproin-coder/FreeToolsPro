@@ -4,21 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import "./index.css";
-import * as Sentry from "@sentry/react";
+import { initConsentOnBoot } from "./utils/consent";
 
-
-Sentry.init({
-  dsn: "https://YOUR_KEY@sentry.io/freetoolspro.in",
-  tracesSampleRate: 1.0,
-  environment: "production",
-});
+initConsentOnBoot();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-
-    <BrowserRouter>
-      <HelmetProvider>
+  <React.StrictMode>
+    <HelmetProvider>
+      <BrowserRouter>
         <App />
-      </HelmetProvider>
-    </BrowserRouter>
-
+      </BrowserRouter>
+    </HelmetProvider>
+  </React.StrictMode>
 );

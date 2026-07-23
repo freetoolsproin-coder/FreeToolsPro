@@ -1,0 +1,38 @@
+.lookup-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.lookup-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.lookup-box button {
+  padding: 10px 20px;
+  border: none;
+  background: #0077ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lookup-box button:hover {
+  background: #005fd1;
+}
+
+.lookup-box .result {
+  margin-top: 30px;
+  text-align: left;
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.lookup-box .error {
+  color: red;
+  margin-top: 10px;
+}

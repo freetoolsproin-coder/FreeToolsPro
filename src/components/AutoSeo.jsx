@@ -1,21 +1,24 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { seoRoutes } from "./config/seoRoutes";
+import { getSeoByPath } from "../seo/seoByPath";
+import { BRAND, absoluteUrl } from "../seo/brand";
 
-const SITE_URL = "https://freetoolspro.in";
-
+/**
+ * Fallback title/description/canonical for routes without a dedicated <Seo />.
+ * JSON-LD is owned by SoftwareSchema (sitewide) + page-level <Seo /> / FAQ / HowTo.
+ */
 export default function AutoSeo() {
   const { pathname } = useLocation();
+  const fromConfig = getSeoByPath(pathname);
 
-  const seo =
-    seoRoutes[pathname] ||
-    {
-      title: "Free Tools – Online Calculators & Utilities",
-      description:
-        "Free online calculators and tools for health, finance and daily use.",
+  const seo = fromConfig ||
+    seoRoutes[pathname] || {
+      title: `${BRAND.name} – Free Online Calculators, SEO & Utility Tools`,
+      description: BRAND.description,
     };
 
-    const url = `${SITE_URL}${pathname}`;
+  const url = absoluteUrl(pathname === "/" ? "/" : pathname);
 
   return (
     <Helmet>
@@ -27,11 +30,11 @@ export default function AutoSeo() {
       <meta property="og:description" content={seo.description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
+      <meta property="og:site_name" content={BRAND.name} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
-      
     </Helmet>
   );
 }

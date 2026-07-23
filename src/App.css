@@ -87,8 +87,9 @@
 }
 
 .glass-input:focus {
-  box-shadow: 0 0 0 4px rgba(16,185,129,0.25),
-              inset 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow:
+    0 0 0 4px rgba(16, 185, 129, 0.25),
+    inset 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .input-error {
   @apply ring-4 ring-red-400/30 border-red-400;

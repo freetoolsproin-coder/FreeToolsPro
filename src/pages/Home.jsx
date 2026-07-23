@@ -1,263 +1,309 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { NavLink  } from "react-router-dom";
-import FaqSchema from "./FaqSchema";
-
-
-const getRecommendedTools = (tools) => {
-  const hour = new Date().getHours();
-  const isMobile = window.innerWidth < 768;
-
-  // Morning → Health | Evening → Finance
-  if (hour >= 5 && hour < 12) {
-    return tools.filter(t =>
-      ["BMI Calculator", "Calorie Calculator", "Age Calculator"].includes(t.name)
-    );
-  }
-
-  if (hour >= 17 || isMobile) {
-    return tools.filter(t =>
-      ["EMI Calculator", "SIP Calculator", "Salary Calculator"].includes(t.name)
-    );
-  }
-
-  return tools.slice(0, 3);
-};
-
-
-/* ------------------ DATA ------------------ */
-
-const toolCategories = [
-  {
-    tools: [
-      {
-        id: 1,
-        name: "Age Calculator",
-        desc: "Calculate exact age, next birthday and total time lived.",
-        path: "/age-calculator",
-        icon: "🎂",
-      },
-      {
-        id: 2,
-        name: "BMI Calculator",
-        desc: "Check your Body Mass Index instantly.",
-        path: "/bmi-calculator",
-        icon: "⚖️",
-      },
-      {
-        id: 3,
-        name: "Calorie Calculator",
-        desc: "Calculate daily calorie needs.",
-        path: "/calorie-calculator",
-        icon: "🔥",
-      },
-      {
-        id: 4,
-        name: "EMI Calculator",
-        desc: "Calculate loan EMI instantly.",
-        path: "/emi-calculator",
-        icon: "💰",
-      },
-      {
-        id: 5,
-        name: "SIP Calculator",
-        desc: "Estimate SIP returns easily.",
-        path: "/sip-calculator",
-        icon: "📈",
-      },
-      {
-        id: 6,
-        name: "Salary Calculator",
-        desc: "Calculate in-hand salary from CTC.",
-        path: "/salary-calculator",
-        icon: "💼",
-      },
-      {
-        id: 7,
-        name: "GST Calculator",
-        desc: "Calculate GST amount quickly.",
-        path: "/gst-calculator",
-        icon: "🧾",
-      },
-
-      {
-        id: 8,
-        name: "Date Difference",
-        desc: "Find difference between two dates.",
-        path: "/date-difference",
-        icon: "📅",
-      },
-      {
-        id: 9,
-        name: "Meta Tag Generator",
-        desc: "Generate SEO-friendly meta tags.",
-        path: "/tools/meta-tag-generator",
-        icon: "🏷️",
-      },
-      {
-        id: 10,
-        name: "Net Speed Test",
-        desc: "Test your internet speed instantly.",
-        path: "/speed-test",
-        icon: "🚀",
-      },
-      {
-          id: 11,
-        name: "Currency Converter",
-        desc: "Test your internet speed instantly.",
-        path: "/currency-converter",
-        icon: "💲",
-      },
-      {
-          id: 12,
-        name: "Python Formatter",
-        desc: "Convert your Pyhton unformatted to Formatted code.",
-        path: "/python-formatter",
-        icon: "🐍",
-      },
-      {
-          id: 13,
-        name: "JSON Formatter",
-        desc: "Format, beautify & validate JSON instantly. Supports minify & error detection.",
-        path: "/tools/json-formatter",
-        icon: "{ }",
-      },
-      {
-          id: 14,
-        name: "JWT Decoder",
-        desc: "Decode JWT tokens instantly. View header, payload & signature securely without verification.",
-        path: "/tools/jwt-decoder",
-        icon: "{ }",
-      },
-      {
-          id: 14,
-        name: "Base64 Encoder",
-        desc: "Encode & decode Base64 strings instantly. Supports text & URL-safe Base64 encoding.",
-        path: "/tools/base64",
-        icon: "{ }",
-      },
-      {
-          id: 14,
-        name: "Sitemap Generator",
-        desc: "Generate XML sitemap instantly for better Google indexing. Supports large websites.",
-        path: "/tools/sitemap",
-        icon: "🖧",
-      },
-      {
-          id: 14,
-        name: "Robots.txt Generator",
-        desc: "Create robots.txt file easily to control search engine bots & improve SEO.",
-        path: "/tools/robots",
-        icon: "</>",
-      },
-      {
-          id: 14,
-        name: "PDF Tools Converters",
-        desc: "Convert, Edit & Manage PDFs online. PDF to Word, PDF to JPG, Edit PDF & more.",
-        path: "/tools/pdf-tools",
-        icon: "🔗",
-      }
-    ],
-  },
-];
-
-/* Flatten tools for Popular section */
-const popularTools = toolCategories.flatMap((c) => c.tools).slice(0, 6);
-
-function NavItem({ to, icon, label, title }) {
-    return (
-      <NavLink
-        to={to}
-        title={title}
-        className="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition"
-      >
-        {icon}
-        {label}
-      </NavLink>
-    );
-  }
-
-function MobileNavItem({ to, icon, label, title, setOpen }) {
-  return (
-    <NavLink
-      to={to}
-      title={title}
-      onClick={() => setOpen(false)}
-      className="flex items-center gap-2 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition"
-    >
-      {icon}
-      <span className="text-sm font-medium">{label}</span>
-    </NavLink>
-  );
-}
+import Hero from "../components/Hero";
+import ToolCard, { CollectionCard } from "../components/ToolCard";
+import Seo from "../components/Seo";
+import { tools } from "../data/toolDefinitions";
+import {
+  getCollectionStats,
+  getRecentlyAddedTools,
+  getTrendingTools,
+  HOME_CATEGORY_LIST,
+} from "../data/homeSections";
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const trending = useMemo(() => getTrendingTools(8), []);
+  const recentlyAdded = useMemo(() => getRecentlyAddedTools(8), []);
+  const collections = useMemo(() => getCollectionStats(), []);
+
+  const filteredTools = useMemo(() => {
+    const search = searchTerm.trim().toLowerCase();
+
+    return tools
+      .filter((tool) => !tool.isPageLink)
+      .filter((tool) => {
+        const matchesCategory = activeCategory === "all" || tool.category === activeCategory;
+        const matchesSearch =
+          !search ||
+          tool.name.toLowerCase().includes(search) ||
+          tool.desc.toLowerCase().includes(search) ||
+          tool.keywords?.some((keyword) => keyword.toLowerCase().includes(search));
+        return matchesCategory && matchesSearch;
+      });
+  }, [searchTerm, activeCategory]);
+
+  const showBrowseOnly = Boolean(searchTerm.trim());
+
   return (
-    <>
-      
-      <main className="min-h-screen">
+    <div className="ftp-page">
+      <Seo page="home" />
+      <Hero onSearch={setSearchTerm} searchValue={searchTerm} />
 
-        {/* ================= HERO ================= */}
-        <section className="bg-white">
-          <Link to="/tools">
-            <img src="../../images/freetools-hero.jpg" className="mx-auto"/>
-          </Link>
-        </section>
-
-        {/* <div className="max-w-6xl mx-auto my-10">
-          <div className="bg-gray-100 h-[90px] flex items-center justify-center text-sm text-gray-500">
-            Advertisement
-          </div>
-        </div> */}
-
-        {/* ================= TOOLS ================= */}
-        <section id="tools" className="max-w-6xl mx-auto px-4 pt-10">
-          <h2 className="text-4xl font-bold text-center mb-4 subtitle">
-            Free Online <span>Calculators & Developer Tools</span>
-          </h2>
-          <p className="text-center text-gray-600 mb-12">
-            Simple, fast and accurate tools — built for everyday life
-          </p>
-
-          {toolCategories.map((category) => (
-            <div key={category.title} className="mb-16">
-              <h3 className="text-2xl font-bold mb-1 subCategory">{category.title}</h3>
-              <p className="text-gray-500 mb-6">{category.subtitle}</p>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
-                {category.tools.map((tool) => (
-                  <Link
-                    key={`${category.slug}-${tool.id}`}
-                    to={tool.path}
-                    className="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition"
-                  >
-                    <div className="text-4xl mb-3">{tool.icon}</div>
-                    <h4 className="font-semibold mb-1">{tool.name}</h4>
-                    <p className="text-sm text-gray-600">{tool.desc}</p>
-                  </Link>
+      <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+        {!showBrowseOnly ? (
+          <>
+            <section className="mb-14" aria-labelledby="trending-heading">
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <p className="ftp-section-label">Discover</p>
+                  <h2 id="trending-heading" className="ftp-section-title mt-2">
+                    Trending
+                  </h2>
+                </div>
+                <Link
+                  to="/tools?cat=trending-tools"
+                  className="text-sm font-semibold text-[var(--ftp-ink-soft)] transition hover:text-[var(--ftp-ink)]"
+                >
+                  View all
+                </Link>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {trending.map((tool) => (
+                  <ToolCard key={tool.id} tool={tool} />
                 ))}
               </div>
+            </section>
+
+            <section className="mb-14" aria-labelledby="recent-heading">
+              <div className="mb-6">
+                <p className="ftp-section-label">New</p>
+                <h2 id="recent-heading" className="ftp-section-title mt-2">
+                  Recently added
+                </h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {recentlyAdded.map((tool) => (
+                  <ToolCard key={tool.id} tool={tool} />
+                ))}
+              </div>
+            </section>
+
+            <section className="mb-14" aria-labelledby="blog-heading">
+              <div className="flex flex-col gap-4 rounded-[18px] border border-[var(--ftp-line)] bg-gradient-to-br from-white/80 to-teal-50/40 px-6 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+                <div className="max-w-xl">
+                  <p className="ftp-section-label">Learn</p>
+                  <h2 id="blog-heading" className="ftp-section-title mt-2">
+                    Guides &amp; tutorials
+                  </h2>
+                  <p className="mt-3 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
+                    SEO checklists, EMI/SIP walkthroughs, image optimization tips, PDF how-tos, and
+                    JavaScript notes—each linked to free tools you can open in one click.
+                  </p>
+                </div>
+                <Link
+                  to="/blog"
+                  className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[var(--ftp-ink)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  Visit the blog
+                </Link>
+              </div>
+            </section>
+
+            <section className="mb-16" aria-labelledby="collections-heading">
+              <div className="mb-6">
+                <p className="ftp-section-label">Browse</p>
+                <h2 id="collections-heading" className="ftp-section-title mt-2">
+                  Popular collections
+                </h2>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {collections.map((collection) => (
+                  <CollectionCard key={collection.id} collection={collection} />
+                ))}
+              </div>
+            </section>
+          </>
+        ) : null}
+
+        <section aria-labelledby="browse-heading">
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="ftp-section-label">Catalog</p>
+              <h2 id="browse-heading" className="ftp-section-title mt-2">
+                {showBrowseOnly ? "Search results" : "Browse all"}
+              </h2>
             </div>
-          ))}
+            <div className="flex flex-wrap gap-2">
+              {HOME_CATEGORY_LIST.map((category) => (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`ftp-chip ${activeCategory === category.id ? "ftp-chip--active" : ""}`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {filteredTools.length ? (
+            <div className="grid gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredTools.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-[12px] border border-dashed border-[var(--ftp-line)] bg-white px-6 py-20 text-center">
+              <h3 className="ftp-display text-2xl font-semibold text-[var(--ftp-ink)]">
+                No tools found
+              </h3>
+              <p className="mt-2 text-[var(--ftp-ink-soft)]">
+                Try another keyword or pick a different category.
+              </p>
+            </div>
+          )}
         </section>
 
-      </main>
+        <section className="cont-text border-t border-[var(--ftp-line)] pt-12 pb-6 text-left">
+          <h3 className="toolsTitle text-left">
+            FreeToolsPro – All-in-One Free Online Tools Platform
+          </h3>
+          <p>
+            FreeToolsPro brings calculators, business utilities, developer tools, image editors, PDF
+            helpers, social media generators, and trending utilities into one place. Instead of
+            jumping between multiple websites for EMI planning, SEO checks, invoice creation, or AI
+            writing, you can complete everyday digital tasks from a single free platform that works
+            in your browser.
+          </p>
 
-      <FaqSchema
-        faqs={[
-          {
-            q: "Are these calculators free to use?",
-            a: "Yes, all calculators are 100% free with no signup required.",
-          },
-          {
-            q: "Are results accurate?",
-            a: "Yes, calculators use standard formulas and are tested for accuracy.",
-          },
-          {
-            q: "Is my data stored?",
-            a: "No, all calculations happen locally in your browser.",
-          },
-        ]}
-      />
-    </>
+          <h4>What You Can Do With Our Combined Tool Collection</h4>
+          <p>
+            Each category solves a different workflow, and together they cover personal, professional,
+            and technical needs:
+          </p>
+          <ul className="cont-textul">
+            <li>
+              Calculators: Plan finances with age, EMI, SIP, inflation, PPF, loan eligibility,
+              mortgage, stock/option profit, and gratuity tools.
+            </li>
+            <li>
+              Business Tools: Handle GST, salary, payroll, invoices, quotations, and inventory
+              calculations for day-to-day operations.
+            </li>
+            <li>
+              Developer &amp; SEO Tools: Format JSON/YAML/SQL, convert CSV and Excel, test regex,
+              build flowcharts and DB schemas, generate docs and bug reports, check SSL, domain age,
+              backlinks, site speed, and run quick SEO audits.
+            </li>
+            <li>
+              Text Tools: Trim, wrap, unwrap, indent, sort, shuffle, and number lines; rewrite
+              emails by tone; remove duplicates; count words; check grammar; and generate lorem
+              ipsum for drafts and layouts.
+            </li>
+            <li>
+              Image &amp; PDF Tools: Resize, convert, extract text, generate AI images, and manage
+              PDF files without installing software.
+            </li>
+            <li>
+              Social &amp; Content Tools: Create captions, bios, blog titles, YouTube tags, essays,
+              stories, and resume drafts faster.
+            </li>
+            <li>
+              Trending Utilities: Use password generators, QR tools, color pickers, unit converters,
+              and currency converters for everyday tasks.
+            </li>
+          </ul>
+
+          <h4>Key Advantages of Using FreeToolsPro</h4>
+          <ul className="cont-textul">
+            <li>Completely free to use with no forced sign-up for most tools.</li>
+            <li>Browser-based tools—no downloads or heavy software installs.</li>
+            <li>Fast results for calculations, conversions, checks, and content drafts.</li>
+            <li>Mobile-friendly design that works on phones, tablets, and desktops.</li>
+            <li>Privacy-focused workflows where many tools process data locally in your browser.</li>
+            <li>One platform for finance, business, SEO, design, and productivity needs.</li>
+            <li>Clear categories and search so you can find the right tool quickly.</li>
+          </ul>
+
+          <h4>Who Can Benefit From These Tools?</h4>
+          <ul className="cont-textul">
+            <li>
+              Students &amp; Job Seekers: Calculate age or BMI, draft essays and resumes, generate
+              study-friendly text, and prepare documents faster.
+            </li>
+            <li>
+              Freelancers &amp; Small Businesses: Create invoices and quotations, estimate payroll or
+              GST, track inventory basics, and manage client-ready content.
+            </li>
+            <li>
+              Developers &amp; SEO Professionals: Validate JSON/YAML/SQL, convert CSV and Excel,
+              test regex, generate robots and sitemaps, audit pages, and check indexing, SSL, and
+              backlinks.
+            </li>
+            <li>
+              Marketers &amp; Creators: Build captions, bios, blog titles, YouTube tags, and AI
+              images to speed up content production.
+            </li>
+            <li>
+              Finance Planners &amp; Home Buyers: Compare EMIs, mortgage payments, SIP returns,
+              inflation impact, loan eligibility, and investment profit scenarios.
+            </li>
+            <li>
+              Everyday Users: Convert units and currencies, generate passwords or QR codes, resize
+              images, and solve common online tasks without technical skills.
+            </li>
+          </ul>
+
+          <h4>How we build tools &amp; protect privacy</h4>
+          <p>
+            FreeToolsPro is built browser-first: whenever practical, calculators and text transforms
+            run on your device so everyday inputs do not need to leave the page for the core result.
+            Tool pages include working workspaces plus original explanations—what the tool does, why
+            it is useful, step-by-step instructions, examples, benefits, use cases, and FAQs—so each
+            page helps before you paste data.
+          </p>
+          <p>
+            The site may show ads through Google AdSense and use analytics to understand traffic.
+            Read our{" "}
+            <Link to="/privacy-policy" className="underline underline-offset-2">
+              Privacy Policy
+            </Link>
+            ,{" "}
+            <Link to="/terms" className="underline underline-offset-2">
+              Terms
+            </Link>
+            ,{" "}
+            <Link to="/disclaimer" className="underline underline-offset-2">
+              Disclaimer
+            </Link>
+            , and{" "}
+            <Link to="/cookie-policy" className="underline underline-offset-2">
+              Cookie Policy
+            </Link>
+            , or learn more{" "}
+            <Link to="/about" className="underline underline-offset-2">
+              About FreeToolsPro
+            </Link>
+            . Email{" "}
+            <a href="mailto:support@freetoolspro.in" className="underline underline-offset-2">
+              support@freetoolspro.in
+            </a>{" "}
+            or use the{" "}
+            <Link to="/contact" className="underline underline-offset-2">
+              Contact
+            </Link>{" "}
+            form.
+          </p>
+
+          <h4>How to Get the Most Value</h4>
+          <p>
+            Start by choosing a category above or searching for a tool by name. Open the tool, enter
+            your details, and get instant results. For larger workflows, combine tools—for example,
+            use a loan eligibility calculator before a mortgage calculator, run an SEO audit after
+            updating meta tags, or draft content with AI writers and refine it with word or grammar
+            tools. Because everything is available in one place, you save time, reduce tool-switching,
+            and keep your daily digital work simple and efficient.
+          </p>
+          <p>
+            Explore the full FreeToolsPro collection and use the right free online tool whenever you
+            need accurate calculations, faster content, cleaner files, or clearer website insights.
+          </p>
+        </section>
+      </div>
+    </div>
   );
 }
