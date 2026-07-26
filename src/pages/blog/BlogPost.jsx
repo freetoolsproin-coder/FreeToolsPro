@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import BlogLayout, { formatBlogDate } from "../../components/blog/BlogLayout";
 import BlogMarkdown from "../../components/blog/BlogMarkdown";
 import RelatedToolsAside from "../../components/blog/RelatedToolsAside";
@@ -50,48 +51,80 @@ export default function BlogPost() {
         }
         title={post.title}
         subtitle={post.description}
-        aside={
-          <div className="space-y-6">
-            <RelatedToolsAside paths={post.relatedTools} />
-            <div className="text-sm text-[var(--ftp-ink-soft)]">
-              <p>
-                Published <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
-              </p>
-              {post.updated && post.updated !== post.date ? (
-                <p className="mt-1">
-                  Updated <time dateTime={post.updated}>{formatBlogDate(post.updated)}</time>
-                </p>
-              ) : null}
-            </div>
+        breadcrumbs={[
+          { label: "Home", to: "/" },
+          { label: "Blog", to: "/blog" },
+          { label: post.categoryLabel, to: `/blog/category/${post.category}` },
+          { label: "Article" },
+        ]}
+        meta={
+          <div className="blog-post-meta">
+            <time dateTime={post.date}>Published {formatBlogDate(post.date)}</time>
+            {post.updated && post.updated !== post.date ? (
+              <>
+                <span className="blog-card__dot" aria-hidden="true" />
+                <time dateTime={post.updated}>Updated {formatBlogDate(post.updated)}</time>
+              </>
+            ) : null}
           </div>
+        }
+        aside={
+          <>
+            <RelatedToolsAside paths={post.relatedTools} />
+            <div className="blog-aside-panel">
+              <div className="blog-aside-panel__head">
+                <p>On this page</p>
+              </div>
+              <div className="space-y-2 px-1 pb-1 text-sm text-[var(--ftp-ink-soft)]">
+                <p>
+                  <span className="font-medium text-[var(--ftp-ink)]">Category</span>
+                  <br />
+                  <Link
+                    to={`/blog/category/${post.category}`}
+                    className="underline-offset-2 hover:underline"
+                  >
+                    {post.categoryLabel}
+                  </Link>
+                </p>
+                {(post.tags || []).length ? (
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {post.tags.slice(0, 6).map((tag) => (
+                      <span key={tag} className="blog-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </>
         }
       >
         <BlogCategoryNav activeSlug={post.category} />
 
-        <article className="mt-10 max-w-3xl">
+        <article className="blog-article mt-8">
           <BlogMarkdown content={post.content} />
         </article>
 
-        <nav
-          className="mt-14 flex flex-col gap-4 border-t border-[var(--ftp-line)] pt-8 sm:flex-row sm:justify-between"
-          aria-label="Adjacent articles"
-        >
+        <nav className="blog-pager" aria-label="Adjacent articles">
           {prev ? (
-            <Link to={prev.path} className="group max-w-sm text-sm">
-              <span className="text-[var(--ftp-ink-soft)]">Previous</span>
-              <span className="mt-1 block font-semibold text-[var(--ftp-ink)] group-hover:underline">
-                {prev.title}
+            <Link to={prev.path} className="blog-pager__link">
+              <span className="blog-pager__label">
+                <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                Previous
               </span>
+              <span className="blog-pager__title">{prev.title}</span>
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link to={next.path} className="group max-w-sm text-sm sm:text-right">
-              <span className="text-[var(--ftp-ink-soft)]">Next</span>
-              <span className="mt-1 block font-semibold text-[var(--ftp-ink)] group-hover:underline">
-                {next.title}
+            <Link to={next.path} className="blog-pager__link blog-pager__link--next">
+              <span className="blog-pager__label">
+                Next
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
+              <span className="blog-pager__title">{next.title}</span>
             </Link>
           ) : null}
         </nav>

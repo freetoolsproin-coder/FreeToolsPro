@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 
 export function formatBlogDate(iso) {
   if (!iso) return "";
@@ -19,35 +20,67 @@ export default function BlogLayout({
   subtitle,
   children,
   aside,
+  breadcrumbs,
+  meta,
 }) {
+  const crumbs = breadcrumbs?.length
+    ? breadcrumbs
+    : [
+        { label: "Home", to: "/" },
+        { label: "Blog", to: "/blog" },
+      ];
+
   return (
     <main className="ftp-page blog-page">
-      <section className="relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
-        <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--age-teal-deep,#0f766e)]">
-          {eyebrow}
+      <section className="blog-hero">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Breadcrumb" className="blog-breadcrumb">
+            {crumbs.map((crumb, i) => {
+              const last = i === crumbs.length - 1;
+              return (
+                <span key={`${crumb.label}-${i}`} className="inline-flex items-center gap-1.5">
+                  {i > 0 ? (
+                    <ChevronRight className="h-3.5 w-3.5 shrink-0 text-[var(--ftp-ink-soft)]/50" aria-hidden="true" />
+                  ) : null}
+                  {last || !crumb.to ? (
+                    <span className="text-[var(--ftp-ink-soft)]">{crumb.label}</span>
+                  ) : (
+                    <Link to={crumb.to} className="transition hover:text-[var(--ftp-ink)]">
+                      {crumb.label}
+                    </Link>
+                  )}
+                </span>
+              );
+            })}
+          </nav>
+
+          {eyebrow ? <div className="blog-kicker">{eyebrow}</div> : null}
+
+          <h1 className="blog-hero__title">{title}</h1>
+
+          {subtitle ? <p className="blog-hero__subtitle">{subtitle}</p> : null}
+
+          {meta ? <div className="blog-hero__meta">{meta}</div> : null}
+
+          <div className="blog-hero__actions">
+            <Link to="/blog" className="blog-link-quiet">
+              All articles
+            </Link>
+            <span className="text-[var(--ftp-line-strong)]" aria-hidden="true">
+              /
+            </span>
+            <Link to="/tools" className="blog-link-quiet">
+              Browse tools
+            </Link>
+          </div>
         </div>
-        <h1 className="age-display mt-3 max-w-3xl text-[clamp(1.85rem,4.2vw,3rem)] font-semibold leading-[1.1] text-[var(--ftp-ink)]">
-          {title}
-        </h1>
-        {subtitle ? (
-          <p className="mt-4 max-w-2xl text-[1.05rem] leading-7 text-[var(--ftp-ink-soft)]">{subtitle}</p>
-        ) : null}
-        <p className="mt-4 text-sm text-[var(--ftp-ink-soft)]">
-          <Link to="/blog" className="underline-offset-2 hover:underline">
-            All articles
-          </Link>
-          {" · "}
-          <Link to="/tools" className="underline-offset-2 hover:underline">
-            Browse tools
-          </Link>
-        </p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl px-4 pb-20 pt-2 sm:px-6 lg:px-8">
         {aside ? (
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16 lg:items-start">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12 lg:items-start">
             <div className="min-w-0">{children}</div>
-            <aside className="min-w-0 self-start lg:sticky lg:top-24 lg:pt-1">{aside}</aside>
+            <aside className="min-w-0 space-y-4 self-start lg:sticky lg:top-24">{aside}</aside>
           </div>
         ) : (
           children

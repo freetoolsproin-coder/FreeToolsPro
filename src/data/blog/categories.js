@@ -1,16 +1,10 @@
-/** Blog category taxonomy for FreeToolsPro. */
+/** Blog category taxonomy for FreeToolsPro (trending topics first). */
 export const BLOG_CATEGORIES = [
   {
-    slug: "tutorials",
-    label: "Tutorials",
+    slug: "ai-articles",
+    label: "AI Articles",
     description:
-      "Step-by-step walkthroughs that help you finish a concrete task with FreeToolsPro utilities.",
-  },
-  {
-    slug: "guides",
-    label: "Guides",
-    description:
-      "Broader how-to guides for choosing workflows, planning projects, and getting more from the tool suite.",
+      "Prompt engineering, ChatGPT tips, and practical AI workflows for students, developers, resumes, and email.",
   },
   {
     slug: "programming",
@@ -19,16 +13,16 @@ export const BLOG_CATEGORIES = [
       "Developer-focused articles on HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, Git, regex, and practical coding patterns.",
   },
   {
+    slug: "javascript",
+    label: "JavaScript",
+    description:
+      "JavaScript core concepts—execution context, event loop, scope, closures, prototypes, classes, modules—plus practical tips for forms and dates.",
+  },
+  {
     slug: "seo",
     label: "SEO",
     description:
       "Search optimization checklists, technical SEO tips, and on-page improvements you can apply today.",
-  },
-  {
-    slug: "image-optimization",
-    label: "Image optimization",
-    description:
-      "Tips for resizing, compressing, and preparing images for faster pages and cleaner layouts.",
   },
   {
     slug: "pdf",
@@ -37,16 +31,22 @@ export const BLOG_CATEGORIES = [
       "Tutorials for converting, merging, and preparing PDF documents without desktop software.",
   },
   {
-    slug: "javascript",
-    label: "JavaScript",
+    slug: "guides",
+    label: "Guides",
     description:
-      "JavaScript core concepts—execution context, event loop, scope, closures, prototypes, classes, modules—plus practical tips for forms and dates.",
+      "Broader how-to guides for choosing workflows, planning projects, and getting more from the tool suite.",
   },
   {
-    slug: "ai-articles",
-    label: "AI Articles",
+    slug: "tutorials",
+    label: "Tutorials",
     description:
-      "Prompt engineering, ChatGPT tips, and practical AI workflows for students, developers, resumes, and email.",
+      "Step-by-step walkthroughs that help you finish a concrete task with FreeToolsPro utilities.",
+  },
+  {
+    slug: "image-optimization",
+    label: "Image optimization",
+    description:
+      "Tips for resizing, compressing, and preparing images for faster pages and cleaner layouts.",
   },
 ];
 

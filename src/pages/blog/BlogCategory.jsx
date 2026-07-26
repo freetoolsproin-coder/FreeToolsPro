@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import BlogLayout from "../../components/blog/BlogLayout";
 import BlogPostCard from "../../components/blog/BlogPostCard";
 import BlogCategoryNav from "../../components/blog/BlogCategoryNav";
@@ -41,16 +42,26 @@ export default function BlogCategory() {
         eyebrow="Category"
         title={category.label}
         subtitle={category.description}
+        breadcrumbs={[
+          { label: "Home", to: "/" },
+          { label: "Blog", to: "/blog" },
+          { label: category.label },
+        ]}
+        meta={
+          <span className="blog-stat-pill">
+            {posts.length} {posts.length === 1 ? "article" : "articles"}
+          </span>
+        }
         aside={
-          <div className="rounded-[14px] border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)] px-4 py-4">
-            <p className="text-sm font-semibold text-[var(--ftp-ink)]">More on the blog</p>
-            <p className="mt-2 text-sm leading-6 text-[var(--ftp-ink-soft)]">
-              Browse{" "}
-              <Link to="/blog" className="underline underline-offset-2">
-                all articles
-              </Link>{" "}
-              or jump to another topic from the chips below.
+          <div className="blog-aside-cta">
+            <p className="blog-aside-cta__title">More on the blog</p>
+            <p className="blog-aside-cta__body">
+              Browse every topic, or jump using the chips below.
             </p>
+            <Link to="/blog" className="blog-aside-cta__btn">
+              All articles
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
           </div>
         }
       >
@@ -58,9 +69,18 @@ export default function BlogCategory() {
 
         <div className="mt-10">
           {posts.length ? (
-            posts.map((post) => <BlogPostCard key={post.slug} post={post} />)
+            <div className="blog-card-grid">
+              {posts.map((post) => (
+                <BlogPostCard key={post.slug} post={post} />
+              ))}
+            </div>
           ) : (
-            <p className="text-[var(--ftp-ink-soft)]">No articles in this category yet.</p>
+            <div className="blog-empty">
+              <p>No articles in this category yet.</p>
+              <Link to="/blog" className="blog-link-quiet">
+                Back to all articles
+              </Link>
+            </div>
           )}
         </div>
       </BlogLayout>

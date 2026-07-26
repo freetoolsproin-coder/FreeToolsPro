@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ArrowUpRight, Wrench } from "lucide-react";
 import { tools } from "../../data/toolDefinitions";
 
 export default function RelatedToolsAside({ paths = [], title = "Related tools" }) {
@@ -9,16 +10,17 @@ export default function RelatedToolsAside({ paths = [], title = "Related tools" 
   if (!related.length) return null;
 
   return (
-    <div className="rounded-[14px] border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)] px-4 py-4">
-      <p className="text-sm font-semibold text-[var(--ftp-ink)]">{title}</p>
-      <ul className="mt-3 space-y-2.5">
+    <div className="blog-aside-panel">
+      <div className="blog-aside-panel__head">
+        <Wrench className="h-3.5 w-3.5" aria-hidden="true" />
+        <p>{title}</p>
+      </div>
+      <ul className="blog-aside-panel__list">
         {related.map((tool) => (
           <li key={tool.path}>
-            <Link
-              to={tool.path}
-              className="text-sm leading-6 text-[var(--ftp-ink-soft)] underline-offset-2 hover:text-[var(--ftp-ink)] hover:underline"
-            >
-              {tool.name}
+            <Link to={tool.path} className="blog-aside-panel__link">
+              <span>{tool.name}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-40" aria-hidden="true" />
             </Link>
           </li>
         ))}

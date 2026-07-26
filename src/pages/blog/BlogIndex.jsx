@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import BlogLayout from "../../components/blog/BlogLayout";
 import BlogPostCard from "../../components/blog/BlogPostCard";
 import BlogCategoryNav from "../../components/blog/BlogCategoryNav";
 import { getAllPosts, getBlogCategoryStats, getFeaturedPosts } from "../../data/blog/loadPosts";
 import { buildBlogIndexSchema } from "../../seo/blogSchema";
 import { BRAND, absoluteUrl } from "../../seo/brand";
-import { Link } from "react-router-dom";
 
 export default function BlogIndex() {
   const posts = getAllPosts();
@@ -37,57 +38,66 @@ export default function BlogIndex() {
       </Helmet>
 
       <BlogLayout
+        eyebrow="FreeToolsPro Blog"
         title="Guides & tutorials"
-        subtitle="Practical articles on finance calculators, SEO, programming, images, PDFs, and JavaScript—each linked to free tools you can use immediately."
+        subtitle="Practical articles on calculators, SEO, programming, images, PDFs, and JavaScript—each linked to free tools you can use right away."
+        meta={
+          <span className="blog-stat-pill">
+            <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+            {posts.length} articles
+          </span>
+        }
         aside={
-          <div className="space-y-6">
-            <div>
-              <p className="text-sm font-semibold text-[var(--ftp-ink)]">Categories</p>
-              <ul className="mt-3 space-y-2">
+          <>
+            <div className="blog-aside-panel">
+              <div className="blog-aside-panel__head">
+                <p>Categories</p>
+              </div>
+              <ul className="blog-aside-panel__list">
                 {categories.map((cat) => (
                   <li key={cat.slug}>
-                    <Link
-                      to={`/blog/category/${cat.slug}`}
-                      className="text-sm text-[var(--ftp-ink-soft)] underline-offset-2 hover:text-[var(--ftp-ink)] hover:underline"
-                    >
-                      {cat.label}
-                      <span className="text-[var(--ftp-ink-soft)]/70"> ({cat.count})</span>
+                    <Link to={`/blog/category/${cat.slug}`} className="blog-aside-panel__link">
+                      <span>{cat.label}</span>
+                      <span className="blog-aside-count">{cat.count}</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-[14px] border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)] px-4 py-4">
-              <p className="text-sm font-semibold text-[var(--ftp-ink)]">Need a tool now?</p>
-              <p className="mt-2 text-sm leading-6 text-[var(--ftp-ink-soft)]">
-                Skip the article and open the{" "}
-                <Link to="/tools" className="underline underline-offset-2">
-                  full tools catalog
-                </Link>
-                .
+
+            <div className="blog-aside-cta">
+              <p className="blog-aside-cta__title">Need a tool now?</p>
+              <p className="blog-aside-cta__body">
+                Skip the reading and open the full catalog.
               </p>
+              <Link to="/tools" className="blog-aside-cta__btn">
+                Browse tools
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
             </div>
-          </div>
+          </>
         }
       >
         <BlogCategoryNav />
 
         {featured.length ? (
           <div className="mt-10">
-            <h2 className="age-display text-lg font-semibold text-[var(--ftp-ink)]">Featured</h2>
-            <div className="mt-4">
+            <div className="blog-section-head">
+              <h2>Featured</h2>
+            </div>
+            <div className="blog-card-grid blog-card-grid--featured mt-5">
               {featured.map((post) => (
-                <BlogPostCard key={post.slug} post={post} />
+                <BlogPostCard key={post.slug} post={post} featured />
               ))}
             </div>
           </div>
         ) : null}
 
         <div className="mt-12">
-          <h2 className="age-display text-lg font-semibold text-[var(--ftp-ink)]">
-            {remaining.length ? "More articles" : "Latest articles"}
-          </h2>
-          <div className="mt-4">
+          <div className="blog-section-head">
+            <h2>{remaining.length ? "More articles" : "Latest articles"}</h2>
+          </div>
+          <div className="blog-card-grid mt-5">
             {(remaining.length ? remaining : posts).map((post) => (
               <BlogPostCard key={`all-${post.slug}`} post={post} />
             ))}
