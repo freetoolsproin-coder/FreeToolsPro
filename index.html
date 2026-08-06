@@ -30,11 +30,35 @@
     <meta property="og:url" content="https://freetoolspro.in/" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Syne:wght@400..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Slim font set + async CSS (critical path used to load full variable families). -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Syne:wght@600;700;800&family=Ubuntu:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Syne:wght@600;700;800&family=Ubuntu:wght@400;500;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Syne:wght@600;700;800&family=Ubuntu:wght@400;500;700&display=swap"
+      />
+    </noscript>
+    <style>
+      /* Critical first paint — system fonts only so mobile LCP doesn't wait on Google Fonts */
+      html,body{margin:0;background:#fafafa;color:#0a0a0a}
+      #ftp-boot{position:relative;z-index:1;font-family:system-ui,-apple-system,sans-serif;min-height:70vh;padding:5.5rem 1.25rem 2rem;text-align:center;background:#fafafa}
+      #ftp-boot h1{font-size:clamp(1.85rem,4.2vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin:0 auto;max-width:40rem}
+      #ftp-boot p{margin:1rem auto 0;max-width:28rem;color:#525252;font-size:1.05rem;line-height:1.6}
+      #ftp-boot.is-done{display:none}
+    </style>
 
-    <!-- Analytics and AdSense load only after cookie consent (see src/utils/consent.js). -->
     <script type="application/ld+json">
       [
         {
@@ -87,8 +111,27 @@
     <!-- <script src="https://5gvci.com/act/files/tag.min.js?z=11363889" data-cfasync="false" async></script> -->
     <!-- <script>(function(s){s.dataset.zone='11364287',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script> -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="sitemap" type="application/xml" title="Apex sitemap" href="/sitemap-apex.xml">
+    <link rel="sitemap" type="application/xml" title="Blog sitemap" href="/sitemap-blog.xml">
   </head>
   <body>
+    <!-- Homepage-only LCP shell (outside #root). Hidden on deep links. -->
+    <div id="ftp-boot" hidden>
+      <h1>The Ultimate Collection of<br />Free Online Tools</h1>
+      <p>Fast, private, browser-based tools—no install, no signup wall.</p>
+    </div>
+    <script>
+      (function () {
+        var p = location.pathname;
+        if (p === "/" || p === "") {
+          var el = document.getElementById("ftp-boot");
+          if (el) el.hidden = false;
+        } else {
+          var boot = document.getElementById("ftp-boot");
+          if (boot) boot.remove();
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

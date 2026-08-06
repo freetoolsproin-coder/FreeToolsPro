@@ -1,4 +1,18 @@
+import { PRODUCT_HUNT } from "../data/productHunt";
+
 /** Canonical FreeToolsPro entity — use everywhere for GEO / schema consistency. */
+const SAME_AS = [
+  "https://x.com/freetoolspro",
+  "https://github.com/freetoolspro",
+  "https://www.linkedin.com/company/freetoolspro",
+  "https://blog.freetoolspro.in/",
+];
+
+// Append Product Hunt after launch when productUrl is set in productHunt.js
+if (PRODUCT_HUNT.productUrl) {
+  SAME_AS.push(PRODUCT_HUNT.productUrl);
+}
+
 export const BRAND = {
   name: "FreeToolsPro",
   legalName: "FreeToolsPro",
@@ -9,11 +23,7 @@ export const BRAND = {
   description:
     "FreeToolsPro is a free online tools platform with 100+ browser-based utilities for calculators, SEO and developer checks, business documents, image and PDF helpers, AI writing aids, and converters. No signup required for most tools.",
   email: "support@freetoolspro.in",
-  sameAs: [
-    "https://x.com/freetoolspro",
-    "https://github.com/freetoolspro",
-    "https://www.linkedin.com/company/freetoolspro",
-  ],
+  sameAs: SAME_AS,
   areaServed: "Worldwide",
   knowsAbout: [
     "online calculators",

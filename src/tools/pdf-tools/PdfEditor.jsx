@@ -1,15 +1,33 @@
 import { PDFDocument, rgb } from "pdf-lib";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Download } from "lucide-react";
+import { inputDark } from "../../components/ToolHeroShell";
+import {
+  PdfFileChip,
+  PdfPrimaryButton,
+  PdfSecondaryButton,
+  PdfUploadZone,
+} from "./pdfShared";
+
+function hexToRgb(hex) {
+  const raw = hex.replace("#", "");
+  const bigint = parseInt(raw.length === 3 ? raw.split("").map((c) => c + c).join("") : raw, 16);
+  return {
+    r: ((bigint >> 16) & 255) / 255,
+    g: ((bigint >> 8) & 255) / 255,
+    b: (bigint & 255) / 255,
+  };
+}
 
 export default function PdfEditor() {
   const [file, setFile] = useState(null);
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const [pdfUrl, setPdfUrl] = useState("");
+  const [pageCount, setPageCount] = useState(1);
 
-  const [text, setText] = useState("Edited with PDF Tools");
+  const [text, setText] = useState("Edited with FreeToolsPro");
   const [fontSize, setFontSize] = useState(18);
-  const [color, setColor] = useState("#3b82f6");
+  const [color, setColor] = useState("#0f766e");
   const [opacity, setOpacity] = useState(1);
-
   const [pageNo, setPageNo] = useState(1);
   const [x, setX] = useState(50);
   const [y, setY] = useState(700);
@@ -17,19 +35,55 @@ export default function PdfEditor() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const hexToRgb = (hex) => {
-    const bigint = parseInt(hex.replace("#", ""), 16);
-
-    return {
-      r: ((bigint >> 16) & 255) / 255,
-      g: ((bigint >> 8) & 255) / 255,
-      b: (bigint & 255) / 255,
+  useEffect(() => {
+    return () => {
+      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     };
+  }, [pdfUrl]);
+
+  const onFile = async (selected) => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    setFile(selected);
+    setPdfUrl(URL.createObjectURL(selected));
+    setError("");
+    try {
+      const doc = await PDFDocument.load(await selected.arrayBuffer());
+      const count = doc.getPageCount();
+      setPageCount(count);
+      setPageNo(1);
+      const first = doc.getPages()[0];
+      const { height } = first.getSize();
+      setY(Math.max(40, Math.round(height - 80)));
+    } catch {
+      setPageCount(1);
+    }
+  };
+
+  const clear = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    setFile(null);
+    setPdfUrl("");
+    setError("");
+    setPageCount(1);
+  };
+
+  const resetControls = () => {
+    setText("Edited with FreeToolsPro");
+    setFontSize(18);
+    setColor("#0f766e");
+    setOpacity(1);
+    setPageNo(1);
+    setX(50);
+    setY(700);
   };
 
   const editPdf = async () => {
     if (!file) {
-      setError("Please upload a PDF file.");
+      setError("Upload a PDF file first.");
+      return;
+    }
+    if (!text.trim()) {
+      setError("Enter the text you want to add.");
       return;
     }
 
@@ -37,219 +91,166 @@ export default function PdfEditor() {
       setLoading(true);
       setError("");
 
-      const buffer = await file.arrayBuffer();
-
-      const pdfDoc = await PDFDocument.load(buffer);
-
+      const pdfDoc = await PDFDocument.load(await file.arrayBuffer());
       const pages = pdfDoc.getPages();
-
       const pageIndex = Math.min(Math.max(pageNo - 1, 0), pages.length - 1);
-
       const page = pages[pageIndex];
-
       const { r, g, b } = hexToRgb(color);
 
-      page.drawText(text, {
-        x,
-        y,
-        size: fontSize,
+      page.drawText(text.trim(), {
+        x: Number(x) || 0,
+        y: Number(y) || 0,
+        size: Number(fontSize) || 12,
         color: rgb(r, g, b),
-        opacity,
+        opacity: Number(opacity) || 1,
       });
 
       const pdfBytes = await pdfDoc.save();
-
-      const blob = new Blob([pdfBytes], {
-        type: "application/pdf",
-      });
-
-      const url = URL.createObjectURL(blob);
-
-      setPdfUrl(url);
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+      setPdfUrl(URL.createObjectURL(blob));
     } catch (err) {
       console.error(err);
-      setError("Failed to edit PDF.");
+      setError("Failed to edit PDF. The file may be encrypted or invalid.");
     } finally {
       setLoading(false);
     }
   };
 
-  const resetControls = () => {
-    setText("Edited with PDF Tools");
-    setFontSize(18);
-    setColor("#3b82f6");
-    setOpacity(1);
-    setPageNo(1);
-    setX(50);
-    setY(700);
-  };
-
   return (
-    <div className="mx-auto mt-4">
-      <div className="grid lg:grid-cols-[380px_1fr] gap-6">
-        {/* LEFT PANEL */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-lg p-6 space-y-6">
-          {/* Upload */}
-          <div>
-            <label className="block text-black text-sm font-medium mb-2">Upload PDF</label>
-            <input
-              type="file"
-              accept="application/pdf"
-              onChange={(e) => {
-                const selectedFile = e.target.files?.[0];
+    <div>
+      <p className="mb-4 text-sm leading-6 text-[var(--ftp-ink-soft)]">
+        Add a text overlay to any page, then download the updated PDF. Coordinates use PDF points
+        from the bottom-left corner.
+      </p>
 
-                if (selectedFile) {
-                  setFile(selectedFile);
-                  setPdfUrl(URL.createObjectURL(selectedFile));
-                }
-              }}
-              className="block w-full text-sm
-                file:mr-4
-                file:py-2
-                file:px-4
-                file:rounded-xl
-                file:border-0
-                file:bg-amber-500
-                file:text-white
-                hover:file:bg-amber-600"
-            />
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
+        <div className="space-y-4">
+          {!file ? (
+            <PdfUploadZone onFiles={onFile} disabled={loading} hint="One PDF · add text overlays" />
+          ) : (
+            <PdfFileChip file={file} onClear={loading ? undefined : clear} />
+          )}
 
-            {file && <p className="mt-2 text-xs text-slate-500">{file.name}</p>}
-          </div>
-
-          {/* Text */}
-          <div>
-            <label className="block text-black text-sm font-medium mb-2">Text</label>
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-[var(--ftp-ink)]">Text</span>
             <input
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent"
+              className={inputDark}
+              placeholder="Text to place on the page"
             />
+          </label>
+
+          <div className="grid grid-cols-2 gap-3">
+            <label className="block">
+              <span className="mb-1.5 flex justify-between text-sm font-medium text-[var(--ftp-ink)]">
+                Size <span className="font-normal text-[var(--ftp-ink-soft)]">{fontSize}px</span>
+              </span>
+              <input
+                type="range"
+                min="8"
+                max="72"
+                value={fontSize}
+                onChange={(e) => setFontSize(Number(e.target.value))}
+                className="w-full accent-[var(--hero-accent)]"
+              />
+            </label>
+            <label className="block">
+              <span className="mb-1.5 flex justify-between text-sm font-medium text-[var(--ftp-ink)]">
+                Opacity <span className="font-normal text-[var(--ftp-ink-soft)]">{opacity}</span>
+              </span>
+              <input
+                type="range"
+                min="0.1"
+                max="1"
+                step="0.1"
+                value={opacity}
+                onChange={(e) => setOpacity(Number(e.target.value))}
+                className="w-full accent-[var(--hero-accent)]"
+              />
+            </label>
           </div>
 
-          {/* Font Size */}
-          <div>
-            <div className="flex justify-between mb-2">
-              <label className="text-sm text-black font-medium">Font Size</label>
-              <span>{fontSize}px</span>
-            </div>
-
-            <input
-              type="range"
-              min="8"
-              max="60"
-              value={fontSize}
-              onChange={(e) => setFontSize(Number(e.target.value))}
-              className="w-full accent-amber-500"
-            />
-          </div>
-
-          {/* Opacity */}
-          <div>
-            <div className="flex justify-between mb-2">
-              <label className="text-sm text-black font-medium">Opacity</label>
-
-              <span>{opacity}</span>
-            </div>
-
-            <input
-              type="range"
-              min="0.1"
-              max="1"
-              step="0.1"
-              value={opacity}
-              onChange={(e) => setOpacity(Number(e.target.value))}
-              className="w-full accent-amber-500"
-            />
-          </div>
-
-          {/* Color */}
-          <div>
-            <label className="block text-black text-sm font-medium mb-2">Text Color</label>
-
+          <label className="block">
+            <span className="mb-1.5 block text-sm font-medium text-[var(--ftp-ink)]">Color</span>
             <input
               type="color"
               value={color}
               onChange={(e) => setColor(e.target.value)}
-              className="w-full h-12 rounded-xl cursor-pointer"
+              className="h-11 w-full cursor-pointer rounded-xl border border-black/10 bg-white p-1"
             />
-          </div>
+          </label>
 
-          {/* Page */}
-          <div>
-            <label className="block text-black text-sm font-medium mb-2">Page Number</label>
-
-            <input
-              type="number"
-              min="1"
-              value={pageNo}
-              onChange={(e) => setPageNo(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700"
-            />
-          </div>
-
-          {/* Position */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-black text-sm font-medium mb-2">X Position</label>
-
+          <div className="grid grid-cols-3 gap-3">
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-[var(--ftp-ink)]">Page</span>
+              <input
+                type="number"
+                min="1"
+                max={pageCount}
+                value={pageNo}
+                onChange={(e) => setPageNo(Number(e.target.value))}
+                className={inputDark}
+              />
+            </label>
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-[var(--ftp-ink)]">X</span>
               <input
                 type="number"
                 value={x}
                 onChange={(e) => setX(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700"
+                className={inputDark}
               />
-            </div>
-            <div>
-              <label className="block text-black text-sm font-medium mb-2">Y Position</label>
+            </label>
+            <label className="block">
+              <span className="mb-1.5 block text-sm font-medium text-[var(--ftp-ink)]">Y</span>
               <input
                 type="number"
                 value={y}
                 onChange={(e) => setY(Number(e.target.value))}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700"
+                className={inputDark}
               />
+            </label>
+          </div>
+
+          {pageCount > 1 ? (
+            <p className="text-xs text-[var(--ftp-ink-soft)]">This PDF has {pageCount} pages.</p>
+          ) : null}
+
+          {error ? (
+            <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
             </div>
-          </div>
+          ) : null}
 
-          {error && <div className="bg-red-100 text-red-600 p-3 rounded-xl text-sm">{error}</div>}
-
-          {/* Buttons */}
-          <div className="flex gap-3">
-            <button
-              onClick={editPdf}
-              disabled={loading}
-              className="flex-1 bg-amber-500 hover:bg-amber-600 text-white py-3 text-xl rounded-xl font-normal transition"
-            >
-              {loading ? "Processing..." : "Apply Changes"}
-            </button>
-
-            <button
-              onClick={resetControls}
-              className="py-3 rounded-xl bg-slate-200 dark:bg-slate-700"
-            >
+          <div className="flex flex-wrap gap-3">
+            <PdfPrimaryButton onClick={editPdf} disabled={!file || loading}>
+              {loading ? "Applying…" : "Apply text"}
+            </PdfPrimaryButton>
+            <PdfSecondaryButton onClick={resetControls} disabled={loading}>
               Reset
-            </button>
+            </PdfSecondaryButton>
+            {pdfUrl && file ? (
+              <a
+                href={pdfUrl}
+                download={(file.name || "document").replace(/\.pdf$/i, "") + "-edited.pdf"}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download
+              </a>
+            ) : null}
           </div>
-
-          {pdfUrl && (
-            <a
-              href={pdfUrl}
-              download="edited.pdf"
-              className="block text-center bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-medium"
-            >
-              Download PDF
-            </a>
-          )}
         </div>
 
-        {/* RIGHT PANEL */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-3xl shadow-lg overflow-hidden">
+        <div className="overflow-hidden rounded-2xl border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)]">
           {pdfUrl ? (
-            <iframe title="PDF Preview" src={pdfUrl} className="w-full h-[850px]" />
+            <iframe title="PDF preview" src={pdfUrl} className="h-[min(70vh,720px)] w-full bg-white" />
           ) : (
-            <div className="h-[850px] flex items-center justify-center text-slate-500">
-              Upload a PDF to preview it here
+            <div className="flex h-[min(70vh,720px)] items-center justify-center px-6 text-center text-sm text-[var(--ftp-ink-soft)]">
+              Upload a PDF to preview and edit it here
             </div>
           )}
         </div>

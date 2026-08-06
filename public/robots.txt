@@ -35,8 +35,10 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+# Sitemap index (points to sitemap-apex.xml + sitemap-blog.xml)
 Sitemap: https://freetoolspro.in/sitemap.xml
 
-# LLM / GEO manifests (ChatGPT-ready)
+# LLM / GEO manifests (ChatGPT / Gemini / answer engines)
 # llms.txt: https://freetoolspro.in/llms.txt
 # llms-full.txt: https://freetoolspro.in/llms-full.txt
+# Blog: https://blog.freetoolspro.in/

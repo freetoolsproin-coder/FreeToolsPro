@@ -24,6 +24,7 @@ export default function AutoSeo() {
     <Helmet>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      {seo.keywords ? <meta name="keywords" content={seo.keywords} /> : null}
       <link rel="canonical" href={url} />
 
       <meta property="og:title" content={seo.title} />

@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
-import { categories, tools } from "../data/toolDefinitions";
+import { categories, categoryPopularityRank, tools } from "../data/toolDefinitions";
 import ToolCard from "../components/ToolCard";
 import PageShell from "../components/PageShell";
 import { COLLECTION_BLURBS } from "../data/homeSections";
@@ -23,7 +23,13 @@ export default function Tools() {
         label: category.name,
         count: realTools.filter((tool) => tool.category === category.id).length,
       }))
-      .filter((c) => c.count > 0);
+      .filter((c) => c.count > 0)
+      .sort(
+        (a, b) =>
+          categoryPopularityRank(a.value) - categoryPopularityRank(b.value) ||
+          b.count - a.count ||
+          a.label.localeCompare(b.label)
+      );
   }, []);
 
   const filteredTools = useMemo(() => {
@@ -39,7 +45,8 @@ export default function Tools() {
           tool.keywords?.some((keyword) => keyword.toLowerCase().includes(query));
         const matchesCategory = !categoryQuery || tool.category === categoryQuery;
         return matchesSearch && matchesCategory;
-      });
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [searchQuery, categoryQuery]);
 
   const pageTitle = categoryMeta?.name || "All Tools";

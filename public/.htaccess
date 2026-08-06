@@ -1,0 +1,32 @@
+# Ensure PDF.js worker modules are served as JavaScript (required in production).
+<IfModule mod_mime.c>
+  AddType text/javascript .mjs
+  AddType application/javascript .mjs
+  AddType application/wasm .wasm
+</IfModule>
+
+RewriteEngine On
+RewriteBase /
+
+# On the apex host only: send /blog → https://blog.freetoolspro.in/...
+RewriteCond %{HTTP_HOST} !^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^blog/?$ https://blog.freetoolspro.in/ [R=301,L]
+RewriteCond %{HTTP_HOST} !^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^blog/articles/?$ https://blog.freetoolspro.in/ [R=301,L]
+RewriteCond %{HTTP_HOST} !^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^blog/articles/(.*)$ https://blog.freetoolspro.in/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^blog/category/(.*)$ https://blog.freetoolspro.in/category/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^blog/(.*)$ https://blog.freetoolspro.in/$1 [R=301,L]
+
+# On the blog host: /articles → root (prefix removed)
+RewriteCond %{HTTP_HOST} ^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^articles/?$ / [R=301,L]
+RewriteCond %{HTTP_HOST} ^blog\.freetoolspro\.in$ [NC]
+RewriteRule ^articles/(.*)$ /$1 [R=301,L]
+
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

@@ -1,10 +1,13 @@
 import { Search } from "lucide-react";
-import { openCommandPalette } from "../data/homeSections";
+import { openCommandPalette } from "../utils/openCommandPalette";
 
 function isMac() {
   if (typeof navigator === "undefined") return false;
   return /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "");
 }
+
+/** Avoid importing toolDefinitions on the hero critical path. */
+const TOOLS_COUNT_LABEL = "400+";
 
 export default function Hero({ onSearch, title, subtitle, searchValue = "" }) {
   const isHome = !title;
@@ -68,7 +71,7 @@ export default function Hero({ onSearch, title, subtitle, searchValue = "" }) {
 
         <div className="flat-hero__stats" aria-label="Site statistics">
           <div className="flat-hero__stat">
-            <strong className="flat-hero__stat-value">120+</strong>
+            <strong className="flat-hero__stat-value">{TOOLS_COUNT_LABEL}</strong>
             <span className="flat-hero__stat-label">Free tools</span>
           </div>
           <div className="flat-hero__stat-divider" aria-hidden="true" />

@@ -2,19 +2,27 @@ import { useEffect, useId, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ArrowUpRight, Menu, Search, X } from "lucide-react";
 import freetoolsLogo from "../../images/freetoolspro-logo.svg";
-import { tools } from "../data/toolDefinitions";
-import { openCommandPalette } from "../data/homeSections";
+import { openCommandPalette } from "../utils/openCommandPalette";
+import {
+  BLOG_NAV_VISIBLE,
+  apexNavHref,
+  apexNavIsExternal,
+  blogHomePath,
+  blogNavHref,
+  blogNavIsExternal,
+} from "../../blog/data/blogSite";
 
-const DESKTOP_MENU = [
-  "age-calculator",
-  "bmi-calculator",
-  "calorie-calculator",
-  "sip-calculator",
-  "emi-calculator",
-  "salary-calculator",
-  "gst-calculator",
-  "speed-test",
-  "currency-converter",
+/** Static nav — avoid importing toolDefinitions (pulls all Lucide icons into the shell). */
+const DESKTOP_TOOLS = [
+  { id: "age-calculator", path: "/calculators/age-calculator", navLabel: "Age", title: "Age Calculator" },
+  { id: "bmi-calculator", path: "/calculators/bmi-calculator", navLabel: "BMI", title: "BMI Calculator" },
+  { id: "calorie-calculator", path: "/calculators/calorie-calculator", navLabel: "Calories", title: "Calorie Calculator" },
+  { id: "sip-calculator", path: "/calculators/sip-calculator", navLabel: "SIP", title: "SIP Calculator" },
+  { id: "emi-calculator", path: "/calculators/emi-calculator", navLabel: "EMI", title: "EMI Calculator" },
+  { id: "salary-calculator", path: "/business-tools/salary-calculator", navLabel: "Salary", title: "Salary Calculator" },
+  { id: "gst-calculator", path: "/business-tools/gst-calculator", navLabel: "GST", title: "GST Calculator" },
+  { id: "speed-test", path: "/developer-tools/speed-test", navLabel: "Speed Test", title: "Speed Test" },
+  { id: "currency-converter", path: "/trending-tools/currency-converter", navLabel: "Currency", title: "Currency Converter" },
 ];
 
 function isMac() {
@@ -22,12 +30,36 @@ function isMac() {
   return /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "");
 }
 
+function ApexAwareLink({ to, className, onClick, children, ...rest }) {
+  if (apexNavIsExternal()) {
+    const resolvedClass =
+      typeof className === "function" ? className({ isActive: false }) : className;
+    return (
+      <a href={apexNavHref(to)} className={resolvedClass} onClick={onClick} {...rest}>
+        {children}
+      </a>
+    );
+  }
+  if (typeof className === "function") {
+    return (
+      <NavLink to={to} className={className} onClick={onClick} {...rest}>
+        {children}
+      </NavLink>
+    );
+  }
+  return (
+    <Link to={to} className={className} onClick={onClick} {...rest}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const modKey = isMac() ? "⌘" : "Ctrl";
 
-  const desktopTools = DESKTOP_MENU.map((id) => tools.find((t) => t.id === id)).filter(Boolean);
+  const desktopTools = DESKTOP_TOOLS;
 
   useEffect(() => {
     if (!open) return undefined;
@@ -45,7 +77,7 @@ export default function Header() {
   return (
     <header className="site-header sticky top-0 z-50">
       <div className="site-header__inner mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-[4.25rem] sm:gap-4 sm:px-6 lg:px-8">
-        <NavLink
+        <ApexAwareLink
           to="/"
           onClick={() => setOpen(false)}
           className="site-logo group flex max-w-[min(100%,13rem)] shrink-0 items-center gap-2.5 sm:max-w-none"
@@ -56,15 +88,17 @@ export default function Header() {
             className="h-12 w-auto max-w-full object-contain object-left sm:h-14"
             width={160}
             height={40}
+            decoding="async"
+            fetchpriority="high"
           />
           <span className="sr-only">FreeToolsPro home</span>
-        </NavLink>
+        </ApexAwareLink>
 
         <nav className="site-nav hidden min-w-0 flex-1 items-center justify-center xl:flex" aria-label="Primary">
           <ul className="flex items-center gap-0.5">
             {desktopTools.map((tool) => (
               <li key={tool.id}>
-                <NavLink
+                <ApexAwareLink
                   to={tool.path}
                   title={tool.title}
                   className={({ isActive }) =>
@@ -72,7 +106,7 @@ export default function Header() {
                   }
                 >
                   {tool.navLabel}
-                </NavLink>
+                </ApexAwareLink>
               </li>
             ))}
           </ul>
@@ -90,17 +124,26 @@ export default function Header() {
             <kbd>{modKey}K</kbd>
           </button>
 
-          <Link
-            to="/blog"
-            className="site-nav__link hidden sm:inline-flex"
-          >
-            Blog
-          </Link>
+          {BLOG_NAV_VISIBLE ? (
+            blogNavIsExternal() ? (
+              <a
+                href={blogNavHref("/")}
+                className="site-nav__link hidden sm:inline-flex"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </a>
+            ) : (
+              <Link to={blogHomePath()} className="site-nav__link hidden sm:inline-flex">
+                Blog
+              </Link>
+            )
+          ) : null}
 
-          <Link to="/tools" className="site-header__cta hidden sm:inline-flex">
+          <ApexAwareLink to="/tools" className="site-header__cta hidden sm:inline-flex">
             All tools
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </Link>
+          </ApexAwareLink>
 
           <button
             type="button"
@@ -136,44 +179,52 @@ export default function Header() {
 
               <p className="site-drawer__label">Tools</p>
               <ul className="mt-2 grid gap-1 sm:grid-cols-2">
-                {desktopTools.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <li key={tool.id}>
-                      <NavLink
-                        to={tool.path}
-                        onClick={() => setOpen(false)}
-                        className={({ isActive }) =>
-                          `site-drawer__link ${isActive ? "site-drawer__link--active" : ""}`
-                        }
-                      >
-                        {Icon ? (
-                          <Icon className="h-4 w-4 shrink-0 opacity-70" aria-hidden="true" />
-                        ) : null}
-                        <span>{tool.name}</span>
-                      </NavLink>
-                    </li>
-                  );
-                })}
+                {desktopTools.map((tool) => (
+                  <li key={tool.id}>
+                    <ApexAwareLink
+                      to={tool.path}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `site-drawer__link ${isActive ? "site-drawer__link--active" : ""}`
+                      }
+                    >
+                      <span>{tool.title || tool.navLabel}</span>
+                    </ApexAwareLink>
+                  </li>
+                ))}
               </ul>
 
-              <Link
-                to="/blog"
-                onClick={() => setOpen(false)}
-                className="site-drawer__cta mt-4"
-              >
-                Guides &amp; tutorials
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              {BLOG_NAV_VISIBLE ? (
+                blogNavIsExternal() ? (
+                  <a
+                    href={blogNavHref("/")}
+                    onClick={() => setOpen(false)}
+                    className="site-drawer__cta mt-4"
+                    rel="noopener noreferrer"
+                  >
+                    Guides &amp; tutorials
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <Link
+                    to={blogHomePath()}
+                    onClick={() => setOpen(false)}
+                    className="site-drawer__cta mt-4"
+                  >
+                    Guides &amp; tutorials
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )
+              ) : null}
 
-              <Link
+              <ApexAwareLink
                 to="/tools"
                 onClick={() => setOpen(false)}
                 className="site-drawer__cta mt-2"
               >
                 Browse entire catalog
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </ApexAwareLink>
             </nav>
           </div>
         </div>

@@ -4,8 +4,11 @@ import OpenAI from "openai";
 const router = express.Router();
 
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.GROQ_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
 });
+
+const GROQ_MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
 
 router.post("/", async (req, res) => {
   const { name, keywords, platform, tone, emoji } = req.body;
@@ -22,7 +25,7 @@ router.post("/", async (req, res) => {
     `;
 
     const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini",
+      model: GROQ_MODEL,
       messages: [{ role: "user", content: prompt }],
     });
 

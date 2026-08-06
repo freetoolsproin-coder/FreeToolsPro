@@ -1,6 +1,14 @@
 import { getCategoryHowTo } from "./categoryHowTo";
 import { getToolWhatItDoes } from "./toolWhatItDoes";
 import { SITE_NAME } from "./siteConstants";
+import {
+  TOOL_CONTENT_LAST_REVIEWED,
+  formatLastReviewed,
+  getDefaultExamplePair,
+  getDefaultLimitations,
+  getDefaultPrivacyStatement,
+} from "./toolContentStandards";
+import { getToolExamplePairs } from "./toolExamplePairs";
 
 function flattenWhatItDoes(content) {
   if (!content) return { paragraphs: [], sectionMap: {} };
@@ -22,9 +30,29 @@ function findSection(sectionMap, ...keys) {
   return [];
 }
 
+function normalizeExamplePairs(pairs) {
+  if (!pairs?.length) return [];
+  return pairs
+    .map((pair) => {
+      if (!pair) return null;
+      if (typeof pair === "string") {
+        return { input: "Sample input", result: pair };
+      }
+      const input = pair.input ?? pair.exampleInput ?? "";
+      const result = pair.result ?? pair.output ?? pair.exampleOutput ?? "";
+      if (!input && !result) return null;
+      return {
+        input: String(input),
+        result: String(result),
+        note: pair.note ? String(pair.note) : undefined,
+      };
+    })
+    .filter(Boolean);
+}
+
 /**
- * Builds editorial copy aligned with Google-preferred tool-page sections:
- * what it does, why use it, how to use, examples, use cases, tips, FAQs.
+ * Builds editorial copy for the standard 8-section tool page:
+ * what it does, how to use, examples, privacy, limitations, FAQs, related, last reviewed.
  */
 export function buildToolPageCopy({
   tool,
@@ -35,6 +63,10 @@ export function buildToolPageCopy({
   steps,
   faqs,
   whatItDoes,
+  examplePairs,
+  privacyStatement,
+  limitations,
+  lastReviewed,
 }) {
   const name = tool?.name || "This tool";
   const desc = tool?.desc || `${name} helps you finish a focused task in your browser.`;
@@ -42,18 +74,9 @@ export function buildToolPageCopy({
   const resolvedWhat = whatItDoes ?? getToolWhatItDoes(currentToolPath);
   const { paragraphs: whatParas, sectionMap } = flattenWhatItDoes(resolvedWhat);
 
-  const exampleParas = findSection(sectionMap, "example");
-  const tipParas = findSection(
-    sectionMap,
-    "tip",
-    "better result",
-    "best practice",
-    "good practice"
-  );
-  const limitParas = findSection(sectionMap, "limit", "when not", "privacy");
-  const whoParas = findSection(sectionMap, "who", "use case", "practical", "when to use");
+  const limitParas = findSection(sectionMap, "limit", "when not", "drawback");
+  const privacyParas = findSection(sectionMap, "privacy", "data", "storage");
 
-  // What the tool does — lead with tool-specific explanation, not filler.
   const whatItDoesSummary = [
     howBody ||
       `${name} is a free online utility on ${SITE_NAME}: ${desc.charAt(0).toLowerCase()}${desc.slice(1)}`,
@@ -62,13 +85,6 @@ export function buildToolPageCopy({
       : [
           `${name} focuses on one job in the browser so you can finish the task above, then copy or download the result without installing desktop software.`,
         ]),
-  ].filter(Boolean);
-
-  const whyUseful = [
-    desc,
-    ...(whoParas.length ? whoParas.slice(0, 2) : []),
-    cat.whyBody ||
-      `People open ${name} when they need a quick, transparent answer they can verify before taking the next step in email, code, docs, or spreadsheets.`,
   ].filter(Boolean);
 
   const resolvedSteps =
@@ -93,41 +109,29 @@ export function buildToolPageCopy({
           },
         ];
 
-  const benefits = cat.benefits || [
-    `Free access to ${name} without a signup wall for standard use`,
-    "Works in modern desktop and mobile browsers",
-    "On-page instructions, examples, tips, and FAQs",
-    "Related FreeToolsPro utilities for the next step in your workflow",
-  ];
+  const explicitExamples = normalizeExamplePairs(examplePairs);
+  const registryExamples = normalizeExamplePairs(getToolExamplePairs(currentToolPath));
+  const categoryExamples = normalizeExamplePairs(cat.examplePairs);
 
-  const useCases = cat.useCases || [
-    ...(whoParas.length
-      ? whoParas.slice(0, 2)
-      : [
-          `Everyday ${category?.replace(/-/g, " ") || "utility"} tasks where a quick, clear result matters more than a heavyweight app`,
-        ]),
-    `Drafting or checking work with ${name} before you paste it into email, docs, or production systems`,
-    `Teaching or explaining a concept using ${name} as a live demo`,
-  ];
+  const resolvedExamplePairs =
+    explicitExamples.length > 0
+      ? explicitExamples
+      : registryExamples.length > 0
+        ? registryExamples
+        : categoryExamples.length > 0
+          ? categoryExamples
+          : getDefaultExamplePair(category, name, cat.examples || []);
 
-  const examples = exampleParas.length
-    ? exampleParas
-    : cat.examples || [
-        `Open ${name}, enter a small realistic sample that matches your goal, and compare the live output with what you expected.`,
-        `If the first pass looks off, change one option at a time so you can see which control changed the result.`,
-      ];
+  const resolvedPrivacy =
+    privacyStatement ||
+    privacyParas[0] ||
+    cat.privacyNote ||
+    getDefaultPrivacyStatement(category, name);
 
-  const tips = [
-    ...(cat.tips || []),
-    ...tipParas.slice(0, 2),
-    limitParas[0] ||
-      `Double-check edge cases (empty input, extreme values, odd formatting) before you rely on ${name} for an important decision.`,
-    `Keep an original copy of your data until you confirm the transform or calculation matches what you need.`,
-  ]
-    .filter(Boolean)
-    // de-dupe near-identical tips
-    .filter((tip, i, arr) => arr.findIndex((t) => t.slice(0, 48) === tip.slice(0, 48)) === i)
-    .slice(0, 5);
+  const resolvedLimitations =
+    limitations?.length > 0
+      ? limitations
+      : getDefaultLimitations(category, name, limitParas.slice(0, 2));
 
   const faqList = mergeFaqs(faqs, cat.faqs, name);
 
@@ -135,16 +139,15 @@ export function buildToolPageCopy({
     whatTitle: `What ${name} does`,
     howTitle: howTitle || cat.howTitle || `How to use ${name}`,
     whatItDoesSummary,
-    whyUseful,
     steps: resolvedSteps,
-    examples,
-    benefits,
-    useCases,
-    tips,
+    examplePairs: resolvedExamplePairs,
+    privacyStatement: resolvedPrivacy,
+    limitations: resolvedLimitations,
     faqs: faqList,
-    privacyNote: cat.privacyNote,
     trustBullets: cat.trustBullets,
     whatItDoes: resolvedWhat,
+    lastReviewed: lastReviewed || TOOL_CONTENT_LAST_REVIEWED,
+    lastReviewedLabel: formatLastReviewed(lastReviewed || TOOL_CONTENT_LAST_REVIEWED),
   };
 }
 
@@ -160,7 +163,6 @@ function mergeFaqs(toolFaqs, categoryFaqs, name) {
   (toolFaqs || []).forEach(push);
   (categoryFaqs || []).forEach(push);
 
-  // Only add sitewide FAQs when the page is still thin—avoid identical FAQ blocks on every URL.
   if (list.length < 4) {
     [
       {

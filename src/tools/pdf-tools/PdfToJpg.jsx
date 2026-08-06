@@ -1,110 +1,261 @@
-import { useState } from "react";
-import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
-import pdfWorker from "pdfjs-dist/build/pdf.worker.min?url";
-import { Upload, FileText, Download, Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Download, FileImage, ImageDown } from "lucide-react";
+import {
+  PdfAlert,
+  PdfFileChip,
+  PdfPageRangeField,
+  PdfPrimaryButton,
+  PdfProgress,
+  PdfStats,
+  PdfThumbnailStrip,
+  PdfUploadZone,
+  loadPdfDocument,
+  parsePageRange,
+} from "./pdfShared";
+import { getPdfPageCount, renderPdfThumbnails } from "./pdfAdvanced";
 
-GlobalWorkerOptions.workerSrc = pdfWorker;
+const FORMATS = [
+  { id: "jpeg", label: "JPG", mime: "image/jpeg", ext: "jpg" },
+  { id: "png", label: "PNG", mime: "image/png", ext: "png" },
+  { id: "webp", label: "WebP", mime: "image/webp", ext: "webp" },
+];
 
 export default function PdfToJpg() {
+  const [file, setFile] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [error, setError] = useState("");
+  const [pageCount, setPageCount] = useState(0);
+  const [pageRange, setPageRange] = useState("");
+  const [quality, setQuality] = useState(0.92);
+  const [scale, setScale] = useState(2);
+  const [format, setFormat] = useState("jpeg");
+  const [thumbs, setThumbs] = useState([]);
+  const [thumbTotal, setThumbTotal] = useState(0);
 
-  const convertPdf = async (file) => {
-    if (!file) return;
-
+  const clear = () => {
+    setFile(null);
     setImages([]);
     setProgress(0);
-    setLoading(true);
+    setError("");
+    setPageCount(0);
+    setPageRange("");
+    setThumbs([]);
+    setThumbTotal(0);
+  };
 
-    const buffer = await file.arrayBuffer();
-    const pdf = await getDocument({ data: buffer }).promise;
+  useEffect(() => {
+    if (!file) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const total = await getPdfPageCount(file);
+        const { thumbs: t, total: n } = await renderPdfThumbnails(file, 10);
+        if (!cancelled) {
+          setPageCount(total);
+          setThumbs(t);
+          setThumbTotal(n);
+        }
+      } catch {
+        /* ignore */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [file]);
 
-    const output = [];
-
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i);
-      const viewport = page.getViewport({ scale: 2 });
-
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-
-      await page.render({ canvasContext: ctx, viewport }).promise;
-
-      output.push(canvas.toDataURL("image/jpeg", 0.9));
-      setProgress(Math.round((i / pdf.numPages) * 100));
+  const convertPdf = async () => {
+    if (!file) {
+      setError("Upload a PDF first.");
+      return;
     }
 
-    setImages(output);
-    setLoading(false);
+    setLoading(true);
+    setError("");
+    setImages([]);
+    setProgress(0);
+
+    try {
+      const pdf = await loadPdfDocument(file);
+      const fmt = FORMATS.find((f) => f.id === format) || FORMATS[0];
+      const indexes = parsePageRange(pageRange, pdf.numPages);
+      const pagesToRender = indexes.length ? indexes.map((i) => i + 1) : Array.from({ length: pdf.numPages }, (_, i) => i + 1);
+      const output = [];
+
+      for (let n = 0; n < pagesToRender.length; n += 1) {
+        const i = pagesToRender[n];
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale });
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("Canvas unavailable");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvas, canvasContext: ctx, viewport }).promise;
+        output.push({
+          page: i,
+          dataUrl: canvas.toDataURL(fmt.mime, quality),
+          ext: fmt.ext,
+        });
+        setProgress(Math.round(((n + 1) / pagesToRender.length) * 100));
+      }
+
+      setImages(output);
+    } catch (err) {
+      console.error(err);
+      const msg = String(err?.message || err || "");
+      if (/password/i.test(msg)) {
+        setError("This PDF is password-protected. Unlock it first, then retry.");
+      } else {
+        setError("Could not convert this PDF. The file may be encrypted, damaged, or too large.");
+      }
+      setProgress(0);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const downloadAll = () => {
+    images.forEach((img) => {
+      const link = document.createElement("a");
+      link.href = img.dataUrl;
+      link.download = `page-${img.page}.${img.ext}`;
+      link.click();
+    });
   };
 
   return (
-    <div className="mx-auto mt-8">
-      {/* Upload Card */}
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 text-center">
-        <label className="flex flex-col items-center gap-4 cursor-pointer">
-          <div className="h-16 w-16 rounded-full bg-amber-800/20 flex items-center justify-center">
-            <Upload className="text-amber-800" size={30} />
-          </div>
+    <div>
+      <p className="mb-4 text-sm leading-6 text-[var(--ftp-ink-soft)]">
+        Export PDF pages as JPG, PNG, or WebP with quality, scale, and page-range controls—all
+        processed locally.
+      </p>
 
-          <div className="text-white">
-            <div className="font-semibold text-white">Click to upload PDF</div>
-            <div className="text-white text-sm">or drag & drop</div>
-          </div>
+      <PdfUploadZone
+        onFiles={(f) => {
+          clear();
+          setFile(f);
+        }}
+        disabled={loading}
+        hint="High-DPI export · optional page ranges"
+      />
 
+      <PdfFileChip file={file} onClear={loading ? undefined : clear} />
+      <PdfThumbnailStrip thumbs={thumbs} total={thumbTotal} />
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <PdfPageRangeField
+          value={pageRange}
+          onChange={setPageRange}
+          disabled={loading}
+          totalPages={pageCount}
+        />
+        <label className="text-sm text-[var(--ftp-ink-soft)]">
+          Format
+          <select
+            className="mt-1.5 w-full rounded-xl border border-[var(--ftp-line)] bg-white px-3 py-2.5 text-sm"
+            value={format}
+            onChange={(e) => setFormat(e.target.value)}
+            disabled={loading}
+          >
+            {FORMATS.map((f) => (
+              <option key={f.id} value={f.id}>
+                {f.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm text-[var(--ftp-ink-soft)]">
+          Quality ({Math.round(quality * 100)}%)
           <input
-            type="file"
-            accept="application/pdf"
-            className="hidden"
-            onChange={(e) => convertPdf(e.target.files[0])}
+            type="range"
+            min="0.5"
+            max="1"
+            step="0.05"
+            value={quality}
+            onChange={(e) => setQuality(Number(e.target.value))}
+            disabled={loading}
+            className="mt-2 w-full accent-[var(--hero-accent)]"
           />
         </label>
-
-        {/* Progress */}
-        {loading && (
-          <div className="mt-6">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Loader2 className="animate-spin" size={18} />
-              <span className="text-sm">Converting… {progress}%</span>
-            </div>
-            <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-blue-500 transition-all"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </div>
-        )}
+        <label className="text-sm text-[var(--ftp-ink-soft)]">
+          Scale ({scale}×)
+          <input
+            type="range"
+            min="1"
+            max="3"
+            step="0.5"
+            value={scale}
+            onChange={(e) => setScale(Number(e.target.value))}
+            disabled={loading}
+            className="mt-2 w-full accent-[var(--hero-accent)]"
+          />
+        </label>
       </div>
 
-      {/* Preview Grid */}
-      {images.length > 0 && (
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((img, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <img src={img} alt={`Page ${i + 1}`} className="rounded-lg w-full object-cover" />
+      {loading ? <PdfProgress value={progress} label="Rendering pages…" /> : null}
+      {error ? <PdfAlert tone="error">{error}</PdfAlert> : null}
 
-              <div className="flex justify-between items-center mt-3">
-                <span className="text-sm text-gray-400 flex items-center gap-1">
-                  <FileText size={14} /> Page {i + 1}
-                </span>
+      <div className="mt-5 flex flex-wrap gap-3">
+        <PdfPrimaryButton onClick={convertPdf} disabled={!file || loading}>
+          Convert to images
+        </PdfPrimaryButton>
+        {images.length > 1 ? (
+          <button
+            type="button"
+            onClick={downloadAll}
+            className="inline-flex items-center gap-2 rounded-xl border border-[var(--ftp-line)] bg-white px-4 py-3 text-sm font-semibold text-[var(--ftp-ink)] hover:bg-[var(--ftp-porcelain)]"
+          >
+            <ImageDown className="h-4 w-4" />
+            Download all ({images.length})
+          </button>
+        ) : null}
+      </div>
 
-                <a
-                  href={img}
-                  download={`page-${i + 1}.jpg`}
-                  className="text-amber-400 hover:text-amber-300 flex items-center gap-1 text-sm"
-                >
-                  <Download size={14} /> Download
-                </a>
-              </div>
-            </div>
-          ))}
+      {images.length > 0 ? (
+        <div className="mt-8">
+          <PdfStats
+            items={[
+              { label: "Pages exported", value: images.length },
+              { label: "Format", value: format.toUpperCase() },
+              { label: "Scale", value: `${scale}×` },
+            ]}
+          />
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {images.map((img) => (
+              <article
+                key={`page-${img.page}`}
+                className="overflow-hidden rounded-2xl border border-[var(--ftp-line)] bg-white"
+              >
+                <div className="bg-[var(--ftp-porcelain)] p-2">
+                  <img
+                    src={img.dataUrl}
+                    alt={`Page ${img.page}`}
+                    className="max-h-72 w-full rounded-lg object-contain"
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-2 px-3 py-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--ftp-ink-soft)]">
+                    <FileImage className="h-3.5 w-3.5" aria-hidden="true" />
+                    Page {img.page}
+                  </span>
+                  <a
+                    href={img.dataUrl}
+                    download={`page-${img.page}.${img.ext}`}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--hero-accent)] hover:underline"
+                  >
+                    <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                    Download
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

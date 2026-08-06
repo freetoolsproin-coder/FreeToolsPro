@@ -1,4 +1,5 @@
 import { SEO_CONFIG } from "./seoConfig";
+import { getSeoVariantByPath } from "../data/seoVariants";
 
 /** path → seoConfig entry (first match wins). */
 const PATH_INDEX = (() => {
@@ -13,7 +14,20 @@ const PATH_INDEX = (() => {
 export function getSeoByPath(pathname) {
   if (!pathname) return null;
   const normalized = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
-  return PATH_INDEX.get(normalized) || PATH_INDEX.get(pathname) || null;
+  const fromConfig = PATH_INDEX.get(normalized) || PATH_INDEX.get(pathname) || null;
+  if (fromConfig) return fromConfig;
+
+  const variant = getSeoVariantByPath(normalized);
+  if (!variant) return null;
+  return {
+    key: `variant:${variant.path}`,
+    title: variant.title,
+    description: variant.description,
+    keywords: variant.keywords.join(", "),
+    path: variant.path,
+    type: "tool",
+    category: variant.category,
+  };
 }
 
 export function listToolSeoEntries() {

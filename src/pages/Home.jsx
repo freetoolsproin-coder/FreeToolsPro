@@ -1,124 +1,105 @@
-import { useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import ToolCard, { CollectionCard } from "../components/ToolCard";
-import Seo from "../components/Seo";
-import { tools } from "../data/toolDefinitions";
+import HomeSeo from "../components/HomeSeo";
+import ProductHuntBanner from "../components/ProductHuntBanner";
 import {
-  getCollectionStats,
-  getRecentlyAddedTools,
-  getTrendingTools,
-  HOME_CATEGORY_LIST,
-} from "../data/homeSections";
+  BLOG_NAV_VISIBLE,
+  blogHomePath,
+  blogNavHref,
+  blogNavIsExternal,
+} from "../../blog/data/blogSite";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
+  const [tools, setTools] = useState([]);
+  const [collections, setCollections] = useState([]);
+  const [categoryChips, setCategoryChips] = useState([{ id: "all", label: "All" }]);
+  const [catalogReady, setCatalogReady] = useState(false);
+  const catalogRef = useRef(null);
 
-  const trending = useMemo(() => getTrendingTools(8), []);
-  const recentlyAdded = useMemo(() => getRecentlyAddedTools(8), []);
-  const collections = useMemo(() => getCollectionStats(), []);
+  // Load heavy tool catalog only when the browse section is near the viewport (mobile TBT win).
+  useEffect(() => {
+    let alive = true;
+    let loaded = false;
+
+    const load = async () => {
+      if (loaded || !alive) return;
+      loaded = true;
+      const [{ tools: allTools }, home] = await Promise.all([
+        import("../data/toolDefinitions"),
+        import("../data/homeSections"),
+      ]);
+      if (!alive) return;
+      startTransition(() => {
+        setTools(allTools.filter((t) => !t.isPageLink));
+        setCollections(home.getCollectionStats());
+        setCategoryChips(home.getHomeCategoryList());
+        setCatalogReady(true);
+      });
+    };
+
+    const node = catalogRef.current;
+    if (node && typeof IntersectionObserver !== "undefined") {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io.disconnect();
+            load();
+          }
+        },
+        { rootMargin: "240px 0px" }
+      );
+      io.observe(node);
+      // Fallback if user never scrolls: load after a long idle on mobile.
+      const idleId =
+        typeof window !== "undefined" && "requestIdleCallback" in window
+          ? window.requestIdleCallback(() => load(), { timeout: 8000 })
+          : window.setTimeout(load, 4000);
+      return () => {
+        alive = false;
+        io.disconnect();
+        if (typeof idleId === "number") window.clearTimeout(idleId);
+        else window.cancelIdleCallback?.(idleId);
+      };
+    }
+
+    const t = window.setTimeout(load, 1200);
+    return () => {
+      alive = false;
+      window.clearTimeout(t);
+    };
+  }, []);
 
   const filteredTools = useMemo(() => {
     const search = searchTerm.trim().toLowerCase();
-
-    return tools
-      .filter((tool) => !tool.isPageLink)
-      .filter((tool) => {
-        const matchesCategory = activeCategory === "all" || tool.category === activeCategory;
-        const matchesSearch =
-          !search ||
-          tool.name.toLowerCase().includes(search) ||
-          tool.desc.toLowerCase().includes(search) ||
-          tool.keywords?.some((keyword) => keyword.toLowerCase().includes(search));
-        return matchesCategory && matchesSearch;
-      });
-  }, [searchTerm, activeCategory]);
+    return tools.filter((tool) => {
+      const matchesCategory = activeCategory === "all" || tool.category === activeCategory;
+      const matchesSearch =
+        !search ||
+        tool.name.toLowerCase().includes(search) ||
+        tool.desc.toLowerCase().includes(search) ||
+        tool.keywords?.some((keyword) => keyword.toLowerCase().includes(search));
+      return matchesCategory && matchesSearch;
+    });
+  }, [tools, searchTerm, activeCategory]);
 
   const showBrowseOnly = Boolean(searchTerm.trim());
 
   return (
     <div className="ftp-page">
-      <Seo page="home" />
+      <HomeSeo />
+      <ProductHuntBanner />
       <Hero onSearch={setSearchTerm} searchValue={searchTerm} />
 
       <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-        {!showBrowseOnly ? (
-          <>
-            <section className="mb-14" aria-labelledby="trending-heading">
-              <div className="mb-6 flex items-end justify-between gap-4">
-                <div>
-                  <p className="ftp-section-label">Discover</p>
-                  <h2 id="trending-heading" className="ftp-section-title mt-2">
-                    Trending
-                  </h2>
-                </div>
-                <Link
-                  to="/tools?cat=trending-tools"
-                  className="text-sm font-semibold text-[var(--ftp-ink-soft)] transition hover:text-[var(--ftp-ink)]"
-                >
-                  View all
-                </Link>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {trending.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-14" aria-labelledby="recent-heading">
-              <div className="mb-6">
-                <p className="ftp-section-label">New</p>
-                <h2 id="recent-heading" className="ftp-section-title mt-2">
-                  Recently added
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {recentlyAdded.map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-14" aria-labelledby="blog-heading">
-              <div className="flex flex-col gap-4 rounded-[18px] border border-[var(--ftp-line)] bg-gradient-to-br from-white/80 to-teal-50/40 px-6 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-8">
-                <div className="max-w-xl">
-                  <p className="ftp-section-label">Learn</p>
-                  <h2 id="blog-heading" className="ftp-section-title mt-2">
-                    Guides &amp; tutorials
-                  </h2>
-                  <p className="mt-3 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-                    SEO checklists, EMI/SIP walkthroughs, image optimization tips, PDF how-tos, and
-                    JavaScript notes—each linked to free tools you can open in one click.
-                  </p>
-                </div>
-                <Link
-                  to="/blog"
-                  className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[var(--ftp-ink)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-                >
-                  Visit the blog
-                </Link>
-              </div>
-            </section>
-
-            <section className="mb-16" aria-labelledby="collections-heading">
-              <div className="mb-6">
-                <p className="ftp-section-label">Browse</p>
-                <h2 id="collections-heading" className="ftp-section-title mt-2">
-                  Popular collections
-                </h2>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {collections.map((collection) => (
-                  <CollectionCard key={collection.id} collection={collection} />
-                ))}
-              </div>
-            </section>
-          </>
-        ) : null}
-
-        <section aria-labelledby="browse-heading">
+        <section
+          ref={catalogRef}
+          className="mb-16 ftp-defer-paint"
+          aria-labelledby="browse-heading"
+        >
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="ftp-section-label">Catalog</p>
@@ -127,7 +108,7 @@ export default function Home() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-2">
-              {HOME_CATEGORY_LIST.map((category) => (
+              {categoryChips.map((category) => (
                 <button
                   key={category.id}
                   type="button"
@@ -135,12 +116,24 @@ export default function Home() {
                   className={`ftp-chip ${activeCategory === category.id ? "ftp-chip--active" : ""}`}
                 >
                   {category.label}
+                  {typeof category.count === "number" ? (
+                    <span className="ml-1 opacity-70">({category.count})</span>
+                  ) : null}
                 </button>
               ))}
             </div>
           </div>
 
-          {filteredTools.length ? (
+          {!catalogReady ? (
+            <div className="grid gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" aria-hidden="true">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-36 animate-pulse rounded-[12px] border border-[var(--ftp-line)] bg-white"
+                />
+              ))}
+            </div>
+          ) : filteredTools.length ? (
             <div className="grid gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredTools.map((tool) => (
                 <ToolCard key={tool.id} tool={tool} />
@@ -158,7 +151,60 @@ export default function Home() {
           )}
         </section>
 
-        <section className="cont-text border-t border-[var(--ftp-line)] pt-12 pb-6 text-left">
+        {!showBrowseOnly ? (
+          <>
+            <section className="mb-16 ftp-defer-paint" aria-labelledby="collections-heading">
+              <div className="mb-6">
+                <p className="ftp-section-label">Browse</p>
+                <h2 id="collections-heading" className="ftp-section-title mt-2">
+                  Popular collections
+                </h2>
+              </div>
+              {collections.length ? (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {collections.map((collection) => (
+                    <CollectionCard key={collection.id} collection={collection} />
+                  ))}
+                </div>
+              ) : null}
+            </section>
+
+            {BLOG_NAV_VISIBLE ? (
+              <section className="mb-14 ftp-defer-paint" aria-labelledby="blog-heading">
+                <div className="flex flex-col gap-4 rounded-[18px] border border-[var(--ftp-line)] bg-gradient-to-br from-white/80 to-teal-50/40 px-6 py-8 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+                  <div className="max-w-xl">
+                    <p className="ftp-section-label">Learn</p>
+                    <h2 id="blog-heading" className="ftp-section-title mt-2">
+                      Guides &amp; tutorials
+                    </h2>
+                    <p className="mt-3 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
+                      SEO checklists, EMI/SIP walkthroughs, image optimization tips, PDF how-tos, and
+                      JavaScript notes—each linked to free tools you can open in one click.
+                    </p>
+                  </div>
+                  {blogNavIsExternal() ? (
+                    <a
+                      href={blogNavHref("/")}
+                      className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[var(--ftp-ink)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                      rel="noopener noreferrer"
+                    >
+                      Visit the blog
+                    </a>
+                  ) : (
+                    <Link
+                      to={blogHomePath()}
+                      className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[var(--ftp-ink)] px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+                    >
+                      Visit the blog
+                    </Link>
+                  )}
+                </div>
+              </section>
+            ) : null}
+          </>
+        ) : null}
+
+        <section className="cont-text border-t border-[var(--ftp-line)] pt-12 pb-6 text-left ftp-defer-paint">
           <h3 className="toolsTitle text-left">
             FreeToolsPro – All-in-One Free Online Tools Platform
           </h3>
@@ -178,7 +224,7 @@ export default function Home() {
           <ul className="cont-textul">
             <li>
               Calculators: Plan finances with age, EMI, SIP, inflation, PPF, loan eligibility,
-              mortgage, stock/option profit, and gratuity tools.
+              mortgage and gratuity tools.
             </li>
             <li>
               Business Tools: Handle GST, salary, payroll, invoices, quotations, and inventory

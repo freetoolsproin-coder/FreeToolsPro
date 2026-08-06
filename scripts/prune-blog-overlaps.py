@@ -6,7 +6,7 @@ import re
 from datetime import date, timedelta
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-BLOG = ROOT / "content" / "blog"
+BLOG = ROOT / "blog" / "content"
 
 # slug -> canonical redirect target slug
 DELETE_REDIRECTS = {
@@ -211,7 +211,7 @@ def main() -> None:
         xml = sitemap.read_text(encoding="utf-8")
         for slug in DELETE_REDIRECTS:
             xml = re.sub(
-                rf"\s*<url>\s*<loc>https://freetoolspro\.in/blog/{re.escape(slug)}</loc>.*?</url>",
+                rf"\s*<url>\s*<loc>https://blog\.freetoolspro\.in/{re.escape(slug)}</loc>.*?</url>",
                 "",
                 xml,
                 flags=re.S,

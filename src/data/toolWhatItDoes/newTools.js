@@ -520,4 +520,3087 @@ export default {
       "Lines that start with real numeric content (years, IDs) can be damaged in Remove mode if they look like prefixes—review the output.",
     tip: "Skip empty lines when numbering prose paragraphs separated by blanks.",
   }),
+  "/json-tools/json-validator": {
+    paragraphs: [
+      "JSON Validator on FreeToolsPro: Validate JSON and show parse errors.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-minifier": {
+    paragraphs: [
+      "JSON Minifier on FreeToolsPro: Minify JSON by removing whitespace.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-beautifier": {
+    paragraphs: [
+      "JSON Beautifier on FreeToolsPro: Beautify JSON with indentation.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-pretty-print": {
+    paragraphs: [
+      "JSON Pretty Print on FreeToolsPro: Pretty-print JSON for debugging.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-compare": {
+    paragraphs: [
+      "JSON Compare on FreeToolsPro: Compare two JSON documents.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-diff-viewer": {
+    paragraphs: [
+      "JSON Diff Viewer on FreeToolsPro: Side-by-side JSON diff viewer.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-tree-viewer": {
+    paragraphs: [
+      "JSON Tree Viewer on FreeToolsPro: Explore JSON as an expandable tree.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-xml": {
+    paragraphs: [
+      "JSON to XML on FreeToolsPro: Convert JSON objects into XML.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/xml-to-json": {
+    paragraphs: [
+      "XML to JSON on FreeToolsPro: Convert XML into JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-csv": {
+    paragraphs: [
+      "JSON to CSV on FreeToolsPro: Flatten JSON arrays into CSV.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-typescript": {
+    paragraphs: [
+      "JSON to TypeScript on FreeToolsPro: Generate TypeScript interfaces from JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-java": {
+    paragraphs: [
+      "JSON to Java on FreeToolsPro: Generate Java class stubs from JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-csharp": {
+    paragraphs: [
+      "JSON to C# on FreeToolsPro: Generate C# class stubs from JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-go-struct": {
+    paragraphs: [
+      "JSON to Go Struct on FreeToolsPro: Generate Go structs from JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-to-dart": {
+    paragraphs: [
+      "JSON to Dart on FreeToolsPro: Generate Dart models from JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/json-tools/json-schema-generator": {
+    paragraphs: [
+      "JSON Schema Generator on FreeToolsPro: Infer JSON Schema from sample JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-formatter": {
+    paragraphs: [
+      "HTML Formatter on FreeToolsPro: Format HTML with readable indentation.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-beautifier": {
+    paragraphs: [
+      "HTML Beautifier on FreeToolsPro: Beautify HTML markup.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-escape": {
+    paragraphs: [
+      "HTML Escape on FreeToolsPro: Escape HTML special characters.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-unescape": {
+    paragraphs: [
+      "HTML Unescape on FreeToolsPro: Unescape HTML entities.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-encoder": {
+    paragraphs: [
+      "HTML Encoder on FreeToolsPro: Encode text as HTML entities.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-decoder": {
+    paragraphs: [
+      "HTML Decoder on FreeToolsPro: Decode HTML entities to text.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-preview": {
+    paragraphs: [
+      "HTML Preview on FreeToolsPro: Preview HTML in a sandboxed view.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-to-markdown": {
+    paragraphs: [
+      "HTML to Markdown on FreeToolsPro: Convert HTML to Markdown.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/markdown-to-html": {
+    paragraphs: [
+      "Markdown to HTML on FreeToolsPro: Convert Markdown to HTML.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-table-generator": {
+    paragraphs: [
+      "HTML Table Generator on FreeToolsPro: Generate HTML tables.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-email-generator": {
+    paragraphs: [
+      "HTML Email Generator on FreeToolsPro: Generate HTML email skeletons.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/html-tools/html-entity-converter": {
+    paragraphs: [
+      "HTML Entity Converter on FreeToolsPro: Convert characters to HTML entities.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-formatter": {
+    paragraphs: [
+      "CSS Formatter on FreeToolsPro: Format CSS with consistent spacing.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-minifier": {
+    paragraphs: [
+      "CSS Minifier on FreeToolsPro: Minify CSS payloads.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-shadow-generator": {
+    paragraphs: [
+      "CSS Shadow Generator on FreeToolsPro: Build box-shadow CSS with controls.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-clip-path-generator": {
+    paragraphs: [
+      "CSS Clip Path Generator on FreeToolsPro: Generate clip-path polygons.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-flexbox-generator": {
+    paragraphs: [
+      "CSS Flexbox Generator on FreeToolsPro: Compose flexbox layouts.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-grid-generator": {
+    paragraphs: [
+      "CSS Grid Generator on FreeToolsPro: Compose CSS grid templates.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-animation-generator": {
+    paragraphs: [
+      "CSS Animation Generator on FreeToolsPro: Generate @keyframes snippets.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-border-radius-generator": {
+    paragraphs: [
+      "CSS Border Radius Generator on FreeToolsPro: Tune border-radius corners.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-filter-generator": {
+    paragraphs: [
+      "CSS Filter Generator on FreeToolsPro: Compose CSS filter stacks.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/css-tools/css-transform-generator": {
+    paragraphs: [
+      "CSS Transform Generator on FreeToolsPro: Build CSS transforms.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-formatter": {
+    paragraphs: [
+      "JavaScript Formatter on FreeToolsPro: Format JavaScript code.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-minifier": {
+    paragraphs: [
+      "JavaScript Minifier on FreeToolsPro: Minify JavaScript code.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-beautifier": {
+    paragraphs: [
+      "JavaScript Beautifier on FreeToolsPro: Beautify JavaScript code.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-obfuscator": {
+    paragraphs: [
+      "JavaScript Obfuscator on FreeToolsPro: Lightly obfuscate JavaScript identifiers.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-deobfuscator": {
+    paragraphs: [
+      "JavaScript Deobfuscator on FreeToolsPro: Best-effort JS deobfuscation.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-validator": {
+    paragraphs: [
+      "JavaScript Validator on FreeToolsPro: Check basic JavaScript syntax.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-playground": {
+    paragraphs: [
+      "JavaScript Playground on FreeToolsPro: Run JS snippets and capture output.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/javascript-console": {
+    paragraphs: [
+      "JavaScript Console on FreeToolsPro: Evaluate expressions in a mini console.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/es6-converter": {
+    paragraphs: [
+      "ES6 Converter on FreeToolsPro: Convert common patterns toward ES6.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/javascript-tools/babel-playground": {
+    paragraphs: [
+      "Babel Playground on FreeToolsPro: Explore demo ESNext down-level transforms.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/graphql-explorer": {
+    paragraphs: [
+      "GraphQL Explorer on FreeToolsPro: Draft GraphQL queries with sample responses.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/curl-generator": {
+    paragraphs: [
+      "cURL Generator on FreeToolsPro: Generate cURL commands from request fields.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/postman-collection-generator": {
+    paragraphs: [
+      "Postman Collection Generator on FreeToolsPro: Generate Postman v2.1 collection JSON.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/http-header-viewer": {
+    paragraphs: [
+      "HTTP Header Viewer on FreeToolsPro: Parse and view HTTP headers.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/api-mock-generator": {
+    paragraphs: [
+      "API Mock Generator on FreeToolsPro: Generate mock JSON from field names.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/api-documentation-generator": {
+    paragraphs: [
+      "API Documentation Generator on FreeToolsPro: Draft Markdown API docs.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/webhook-tester": {
+    paragraphs: [
+      "Webhook Tester on FreeToolsPro: Craft webhook payloads and sample signatures.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/api-tools/api-request-builder": {
+    paragraphs: [
+      "API Request Builder on FreeToolsPro: Build REST request objects.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/jwt-tools/jwt-encoder": {
+    paragraphs: [
+      "JWT Encoder on FreeToolsPro: Encode header/payload into an unsigned JWT.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/jwt-tools/jwt-inspector": {
+    paragraphs: [
+      "JWT Inspector on FreeToolsPro: Inspect JWT header, payload, and signature.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/jwt-tools/jwt-expiry-checker": {
+    paragraphs: [
+      "JWT Expiry Checker on FreeToolsPro: Check JWT exp claim status.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/jwt-tools/jwt-generator": {
+    paragraphs: [
+      "JWT Generator on FreeToolsPro: Generate sample JWTs for testing.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/url-encode": {
+    paragraphs: [
+      "URL Encode on FreeToolsPro: Percent-encode URL strings.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/url-decode": {
+    paragraphs: [
+      "URL Decode on FreeToolsPro: Decode percent-encoded URLs.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/html-encode": {
+    paragraphs: [
+      "HTML Encode on FreeToolsPro: Encode HTML entities.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/html-decode": {
+    paragraphs: [
+      "HTML Decode on FreeToolsPro: Decode HTML entities.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/unicode-converter": {
+    paragraphs: [
+      "Unicode Converter on FreeToolsPro: Convert text to Unicode code points.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/utf8-converter": {
+    paragraphs: [
+      "UTF-8 Converter on FreeToolsPro: Show UTF-8 bytes for text.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/ascii-converter": {
+    paragraphs: [
+      "ASCII Converter on FreeToolsPro: Convert text to ASCII codes.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/binary-converter": {
+    paragraphs: [
+      "Binary Converter on FreeToolsPro: Convert text to binary.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/hex-converter": {
+    paragraphs: [
+      "Hex Converter on FreeToolsPro: Convert text to hexadecimal.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/octal-converter": {
+    paragraphs: [
+      "Octal Converter on FreeToolsPro: Convert numbers to octal.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/base64-encode": {
+    paragraphs: [
+      "Base64 Encode on FreeToolsPro: Encode text to Base64.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/encoding-tools/base64-decode": {
+    paragraphs: [
+      "Base64 Decode on FreeToolsPro: Decode Base64 to text.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/md5-generator": {
+    paragraphs: [
+      "MD5 Generator on FreeToolsPro: Generate MD5 hashes.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/sha1-generator": {
+    paragraphs: [
+      "SHA1 Generator on FreeToolsPro: Generate SHA-1 hashes.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/sha256-generator": {
+    paragraphs: [
+      "SHA256 Generator on FreeToolsPro: Generate SHA-256 hashes.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/sha512-generator": {
+    paragraphs: [
+      "SHA512 Generator on FreeToolsPro: Generate SHA-512 hashes.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/hmac-generator": {
+    paragraphs: [
+      "HMAC Generator on FreeToolsPro: Generate HMAC-SHA256 signatures.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/bcrypt-generator": {
+    paragraphs: [
+      "BCrypt Generator on FreeToolsPro: Hash passwords with bcrypt.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/uuid-generator": {
+    paragraphs: [
+      "UUID Generator on FreeToolsPro: Generate UUID v4 values.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/hash-tools/uuid-validator": {
+    paragraphs: [
+      "UUID Validator on FreeToolsPro: Validate UUID format.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/developer-tools/sql-to-mongo-query": {
+    paragraphs: [
+      "SQL to Mongo Query on FreeToolsPro: Translate simple SQL to Mongo find().",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/developer-tools/sql-cheat-sheet": {
+    paragraphs: [
+      "SQL Cheat Sheet on FreeToolsPro: Quick SQL reference sheet.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/developer-tools/sql-beautifier": {
+    paragraphs: [
+      "SQL Beautifier on FreeToolsPro: Beautify SQL queries.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/svg-optimizer": {
+    paragraphs: [
+      "SVG Optimizer on FreeToolsPro: Strip comments/metadata from SVG.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/svg-viewer": {
+    paragraphs: [
+      "SVG Viewer on FreeToolsPro: Preview SVG markup.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/svg-to-png": {
+    paragraphs: [
+      "SVG to PNG on FreeToolsPro: Rasterize SVG to PNG.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/png-to-svg-guide": {
+    paragraphs: [
+      "PNG to SVG Guide on FreeToolsPro: Checklist for PNG→SVG conversion.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/image-compressor": {
+    paragraphs: [
+      "Image Compressor on FreeToolsPro: Compress images in the browser.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/image-cropper": {
+    paragraphs: [
+      "Image Cropper on FreeToolsPro: Crop images to an aspect ratio.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/image-metadata-viewer": {
+    paragraphs: [
+      "Image Metadata Viewer on FreeToolsPro: Inspect image dimensions and file info.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/exif-reader": {
+    paragraphs: [
+      "EXIF Reader on FreeToolsPro: Read basic image metadata in-browser.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/image-tools/ico-generator": {
+    paragraphs: [
+      "ICO Generator on FreeToolsPro: Generate favicon-sized PNG pack.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/password-strength-checker": {
+    paragraphs: [
+      "Password Strength Checker on FreeToolsPro: Score password strength.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/csr-generator": {
+    paragraphs: [
+      "CSR Generator on FreeToolsPro: Build OpenSSL CSR commands.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/certificate-decoder": {
+    paragraphs: [
+      "Certificate Decoder on FreeToolsPro: Inspect PEM certificate size/fields.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/cors-tester": {
+    paragraphs: [
+      "CORS Tester on FreeToolsPro: Draft CORS response headers.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/csp-generator": {
+    paragraphs: [
+      "CSP Generator on FreeToolsPro: Generate Content-Security-Policy drafts.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/security-headers-checker": {
+    paragraphs: [
+      "Security Headers Checker on FreeToolsPro: Recommended HTTP security headers.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/dns-lookup": {
+    paragraphs: [
+      "DNS Lookup on FreeToolsPro: DNS-over-HTTPS A record lookup.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/whois-lookup": {
+    paragraphs: [
+      "WHOIS Lookup on FreeToolsPro: RDAP domain registration lookup.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/spf-checker": {
+    paragraphs: [
+      "SPF Checker on FreeToolsPro: Inspect SPF TXT records.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/dkim-checker": {
+    paragraphs: [
+      "DKIM Checker on FreeToolsPro: Lookup DKIM selector records.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/security-tools/dmarc-checker": {
+    paragraphs: [
+      "DMARC Checker on FreeToolsPro: Inspect DMARC policies.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/http-tools/http-status-checker": {
+    paragraphs: [
+      "HTTP Status Checker on FreeToolsPro: Check HTTP status for a URL.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/http-tools/redirect-checker": {
+    paragraphs: [
+      "Redirect Checker on FreeToolsPro: Guidance for redirect-chain QA.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/http-tools/url-parser": {
+    paragraphs: [
+      "URL Parser on FreeToolsPro: Parse URL components.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/http-tools/url-inspector": {
+    paragraphs: [
+      "URL Inspector on FreeToolsPro: Inspect URL structure and query params.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/sql-generator": {
+    paragraphs: [
+      "SQL Generator on FreeToolsPro: Generate SQL from a plain request.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/api-generator": {
+    paragraphs: [
+      "API Generator on FreeToolsPro: Generate REST route stubs.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/commit-message-generator": {
+    paragraphs: [
+      "Commit Message Generator on FreeToolsPro: Draft conventional commit messages.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/readme-generator": {
+    paragraphs: [
+      "README Generator on FreeToolsPro: Generate README skeletons.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/dockerfile-generator": {
+    paragraphs: [
+      "Dockerfile Generator on FreeToolsPro: Generate Dockerfiles for common stacks.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/gitignore-generator": {
+    paragraphs: [
+      ".gitignore Generator on FreeToolsPro: Generate .gitignore files.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/ai-dev-tools/env-template-generator": {
+    paragraphs: [
+      ".env Template Generator on FreeToolsPro: Generate .env.example templates.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/text-tools/character-counter": {
+    paragraphs: [
+      "Character Counter on FreeToolsPro: Count characters, words, and lines.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/text-tools/remove-empty-lines": {
+    paragraphs: [
+      "Remove Empty Lines on FreeToolsPro: Strip blank lines from text.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/text-tools/case-converter": {
+    paragraphs: [
+      "Case Converter on FreeToolsPro: Convert camel, snake, kebab cases.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/text-tools/slug-generator": {
+    paragraphs: [
+      "Slug Generator on FreeToolsPro: Generate URL-safe slugs.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/text-tools/random-string-generator": {
+    paragraphs: [
+      "Random String Generator on FreeToolsPro: Generate random strings.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/seo-tools/open-graph-generator": {
+    paragraphs: [
+      "Open Graph Generator on FreeToolsPro: Generate Open Graph meta tags.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/seo-tools/canonical-url-generator": {
+    paragraphs: [
+      "Canonical URL Generator on FreeToolsPro: Generate canonical link tags.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/seo-tools/keyword-density-checker": {
+    paragraphs: [
+      "Keyword Density Checker on FreeToolsPro: Analyze keyword density.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+  "/seo-tools/hreflang-generator": {
+    paragraphs: [
+      "Hreflang Generator on FreeToolsPro: Generate hreflang tags.",
+      "Use this free utility in your browser—no signup required. For production systems, verify critical outputs with your own toolchain.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Paste or enter your input, run the tool, then copy the result.",
+          "Keep sensitive secrets out of public machines when hashing or encoding credentials.",
+        ],
+      },
+    ],
+  },
+
+  "/mutual-fund-tools/lumpsum-calculator": {
+    paragraphs: [
+      "Lumpsum Calculator on FreeToolsPro: Project lumpsum mutual fund growth over time.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/swp-calculator": {
+    paragraphs: [
+      "SWP Calculator on FreeToolsPro: Estimate how long a systematic withdrawal lasts.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/stp-calculator": {
+    paragraphs: [
+      "STP Calculator on FreeToolsPro: Model systematic transfer plan from one fund to another.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/goal-planner": {
+    paragraphs: [
+      "Goal Planner on FreeToolsPro: Find the SIP needed to reach a financial goal.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/retirement-corpus-calculator": {
+    paragraphs: [
+      "Retirement Corpus Calculator on FreeToolsPro: Estimate the corpus needed for retirement expenses.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/child-education-planner": {
+    paragraphs: [
+      "Child Education Planner on FreeToolsPro: Plan SIPs for future education costs with inflation.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/mutual-fund-tools/fire-calculator": {
+    paragraphs: [
+      "FIRE Calculator on FreeToolsPro: Estimate your FIRE number and years to financial independence.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/home-loan-calculator": {
+    paragraphs: [
+      "Home Loan Calculator on FreeToolsPro: Calculate home loan EMI, interest, and total payout.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/car-loan-calculator": {
+    paragraphs: [
+      "Car Loan Calculator on FreeToolsPro: Calculate car loan EMI and total interest.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/personal-loan-calculator": {
+    paragraphs: [
+      "Personal Loan Calculator on FreeToolsPro: Calculate personal loan EMI and interest cost.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/education-loan-calculator": {
+    paragraphs: [
+      "Education Loan Calculator on FreeToolsPro: Calculate education loan EMI and total payment.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/gold-loan-calculator": {
+    paragraphs: [
+      "Gold Loan Calculator on FreeToolsPro: Estimate gold loan EMI from amount, rate, and tenure.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/business-loan-calculator": {
+    paragraphs: [
+      "Business Loan Calculator on FreeToolsPro: Calculate business loan EMI and interest.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/loan-prepayment-calculator": {
+    paragraphs: [
+      "Loan Prepayment Calculator on FreeToolsPro: See EMI and interest impact of a loan prepayment.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/loan-calculators/balance-transfer-calculator": {
+    paragraphs: [
+      "Balance Transfer Calculator on FreeToolsPro: Compare savings from transferring a loan to a lower rate.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/income-tax-calculator": {
+    paragraphs: [
+      "Income Tax Calculator on FreeToolsPro: Estimate Indian income tax under old or new regime.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/old-vs-new-tax-regime": {
+    paragraphs: [
+      "Old vs New Tax Regime on FreeToolsPro: Compare old vs new regime tax side by side.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/hra-calculator": {
+    paragraphs: [
+      "HRA Calculator on FreeToolsPro: Calculate HRA exemption for metro and non-metro cities.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/standard-deduction-calculator": {
+    paragraphs: [
+      "Standard Deduction Calculator on FreeToolsPro: Apply salaried standard deduction by regime.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/section-80c-calculator": {
+    paragraphs: [
+      "Section 80C Calculator on FreeToolsPro: Track Section 80C investments against the ₹1.5L limit.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/capital-gains-tax-calculator": {
+    paragraphs: [
+      "Capital Gains Tax Calculator on FreeToolsPro: Estimate capital gains tax on equity and other assets.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/gst-inclusive-exclusive-calculator": {
+    paragraphs: [
+      "GST Inclusive/Exclusive Calculator on FreeToolsPro: Convert between GST-inclusive and exclusive amounts.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/tds-calculator": {
+    paragraphs: [
+      "TDS Calculator on FreeToolsPro: Calculate TDS amount and net payable.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/tax-tools/advance-tax-calculator": {
+    paragraphs: [
+      "Advance Tax Calculator on FreeToolsPro: Split annual tax into advance-tax installments.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/in-hand-salary-calculator": {
+    paragraphs: [
+      "In-hand Salary Calculator on FreeToolsPro: Estimate monthly in-hand salary from CTC.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/ctc-calculator": {
+    paragraphs: [
+      "CTC Calculator on FreeToolsPro: Break CTC into basic, HRA, and common components.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/salary-breakup-calculator": {
+    paragraphs: [
+      "Salary Breakup Calculator on FreeToolsPro: View an illustrative monthly salary breakup.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/pf-calculator": {
+    paragraphs: [
+      "PF Calculator on FreeToolsPro: Calculate employee and employer PF contributions.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/epf-interest-calculator": {
+    paragraphs: [
+      "EPF Interest Calculator on FreeToolsPro: Project EPF corpus with assumed interest.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/leave-encashment-calculator": {
+    paragraphs: [
+      "Leave Encashment Calculator on FreeToolsPro: Estimate leave encashment from basic pay and days.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/bonus-calculator": {
+    paragraphs: [
+      "Bonus Calculator on FreeToolsPro: Calculate bonus as months of salary.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/salary-hr/notice-period-calculator": {
+    paragraphs: [
+      "Notice Period Calculator on FreeToolsPro: Estimate notice buyout for unserved days.",
+      "Figures are planning estimates for Indian users. Confirm tax and loan numbers with a CA, lender, or official portal before acting.",
+    ],
+    sections: [
+      {
+        title: "How to use",
+        paragraphs: [
+          "Enter your amounts, rates, and tenure, then read the result cards.",
+          "Change inputs to compare scenarios such as prepayment, regime choice, or SIP size.",
+        ],
+      },
+    ],
+  },
+  "/retirement-tools/pension-calculator": {
+    paragraphs: [
+      "Pension Calculator: Estimate pension income from a retirement corpus and annuity rate.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/retirement-tools/nps-calculator": {
+    paragraphs: [
+      "NPS Calculator: Project NPS corpus, lump sum, and annuity pension.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/retirement-tools/epf-pension-estimator": {
+    paragraphs: [
+      "EPF Pension Estimator: Estimate EPS pension from pensionable salary and service years.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/retirement-tools/retirement-planner": {
+    paragraphs: [
+      "Retirement Planner: Compare corpus needed versus SIP accumulation for retirement.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/retirement-tools/safe-withdrawal-rate-calculator": {
+    paragraphs: [
+      "Safe Withdrawal Rate Calculator: Calculate sustainable withdrawal amounts from a corpus.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/fd-calculator": {
+    paragraphs: [
+      "FD Calculator: Calculate fixed deposit maturity value and interest.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/rd-calculator": {
+    paragraphs: [
+      "RD Calculator: Calculate recurring deposit maturity value.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/compound-interest-calculator": {
+    paragraphs: [
+      "Compound Interest Calculator: Compute compound interest with flexible compounding.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/simple-interest-calculator": {
+    paragraphs: [
+      "Simple Interest Calculator: Compute simple interest and total amount.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/savings-interest-calculator": {
+    paragraphs: [
+      "Savings Interest Calculator: Estimate savings-account interest for a period.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/credit-card-emi-calculator": {
+    paragraphs: [
+      "Credit Card EMI Calculator: Calculate credit card EMI, interest, and total payable.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/credit-card-payoff-calculator": {
+    paragraphs: [
+      "Credit Card Payoff Calculator: Estimate months to pay off a credit card balance.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/banking-tools/credit-utilization-calculator": {
+    paragraphs: [
+      "Credit Utilization Calculator: Check credit utilization ratio against your limit.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/insurance-tools/term-insurance-calculator": {
+    paragraphs: [
+      "Term Insurance Calculator: Ballpark term life premium from cover, age, and tenure.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/insurance-tools/life-insurance-calculator": {
+    paragraphs: [
+      "Life Insurance Calculator: Estimate life cover needs from income and liabilities.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/insurance-tools/health-insurance-premium-estimator": {
+    paragraphs: [
+      "Health Insurance Premium Estimator: Estimate family health insurance premiums.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/insurance-tools/vehicle-insurance-estimator": {
+    paragraphs: [
+      "Vehicle Insurance Estimator: Estimate OD + TP vehicle insurance premium.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/invoice-generator": {
+    paragraphs: [
+      "Invoice Generator: Create a simple business invoice you can copy or print.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/gst-invoice-generator": {
+    paragraphs: [
+      "GST Invoice Generator: Generate a GST-style invoice with taxable value and tax.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/profit-margin-calculator": {
+    paragraphs: [
+      "Profit Margin Calculator: Calculate profit, margin %, and markup %.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/break-even-calculator": {
+    paragraphs: [
+      "Break-even Calculator: Find break-even units and revenue.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/depreciation-calculator": {
+    paragraphs: [
+      "Depreciation Calculator: Calculate straight-line or WDV depreciation.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/roi-calculator": {
+    paragraphs: [
+      "ROI Calculator: Measure return on investment for a project or campaign.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+  "/business-finance/business-valuation-calculator": {
+    paragraphs: [
+      "Business Valuation Calculator: Estimate business value using an earnings multiple.",
+      "FreeToolsPro keeps these pages free for quick checks. Daily market boards use sample data—verify live prices and calendars on official sources.",
+    ],
+    sections: [{ title: "Tip", paragraphs: ["Bookmark high-traffic daily pages for repeat visits, and cross-check before trading or filing."] }],
+  },
+
+  "/ai-writing-tools/ai-title-generator": {
+    paragraphs: [
+      "AI Title Generator on FreeToolsPro: Generate click-worthy title options from a topic.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/blog-outline-generator": {
+    paragraphs: [
+      "Blog Outline Generator on FreeToolsPro: Build a structured blog outline in seconds.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/meta-description-generator": {
+    paragraphs: [
+      "Meta Description Generator on FreeToolsPro: Draft SEO meta descriptions under 160 characters.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/faq-generator": {
+    paragraphs: [
+      "FAQ Generator on FreeToolsPro: Create FAQ Q&A blocks for pages and posts.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/product-description-generator": {
+    paragraphs: [
+      "Product Description Generator on FreeToolsPro: Write benefit-led product descriptions.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/email-generator": {
+    paragraphs: [
+      "Email Generator on FreeToolsPro: Draft professional emails from a short brief.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/cover-letter-generator": {
+    paragraphs: [
+      "Cover Letter Generator on FreeToolsPro: Generate a tailored cover letter draft.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/linkedin-post-generator": {
+    paragraphs: [
+      "LinkedIn Post Generator on FreeToolsPro: Create LinkedIn posts with hooks and hashtags.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/tweet-generator": {
+    paragraphs: [
+      "Tweet Generator on FreeToolsPro: Generate short tweet options from an idea.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/rewrite-tool": {
+    paragraphs: [
+      "Rewrite Tool on FreeToolsPro: Rewrite text with clearer wording.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/tone-changer": {
+    paragraphs: [
+      "Tone Changer on FreeToolsPro: Change writing tone (professional, casual, friendly).",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/text-simplifier": {
+    paragraphs: [
+      "Text Simplifier on FreeToolsPro: Simplify complex wording for easier reading.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-writing-tools/ai-proofreader": {
+    paragraphs: [
+      "AI Proofreader on FreeToolsPro: Surface quick proofreading fixes and a cleaned draft.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/code-reviewer": {
+    paragraphs: [
+      "Code Reviewer on FreeToolsPro: Get a quick static code-review checklist on pasted code.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/bug-finder": {
+    paragraphs: [
+      "Bug Finder on FreeToolsPro: Scan code for common bug and security patterns.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/json-generator": {
+    paragraphs: [
+      "JSON Generator on FreeToolsPro: Generate sample JSON objects from field names.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/unit-test-generator": {
+    paragraphs: [
+      "Unit Test Generator on FreeToolsPro: Scaffold unit tests for a function name.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/css-generator-ai": {
+    paragraphs: [
+      "CSS Generator on FreeToolsPro: Generate starter CSS for a component name.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/react-component-generator": {
+    paragraphs: [
+      "React Component Generator on FreeToolsPro: Scaffold a React function component.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-coding-tools/readme-generator-ai": {
+    paragraphs: [
+      "README Generator on FreeToolsPro: Generate a project README skeleton.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/seo-audit-ai": {
+    paragraphs: [
+      "SEO Audit on FreeToolsPro: Run an AI-style SEO checklist for a page or topic.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/ai-keyword-generator": {
+    paragraphs: [
+      "AI Keyword Generator on FreeToolsPro: Brainstorm keyword variations around a seed term.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/keyword-clustering": {
+    paragraphs: [
+      "Keyword Clustering on FreeToolsPro: Group keywords into topical clusters.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/internal-linking-suggestions": {
+    paragraphs: [
+      "Internal Linking Suggestions on FreeToolsPro: Suggest internal link opportunities for an article.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/ai-content-optimizer": {
+    paragraphs: [
+      "AI Content Optimizer on FreeToolsPro: Get optimization tips for draft content.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/readability-checker": {
+    paragraphs: [
+      "Readability Checker on FreeToolsPro: Estimate readability from sentence length.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/heading-optimizer": {
+    paragraphs: [
+      "Heading Optimizer on FreeToolsPro: Turn rough headings into clean H1/H2 structure.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-seo-tools/faq-generator-seo": {
+    paragraphs: [
+      "FAQ Generator (SEO) on FreeToolsPro: Create FAQ blocks optimized for search snippets.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/ad-copy-generator": {
+    paragraphs: [
+      "Ad Copy Generator on FreeToolsPro: Generate ad headline, primary text, and CTA.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/google-ads-headline-generator": {
+    paragraphs: [
+      "Google Ads Headline Generator on FreeToolsPro: Create Google Ads headline options.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/facebook-ad-generator": {
+    paragraphs: [
+      "Facebook Ad Generator on FreeToolsPro: Draft Facebook/Meta ad copy blocks.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/youtube-title-generator": {
+    paragraphs: [
+      "YouTube Title Generator on FreeToolsPro: Generate YouTube title ideas.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/thumbnail-text-generator": {
+    paragraphs: [
+      "Thumbnail Text Generator on FreeToolsPro: Short punchy thumbnail text ideas.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/landing-page-copy-generator": {
+    paragraphs: [
+      "Landing Page Copy Generator on FreeToolsPro: Draft hero, benefits, and CTA sections.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/call-to-action-generator": {
+    paragraphs: [
+      "Call-to-Action Generator on FreeToolsPro: Generate CTA button and line options.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/brand-slogan-generator": {
+    paragraphs: [
+      "Brand Slogan Generator on FreeToolsPro: Create short brand slogans.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-marketing-tools/brand-name-generator": {
+    paragraphs: [
+      "Brand Name Generator on FreeToolsPro: Brainstorm brand name candidates.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/meeting-notes-summarizer": {
+    paragraphs: [
+      "Meeting Notes Summarizer on FreeToolsPro: Turn rough notes into a concise meeting summary.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/minutes-of-meeting-generator": {
+    paragraphs: [
+      "Minutes of Meeting Generator on FreeToolsPro: Generate MoM structure from discussion points.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/task-list-extractor": {
+    paragraphs: [
+      "Task List Extractor on FreeToolsPro: Extract action items from notes or transcripts.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/professional-email-writer": {
+    paragraphs: [
+      "Professional Email Writer on FreeToolsPro: Write polished professional emails.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/business-proposal-generator": {
+    paragraphs: [
+      "Business Proposal Generator on FreeToolsPro: Draft a short business proposal outline.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/invoice-description-writer": {
+    paragraphs: [
+      "Invoice Description Writer on FreeToolsPro: Write clean invoice line descriptions.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-office-tools/executive-summary-generator": {
+    paragraphs: [
+      "Executive Summary Generator on FreeToolsPro: Summarize an initiative for executives.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-resume-career/ats-resume-checker": {
+    paragraphs: [
+      "ATS Resume Checker on FreeToolsPro: Check resume text for common ATS issues.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-resume-career/resume-optimizer": {
+    paragraphs: [
+      "Resume Optimizer on FreeToolsPro: Get rewrite tips and a stronger sample bullet.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-resume-career/job-description-analyzer": {
+    paragraphs: [
+      "Job Description Analyzer on FreeToolsPro: Extract must-have signals from a job description.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-resume-career/salary-negotiation-assistant": {
+    paragraphs: [
+      "Salary Negotiation Assistant on FreeToolsPro: Get a practical negotiation script outline.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-resume-career/skill-gap-analyzer": {
+    paragraphs: [
+      "Skill Gap Analyzer on FreeToolsPro: Compare your skills vs required skills.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/flashcard-generator": {
+    paragraphs: [
+      "Flashcard Generator on FreeToolsPro: Turn topics into Q&A flashcards.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/quiz-generator": {
+    paragraphs: [
+      "Quiz Generator on FreeToolsPro: Generate a short quiz from a topic.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/study-notes-generator": {
+    paragraphs: [
+      "Study Notes Generator on FreeToolsPro: Create structured study notes.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/explain-like-im-10": {
+    paragraphs: [
+      "Explain Like I'm 10 on FreeToolsPro: Explain a concept in simple language.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/code-tutor": {
+    paragraphs: [
+      "Code Tutor on FreeToolsPro: Get a tutoring plan for understanding code.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/formula-explainer": {
+    paragraphs: [
+      "Formula Explainer on FreeToolsPro: Explain a formula in plain English.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-learning-tools/essay-improver": {
+    paragraphs: [
+      "Essay Improver on FreeToolsPro: Get essay improvement steps and a stronger opening.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/alt-text-generator": {
+    paragraphs: [
+      "Alt Text Generator on FreeToolsPro: Write accessible image alt text.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/image-caption-generator": {
+    paragraphs: [
+      "Image Caption Generator on FreeToolsPro: Generate short image captions.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/ocr-text-cleaner": {
+    paragraphs: [
+      "OCR Text Cleaner on FreeToolsPro: Clean messy OCR text for reuse.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/color-palette-extractor": {
+    paragraphs: [
+      "Color Palette Extractor on FreeToolsPro: Generate a palette seed from a word or brand.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/prompt-generator-image-models": {
+    paragraphs: [
+      "Prompt Generator for Image Models on FreeToolsPro: Write image-model prompts from a subject.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-image-helpers/background-description-generator": {
+    paragraphs: [
+      "Background Description Generator on FreeToolsPro: Describe backgrounds for design or generation.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-enhancer": {
+    paragraphs: [
+      "Prompt Enhancer on FreeToolsPro: Expand a prompt with constraints and examples.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-shortener": {
+    paragraphs: [
+      "Prompt Shortener on FreeToolsPro: Tighten long prompts while keeping intent.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-debugger": {
+    paragraphs: [
+      "Prompt Debugger on FreeToolsPro: Diagnose weak prompts and fix gaps.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-translator": {
+    paragraphs: [
+      "Prompt Translator on FreeToolsPro: Adapt a prompt for another language output.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-library": {
+    paragraphs: [
+      "Prompt Library on FreeToolsPro: Browse reusable prompt starters.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-version-comparison": {
+    paragraphs: [
+      "Prompt Version Comparison on FreeToolsPro: Compare two prompt versions side by side.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/prompt-quality-score": {
+    paragraphs: [
+      "Prompt Quality Score on FreeToolsPro: Score prompt quality with a simple checklist.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-prompt-engineering/role-prompt-generator": {
+    paragraphs: [
+      "Role Prompt Generator on FreeToolsPro: Generate role-based system prompts.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/csv-cleaner": {
+    paragraphs: [
+      "CSV Cleaner on FreeToolsPro: Normalize messy CSV spacing and quotes.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/json-cleaner": {
+    paragraphs: [
+      "JSON Cleaner on FreeToolsPro: Pretty-print and validate JSON.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/duplicate-finder": {
+    paragraphs: [
+      "Duplicate Finder on FreeToolsPro: Find duplicate lines in a dataset dump.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/data-summarizer": {
+    paragraphs: [
+      "Data Summarizer on FreeToolsPro: Summarize row/column shape of pasted data.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/sql-to-csv": {
+    paragraphs: [
+      "SQL to CSV on FreeToolsPro: Convert simple SQL value lists to CSV rows.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-data-tools/csv-visualizer": {
+    paragraphs: [
+      "CSV Visualizer on FreeToolsPro: Inspect CSV columns and row counts.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/workflow-generator": {
+    paragraphs: [
+      "Workflow Generator on FreeToolsPro: Draft a generic automation workflow.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/sop-generator": {
+    paragraphs: [
+      "SOP Generator on FreeToolsPro: Generate a standard operating procedure outline.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/checklist-generator": {
+    paragraphs: [
+      "Checklist Generator on FreeToolsPro: Create an actionable checklist from a goal.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/email-automation-drafts": {
+    paragraphs: [
+      "Email Automation Drafts on FreeToolsPro: Draft a simple email nurture sequence.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/zapier-workflow-ideas": {
+    paragraphs: [
+      "Zapier Workflow Ideas on FreeToolsPro: Brainstorm Zapier-style automations.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/n8n-workflow-generator": {
+    paragraphs: [
+      "n8n Workflow Generator on FreeToolsPro: Sketch an n8n node sequence for a goal.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-automation-tools/api-integration-assistant": {
+    paragraphs: [
+      "API Integration Assistant on FreeToolsPro: Plan API auth, endpoints, and error handling.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
+  "/ai-website-auditor/ai-website-auditor": {
+    paragraphs: [
+      "AI Website Auditor on FreeToolsPro: Run a practical website quality/SEO checklist.",
+      "These assistants use fast on-device templates and heuristics—great for drafts. Edit before publishing.",
+    ],
+    sections: [{ title: "How to use", paragraphs: ["Paste a topic or draft, generate, then refine the output for your brand voice."] }],
+  },
 };

@@ -1,5 +1,6 @@
 import { Zap } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Seo from "../../components/Seo";
 import ToolContentLayout from "../../components/ToolContentLayout";
 import ToolHeroShell from "../../components/ToolHeroShell";
@@ -180,21 +181,24 @@ const formatUnitLabel = (str) => {
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
 
-function ConverterBox({ type }) {
+function ConverterBox({ type, initialFrom, initialTo }) {
   const [fromUnit, setFromUnit] = useState("");
   const [toUnit, setToUnit] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
   const [copied, setCopied] = useState(false);
 
-  // Synchronize unit selections on category change
+  // Synchronize unit selections on category change (honor URL presets when valid)
   useEffect(() => {
     const units = Object.keys(unitData[type].units);
-    setFromUnit(units[0]);
-    setToUnit(units[1] || units[0]);
+    const from = initialFrom && units.includes(initialFrom) ? initialFrom : units[0];
+    let to = initialTo && units.includes(initialTo) ? initialTo : units[1] || units[0];
+    if (to === from) to = units.find((u) => u !== from) || from;
+    setFromUnit(from);
+    setToUnit(to);
     setInputValue("");
     setOutputValue("");
-  }, [type]);
+  }, [type, initialFrom, initialTo]);
 
   // Compute conversion live loop
   useEffect(() => {
@@ -354,7 +358,17 @@ function ConverterBox({ type }) {
 }
 
 function UnitConverter() {
-  const [type, setType] = useState("length");
+  const [params] = useSearchParams();
+  const presetType = params.get("type");
+  const presetFrom = params.get("from");
+  const presetTo = params.get("to");
+  const [type, setType] = useState(
+    presetType && unitData[presetType] ? presetType : "length"
+  );
+
+  useEffect(() => {
+    if (presetType && unitData[presetType]) setType(presetType);
+  }, [presetType]);
 
   const unitTypes = [
     { value: "length", label: "📏 Length" },
@@ -411,7 +425,7 @@ function UnitConverter() {
 
             {/* Right Column: Interaction Workbox */}
             <div className="md:col-span-2">
-              <ConverterBox type={type} />
+              <ConverterBox type={type} initialFrom={presetFrom} initialTo={presetTo} />
             </div>
           </div>
       </ToolHeroShell>

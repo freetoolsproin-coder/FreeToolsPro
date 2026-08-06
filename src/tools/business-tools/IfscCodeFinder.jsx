@@ -122,8 +122,8 @@ export default function IfscCodeFinder() {
       <ToolHeroShell
         category="business-tools"
         icon={Landmark}
-        title="IFSC Code Finder"
-        subtitle="Search sample Indian bank IFSC codes and validate the standard 11-character format."
+        title="IFSC + Bank Branch Finder"
+        subtitle="Validate IFSC format and look up bank branch details for NEFT, RTGS, and IMPS."
         formLabel="IFSC search"
         formHint="Results update as you type"
         layout="stack"

@@ -338,4 +338,180 @@ export default {
       },
     ],
   },
+  "/trending-tools/pin-code-post-office-finder": {
+    paragraphs: [
+      "PIN Code & Post Office Finder on FreeToolsPro helps you look up sample Indian PIN codes, post offices, districts, and states. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/government-scheme-finder": {
+    paragraphs: [
+      "Government Scheme Finder on FreeToolsPro helps you browse popular Central and state scheme names by category and eligibility keywords. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/job-notification-tracker": {
+    paragraphs: [
+      "Job Notification Tracker on FreeToolsPro helps you organize exam and job alerts with board, last date, and status notes. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/scholarship-finder": {
+    paragraphs: [
+      "Scholarship Finder on FreeToolsPro helps you filter sample scholarships by level, category, and deadline window. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/weather": {
+    paragraphs: [
+      "Weather on FreeToolsPro helps you check current weather for Indian cities using Open-Meteo (no API key). Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/aqi-checker": {
+    paragraphs: [
+      "AQI Checker on FreeToolsPro helps you view air quality category guidance and sample city AQI bands for India. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/government-holidays": {
+    paragraphs: [
+      "Government Holidays on FreeToolsPro helps you browse sample gazetted and restricted holiday lists by year for India. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
+  "/trending-tools/festival-calendar": {
+    paragraphs: [
+      "Festival Calendar on FreeToolsPro helps you explore major Indian festivals by month with short cultural notes. Use the form on this page for a fast estimate or lookup, then verify critical results on official portals when money, identity, or legal deadlines are involved.",
+      "We keep the interface lightweight so you can check a number, shortlist a scheme, or plan a trip without creating an account. Sample datasets power several India utilities where live APIs are restricted; calculators use transparent formulas you can recompute yourself.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Enter the fields that match your situation—city, units, contribution amount, or search keywords—and read the result panel. Adjust inputs to compare scenarios before you act on a single number.",
+          "Copy or note the output you need, then open the linked official site (EPFO, India Post, NSE, CPCB, NSP, and so on) when you need a filing-ready confirmation.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This page is an educational utility, not a government service, broker terminal, or DISCOM bill. Live rates, eligibility, and holiday dates can change without notice.",
+          "For identity linking, bank IFSC, and scheme applications, always complete the final step on the authorised platform that holds your account.",
+        ],
+      },
+    ],
+  },
 };

@@ -279,70 +279,6 @@ export default {
     ]
   },
 
-  "/calculators/stock-profit-calculator": {
-    paragraphs: [
-      "Stock profit calculators determine gain or loss on equity trades by comparing buy and sell prices, quantity, and associated costs such as brokerage, securities transaction tax (STT), exchange charges, stamp duty, and GST on brokerage where applicable. Net profit equals sale proceeds minus purchase cost minus all frictional charges; return on investment (ROI) expresses net gain as a percentage of capital deployed. FreeToolsPro helps Indian and international traders move beyond gross price difference to what actually hit the bank account.",
-      "Buy amount is typically price per share times shares plus buy-side charges; sell amount is sell price times shares minus sell-side charges. Percentage return divides net profit by buy amount. Intraday versus delivery may change STT rates and brokerage slabs; enter charges your broker invoice shows rather than guessing flat percentages if accuracy matters for tax filing.",
-      "Swing traders reviewing weekly performance, long-term investors computing realised gains after partial exits, and finance students learning friction costs all use stock profit math. The calculator supports decision post-mortems—was a winning trade eroded by churn?—and documents figures ahead of capital gains schedules.",
-      "Dividend income received while holding is separate from sale profit but affects total return on capital employed; reinvested dividends change average cost if you track total return internally. For multiple partial sells, run separate rows or weighted averages and sum net outcomes for portfolio-level reporting."
-    ],
-    sections: [
-      {
-        title: "Brokerage and statutory charges",
-        paragraphs: [
-          "Discount brokers often charge flat per-order fees while full-service brokers use basis points on turnover with minimums. STT on delivery sells is commonly a small percent of sell value; intraday equity may use different STT treatment. Exchange transaction charges, SEBI turnover fees, stamp duty on buy side (state-dependent in India), and GST on brokerage stack into total cost ignored by naive price-difference spreadsheets.",
-          "Foreign markets use different fee names—SEC fees, FINRA levies, spread costs in OTC—but the structure remains: gross price move minus all costs equals net outcome. FreeToolsPro expects you to aggregate charges into fields or per-side amounts consistent with your broker contract; always reconcile with contract notes."
-        ]
-      },
-      {
-        title: "Use cases for traders and investors",
-        paragraphs: [
-          "Realised profit calculation after scaling out of a multibaggers position clarifies how much capital to redeploy. Comparing two trades with identical percentage price moves but different holding periods annualises insight when paired with time—but simple ROI here is non-annualised unless you extend analysis manually.",
-          "Tax planning for short-term versus long-term capital gains brackets needs accurate buy date, sell date, and cost basis including charges; this tool supports the arithmetic portion, not jurisdictional holding-period rules. Portfolio managers justifying active management to clients should report net of fees figures investors actually experience."
-        ]
-      },
-      {
-        title: "Limitations and disciplined reporting",
-        paragraphs: [
-          "Unrealised mark-to-market gains are not profits until sold; calculators require exit prices. Corporate actions—splits, bonuses, mergers—adjust cost basis retroactively; historical entry prices must be normalised. FIFO versus weighted-average accounting across multiple lots affects taxable gain when only part of a holding sells.",
-          "Slippage, illiquid wide spreads, and margin interest are easy to omit. FreeToolsPro focuses on explicit inputs you supply; it will not fetch live broker tariffs. Use outputs for education and record-keeping, then verify against annual capital gains statements and CA advice before filing returns."
-        ]
-      }
-    ]
-  },
-
-  "/calculators/option-profit-calculator": {
-    paragraphs: [
-      "Options are contracts granting the right, not obligation, to buy (call) or sell (put) an underlying asset at a strike price before or at expiry, in exchange for premium paid upfront. An option profit calculator estimates payoff at expiry or at a hypothetical underlying price, incorporating premium, lot size, and whether you are long or short the contract. FreeToolsPro supports retail F&O participants on NSE/BSE and learners worldwide translating Greek-laden jargon into rupee P&L under clear assumptions.",
-      "Long call profit at expiry is max(0, spot − strike) × quantity minus premium paid; long put profit is max(0, strike − spot) × quantity minus premium. Short positions reverse the sign with theoretically unlimited risk on naked calls. Multi-leg strategies—spreads, straddles, iron condors—require summing leg payoffs; a single-leg tool teaches fundamentals before spreadsheets model combinations.",
-      "Hedgers protecting equity holdings with protective puts, speculators betting on event volatility, and finance students plotting payoff diagrams all need numeric payoffs. This calculator clarifies breakeven spots and maximum loss for defined-risk long premium strategies, not replace margin system mark-to-market before expiry.",
-      "Index options on Nifty and Bank Nifty dominate retail volume in India; stock options carry liquidity and gap risk on individual earnings. Always model worst-case loss on short legs before selling uncovered premium."
-    ],
-    sections: [
-      {
-        title: "Calls, puts, and lot size",
-        paragraphs: [
-          "Index and stock options trade in fixed lot sizes set by exchanges; P&L multiplies per-share payoff by lot size times number of lots. Premium is quoted per share but paid per lot. A Nifty call might use lot size 25 or revised quantities—enter effective units your contract uses. American versus European exercise affects early exercise on dividends or deep ITM calls; many index options in India are European, exercising at expiry only.",
-          "Before expiry, option value includes time value beyond intrinsic value; this tool typically emphasises expiry or intrinsic payoff unless it states otherwise. Implied volatility crush after events can lose money even when direction is right—a lesson calculators at expiry prices illustrate by ignoring time decay path."
-        ]
-      },
-      {
-        title: "Who uses option profit estimates",
-        paragraphs: [
-          "Directional traders comparing limited-loss long options versus futures with margin calls. Covered call writers estimating income if stock stays below strike versus opportunity cost if called away. Risk managers quantifying hedge cost as percent of portfolio value. Educators drawing piecewise-linear payoff charts from tabulated outputs.",
-          "Spread traders manually add short leg premium received to long leg premium paid to find net debit or credit and combined breakeven. FreeToolsPro single-leg clarity builds intuition before margin calculators enforce SPAN exposure. Always cross-check with broker payoff simulators that know your exact contract month and corporate action adjustments."
-        ]
-      },
-      {
-        title: "Risks and limitations",
-        paragraphs: [
-          "Naked short options carry margin calls and tail risk absent in long premium positions. Liquidity and wide bid-ask spreads change effective premium versus mid-price assumptions. STT on options, exchange charges, and GST affect net cash like equity trades—include them for realised figures. Tax treatment of F&O varies; business income versus capital gains classification depends on jurisdiction and activity level.",
-          "Path dependency before expiry means interim drawdowns can force exits despite eventual expiry profit. FreeToolsPro is an educational and planning aid for payoff structure, not a substitute for reading circulars on position limits, ban periods, and auto square-off times. Trade defined risk until you understand margin mechanics deeply."
-        ]
-      }
-    ]
-  },
-
   "/calculators/gratuity-calculator": {
     paragraphs: [
       "Gratuity is a statutory end-of-service benefit in India under the Payment of Gratuity Act for eligible employees with continuous service of at least five years in covered establishments, payable on retirement, resignation after qualifying service, death, or disability. The gratuity calculator estimates amount based on last drawn salary (basic plus dearness allowance) and years of service using the formula for monthly-rated employees: (15 × last drawn salary × years of service) ÷ 26, with years rounded per rules and a cap on maximum payable gratuity revised by government notification.",
@@ -454,6 +390,50 @@ export default {
         title: "Limits",
         paragraphs: [
           "Unofficial estimates cannot replace registrar calculations for scholarships or graduation checks. Confirm policies for retakes and pass/fail courses.",
+        ],
+      },
+    ],
+  },
+  "/calculators/toll-calculator-india": {
+    paragraphs: [
+      "Toll Calculator (India) estimates highway toll for a trip from vehicle class, distance in kilometres, and the number of toll plazas you expect to cross. Use it to budget road trips before you travel.",
+      "Rates are heuristic planning numbers—actual FASTag plaza fees depend on the specific highway, vehicle axle count, and any return-journey discounts.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Choose your vehicle class (car, LCV, bus, or truck), enter approximate route distance, and set how many toll plazas you will pass. The estimated toll updates immediately.",
+          "Adjust distance or plaza count to compare alternate routes, or switch vehicle class for fleet planning.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This is not an official NHAI or FASTag balance quote. Plaza-specific rates and monthly passes are not included.",
+          "For exact toll before travel, check the NHAI/FASTag app or your navigation app's toll summary for the route.",
+        ],
+      },
+    ],
+  },
+  "/calculators/electricity-bill-calculator": {
+    paragraphs: [
+      "Electricity Bill Calculator estimates your monthly power bill from units consumed (kWh), using simplified slab rates for major Indian states. Pick your state, enter billed units and any fixed charges, and see energy cost plus an estimated total instantly.",
+      "Slab rates are illustrative—real DISCOM bills also include fuel surcharges, taxes, subsidies, and time-of-day tariffs that this tool does not model.",
+    ],
+    sections: [
+      {
+        title: "How to use this tool",
+        paragraphs: [
+          "Select your state, enter units from your meter or previous bill, and add fixed charges if your DISCOM lists them separately. Energy charge and estimated total update as you edit.",
+          "Compare scenarios—try a lower unit count to see savings from efficiency upgrades, or switch states to understand how slab structures differ.",
+        ],
+      },
+      {
+        title: "What this is not",
+        paragraphs: [
+          "This is not an official MSEDCL, BSES, or other DISCOM bill. Subsidies, arrears, and regulatory adjustments are not included.",
+          "For payment or dispute resolution, use your electricity provider's portal or customer care with your consumer number.",
         ],
       },
     ],

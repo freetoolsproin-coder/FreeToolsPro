@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Image as ImageIcon, Loader2, Download } from "lucide-react";
 import Seo from "../../components/Seo";
 import ToolHeroShell, { inputDark, selectDark } from "../../components/ToolHeroShell";
@@ -7,13 +8,25 @@ import { ToolSeoIntro, ToolSeoStandard } from "../../utils/toolSeoBlocks";
 
 const formatOptions = ["png", "jpg", "webp", "gif"];
 
+function normalizeFormat(value) {
+  if (!value) return null;
+  const v = String(value).toLowerCase().replace("jpeg", "jpg");
+  return formatOptions.includes(v) ? v : null;
+}
+
 export default function ImageFormatConverter() {
+  const [params] = useSearchParams();
+  const presetTo = normalizeFormat(params.get("to"));
   const [file, setFile] = useState(null);
-  const [toFormat, setToFormat] = useState("png");
+  const [toFormat, setToFormat] = useState(presetTo || "png");
   const [convertedUrl, setConvertedUrl] = useState(null);
   const [originalUrl, setOriginalUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (presetTo) setToFormat(presetTo);
+  }, [presetTo]);
 
   useEffect(() => {
     return () => {

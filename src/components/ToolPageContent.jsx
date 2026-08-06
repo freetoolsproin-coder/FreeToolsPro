@@ -1,10 +1,11 @@
 import { useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Link2 } from "lucide-react";
+import { ArrowRight, Link2, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { tools } from "../data/toolDefinitions";
 import { buildToolPageCopy } from "../data/buildToolPageCopy";
 import RelatedTools from "./RelatedTools";
+import RelatedBlogGuide from "./RelatedBlogGuide";
 import WhatItDoesSection from "./WhatItDoesSection";
 import GeoSummary from "./GeoSummary";
 import FaqSchema from "./FaqSchema";
@@ -63,13 +64,49 @@ function SectionHeading({ eyebrow, title }) {
   );
 }
 
+function ExamplePairBlock({ pair, index }) {
+  return (
+    <div className="rounded-[14px] border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)] p-4 sm:p-5">
+      {pair.label ? (
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--ftp-ink-soft)]">
+          {pair.label}
+        </p>
+      ) : index > 0 ? (
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--ftp-ink-soft)]">
+          Example {index + 1}
+        </p>
+      ) : null}
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        <div>
+          <p className="text-xs font-semibold text-[var(--ftp-ink)]">Example input</p>
+          <pre className="mt-1.5 overflow-x-auto rounded-lg border border-[var(--ftp-line)] bg-white px-3 py-2.5 text-sm leading-6 text-[var(--ftp-ink-soft)] whitespace-pre-wrap">
+            {pair.input}
+          </pre>
+        </div>
+        <div>
+          <p className="text-xs font-semibold text-[var(--ftp-ink)]">Example result</p>
+          <pre className="mt-1.5 overflow-x-auto rounded-lg border border-teal-200/80 bg-teal-50/50 px-3 py-2.5 text-sm leading-6 text-[var(--ftp-ink)] whitespace-pre-wrap">
+            {pair.result}
+          </pre>
+        </div>
+      </div>
+      {pair.note ? (
+        <p className="mt-3 text-sm leading-6 text-[var(--ftp-ink-soft)]">{pair.note}</p>
+      ) : null}
+    </div>
+  );
+}
+
 /**
- * Editorial column aligned with Google-preferred tool-page content:
- * what it does → why → how → examples → use cases → tips → FAQ → related.
+ * Standard editorial column for every tool page:
+ * what it does → how to use → example input/result → privacy → limitations → FAQ → related → last reviewed.
  */
 export default function ToolPageContent({
   category,
   currentToolPath,
+  toolName,
+  toolDesc,
+  relatedCategory,
   howTitle,
   howBody,
   steps,
@@ -78,20 +115,32 @@ export default function ToolPageContent({
   trustBullets,
   ctaLabel = "Back to tool",
   exploreLabel = "More utilities from the FreeToolsPro suite.",
-  privacyNote,
+  examplePairs,
+  privacyStatement,
+  limitations,
+  lastReviewed,
 }) {
   const [openFaq, setOpenFaq] = useState(0);
-  const currentTool = tools.find((t) => t.path === currentToolPath);
+  const catalogTool = tools.find((t) => t.path === currentToolPath);
+  const currentTool =
+    catalogTool ||
+    (toolName
+      ? { name: toolName, desc: toolDesc || "", path: currentToolPath, category: relatedCategory || category }
+      : null);
 
   const copy = buildToolPageCopy({
     tool: currentTool,
-    category,
+    category: relatedCategory || category,
     currentToolPath,
     howTitle,
     howBody,
     steps,
     faqs,
     whatItDoes,
+    examplePairs,
+    privacyStatement,
+    limitations,
+    lastReviewed,
   });
 
   const resolvedTrust = trustBullets || copy.trustBullets || [
@@ -99,11 +148,13 @@ export default function ToolPageContent({
     "No signup wall between you and the answer",
     "Responsive, keyboard-friendly, clear contrast",
   ];
-  const resolvedPrivacy = privacyNote || copy.privacyNote;
 
   const related = tools
     .filter(
-      (t) => !t.isPageLink && t.path !== currentToolPath && (!category || t.category === category)
+      (t) =>
+        !t.isPageLink &&
+        t.path !== currentToolPath &&
+        (relatedCategory || category ? t.category === (relatedCategory || category) : true)
     )
     .slice(0, 4);
 
@@ -141,22 +192,7 @@ export default function ToolPageContent({
             </div>
             <WhatItDoesSection content={copy.whatItDoes} compact />
 
-            {/* 2. Why someone would use it */}
-            <SectionHeading eyebrow="Why use it" title="Why someone would use this tool" />
-            <div className="mt-4 space-y-4 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-              {copy.whyUseful.map((p) => (
-                <p key={p.slice(0, 64)}>{p}</p>
-              ))}
-            </div>
-            {copy.benefits?.length ? (
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-                {copy.benefits.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            ) : null}
-
-            {/* 3. How to use it */}
+            {/* 2. How to use it */}
             <SectionHeading eyebrow="How to use" title={copy.howTitle} />
             <ol className="mt-6 space-y-5">
               {copy.steps.map((step, i) => (
@@ -172,40 +208,32 @@ export default function ToolPageContent({
               ))}
             </ol>
 
-            {/* 4. Practical examples */}
-            <SectionHeading eyebrow="Examples" title="Practical examples" />
-            <div className="mt-4 space-y-4 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-              {copy.examples.map((p) => (
-                <p key={p.slice(0, 64)}>{p}</p>
+            {/* 3. Example input and result */}
+            <SectionHeading eyebrow="Examples" title="Example input and result" />
+            <div className="mt-4 space-y-4">
+              {copy.examplePairs.map((pair, index) => (
+                <ExamplePairBlock key={`${pair.input.slice(0, 24)}-${index}`} pair={pair} index={index} />
               ))}
             </div>
 
-            {/* 5. Common use cases */}
-            <SectionHeading eyebrow="Use cases" title="Common use cases" />
+            {/* 4. Privacy / data-processing statement */}
+            <SectionHeading eyebrow="Privacy" title="Privacy and data processing" />
+            <div className="mt-4 rounded-[14px] border border-[var(--ftp-line)] bg-white px-4 py-4 sm:px-5">
+              <div className="flex gap-3">
+                <Shield className="mt-0.5 h-5 w-5 shrink-0 text-[var(--age-teal-deep,#0f766e)]" aria-hidden="true" />
+                <p className="text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">{copy.privacyStatement}</p>
+              </div>
+            </div>
+
+            {/* 5. Limitations */}
+            <SectionHeading eyebrow="Limitations" title="Limitations" />
             <ul className="mt-4 list-disc space-y-2 pl-5 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-              {copy.useCases.map((u) => (
-                <li key={u}>{u}</li>
+              {copy.limitations.map((item) => (
+                <li key={item.slice(0, 64)}>{item}</li>
               ))}
             </ul>
 
-            {/* 6. Tips and best practices */}
-            <SectionHeading eyebrow="Tips" title="Tips and best practices" />
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-[0.98rem] leading-7 text-[var(--ftp-ink-soft)]">
-              {copy.tips.map((tip) => (
-                <li key={tip.slice(0, 64)}>{tip}</li>
-              ))}
-            </ul>
-
-            {resolvedPrivacy ? (
-              <aside className="mt-8 rounded-[14px] border border-[var(--ftp-line)] bg-[var(--ftp-porcelain)] px-4 py-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--age-teal-deep,#0f766e)]">
-                  Limitations &amp; privacy
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[var(--ftp-ink-soft)]">{resolvedPrivacy}</p>
-              </aside>
-            ) : null}
-
-            {/* 7. FAQs */}
+            {/* 6. Frequently asked questions */}
             <div className="mt-12">
               <h2 className="age-display text-2xl font-semibold text-[var(--ftp-ink)]">
                 Frequently asked questions
@@ -222,11 +250,9 @@ export default function ToolPageContent({
               </div>
             </div>
 
-            {/* 8. Related tools */}
+            {/* 7. Related tools */}
             <div className="mt-12">
-              <h2 className="age-display text-2xl font-semibold text-[var(--ftp-ink)]">
-                Related tools
-              </h2>
+              <h2 className="age-display text-2xl font-semibold text-[var(--ftp-ink)]">Related tools</h2>
               <p className="mt-2 text-sm text-[var(--ftp-ink-soft)]">{exploreLabel}</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 {related.map((tool) => {
@@ -253,6 +279,11 @@ export default function ToolPageContent({
                 })}
               </div>
             </div>
+
+            {/* 8. Last reviewed / updated */}
+            <p className="mt-12 border-t border-[var(--ftp-line)] pt-6 text-sm text-[var(--ftp-ink-soft)]">
+              <time dateTime={copy.lastReviewed}>Last reviewed: {copy.lastReviewedLabel}</time>
+            </p>
           </article>
 
           <aside className="space-y-6 self-start lg:sticky lg:top-24 lg:pt-2">
@@ -275,7 +306,11 @@ export default function ToolPageContent({
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
-            <RelatedTools category={category} currentToolPath={currentToolPath} />
+            <RelatedBlogGuide
+              currentToolPath={currentToolPath}
+              toolName={currentTool?.name}
+            />
+            <RelatedTools category={relatedCategory || category} currentToolPath={currentToolPath} />
           </aside>
         </div>
       </div>

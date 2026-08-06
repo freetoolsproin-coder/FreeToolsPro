@@ -1,13 +1,15 @@
 import ToolPageContent from "./ToolPageContent";
 
 /**
- * Routes tool pages onto the standard editorial column
- * (how it works → steps → privacy note → FAQ → related tools).
+ * Routes tool pages onto the standard 8-section editorial column.
  * Category defaults fill gaps when props are omitted.
  */
 export default function ToolContentLayout({
   category,
   currentToolPath,
+  toolName,
+  toolDesc,
+  relatedCategory,
   trustBullets,
   ctaLabel = "Back to tool",
   howTitle,
@@ -15,12 +17,18 @@ export default function ToolContentLayout({
   steps,
   whatItDoes,
   faqs,
-  privacyNote,
+  examplePairs,
+  privacyStatement,
+  limitations,
+  lastReviewed,
 }) {
   return (
     <ToolPageContent
       category={category}
       currentToolPath={currentToolPath}
+      toolName={toolName}
+      toolDesc={toolDesc}
+      relatedCategory={relatedCategory}
       howTitle={howTitle}
       howBody={howBody}
       steps={steps}
@@ -28,7 +36,10 @@ export default function ToolContentLayout({
       faqs={faqs}
       trustBullets={trustBullets}
       ctaLabel={ctaLabel}
-      privacyNote={privacyNote}
+      examplePairs={examplePairs}
+      privacyStatement={privacyStatement}
+      limitations={limitations}
+      lastReviewed={lastReviewed}
     />
   );
 }

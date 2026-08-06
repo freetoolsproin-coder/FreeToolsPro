@@ -92,6 +92,8 @@ export default function ImageToText() {
             setProgress(Math.floor(m.progress * 100));
           }
         },
+        // Full core registers legacy params referenced by some traineddata configs.
+        legacyCore: true,
       });
 
       setText(result.data.text || "No text could be found in this image.");

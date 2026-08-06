@@ -2,6 +2,15 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
 import freetoolsLogo from "../../images/freetoolspro-logo-white.png";
 import { CONTACT_EMAIL, CONTACT_MAILTO, LEGAL_LINKS, SITE_PURPOSE } from "../data/siteConstants";
+import { PRODUCT_HUNT } from "../data/productHunt";
+import {
+  BLOG_NAV_VISIBLE,
+  apexNavHref,
+  apexNavIsExternal,
+  blogHomePath,
+  blogNavHref,
+  blogNavIsExternal,
+} from "../../blog/data/blogSite";
 
 const popularTools = [
   { label: "Age Calculator", path: "/calculators/age-calculator" },
@@ -21,6 +30,21 @@ const seoDevTools = [
   { label: "AI Image Generator", path: "/image-tools/ai-image-generator" },
 ];
 
+function ApexAwareLink({ to, className, children }) {
+  if (apexNavIsExternal()) {
+    return (
+      <a href={apexNavHref(to)} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={to} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -31,7 +55,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 pt-14 sm:px-6 lg:px-8 lg:pt-16">
         <div className="flex flex-col gap-8 border-b border-white/[0.08] pb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-md">
-            <Link to="/" className="site-footer__brand inline-flex items-center gap-3">
+            <ApexAwareLink to="/" className="site-footer__brand inline-flex items-center gap-3">
               <img
                 src={freetoolsLogo}
                 alt=""
@@ -41,7 +65,7 @@ export default function Footer() {
                 loading="lazy"
               />
               <span className="sr-only">FreeToolsPro</span>
-            </Link>
+            </ApexAwareLink>
             <p className="mt-4 text-[0.95rem] leading-7 text-white/50">{SITE_PURPOSE}</p>
             <a
               href={CONTACT_MAILTO}
@@ -52,10 +76,10 @@ export default function Footer() {
             </a>
           </div>
 
-          <Link to="/tools" className="site-footer__cta shrink-0 self-start lg:self-auto">
+          <ApexAwareLink to="/tools" className="site-footer__cta shrink-0 self-start lg:self-auto">
             Explore all tools
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+          </ApexAwareLink>
         </div>
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -76,9 +100,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {popularTools.map((tool) => (
                 <li key={tool.path}>
-                  <Link to={tool.path} className="site-footer__link">
+                  <ApexAwareLink to={tool.path} className="site-footer__link">
                     {tool.label}
-                  </Link>
+                  </ApexAwareLink>
                 </li>
               ))}
             </ul>
@@ -89,9 +113,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5">
               {seoDevTools.map((tool) => (
                 <li key={tool.path}>
-                  <Link to={tool.path} className="site-footer__link">
+                  <ApexAwareLink to={tool.path} className="site-footer__link">
                     {tool.label}
-                  </Link>
+                  </ApexAwareLink>
                 </li>
               ))}
             </ul>
@@ -100,36 +124,53 @@ export default function Footer() {
           <div>
             <p className="site-footer__heading">Company</p>
             <ul className="mt-4 space-y-2.5">
+              {BLOG_NAV_VISIBLE ? (
+                <li>
+                  {blogNavIsExternal() ? (
+                    <a href={blogNavHref("/")} className="site-footer__link" rel="noopener noreferrer">
+                      Blog &amp; Guides
+                    </a>
+                  ) : (
+                    <Link to={blogHomePath()} className="site-footer__link">
+                      Blog &amp; Guides
+                    </Link>
+                  )}
+                </li>
+              ) : null}
               <li>
-                <Link to="/blog" className="site-footer__link">
-                  Blog &amp; Guides
-                </Link>
-              </li>
-              <li>
-                <Link to="/tools" className="site-footer__link">
+                <ApexAwareLink to="/tools" className="site-footer__link">
                   All Tools
-                </Link>
+                </ApexAwareLink>
               </li>
               {LEGAL_LINKS.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="site-footer__link">
+                  <ApexAwareLink to={link.path} className="site-footer__link">
                     {link.label}
-                  </Link>
+                  </ApexAwareLink>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="site-footer__bar flex flex-col gap-3 border-t border-white/[0.08] py-5 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {year} FreeToolsPro. All rights reserved.</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            {LEGAL_LINKS.map((link) => (
-              <Link key={`bar-${link.path}`} to={link.path} className="transition hover:text-teal-300">
-                {link.label.replace(" Policy", "").replace(" & Conditions", "")}
-              </Link>
-            ))}
+        {PRODUCT_HUNT.productUrl ? (
+          <div className="border-t border-white/[0.08] py-5">
+            <p className="site-footer__heading">As seen on</p>
+            <a
+              href={PRODUCT_HUNT.productUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-[#ff6154]"
+            >
+              Product Hunt
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </div>
+        ) : null}
+
+        <div className="flex flex-col gap-3 border-t border-white/[0.08] py-6 text-sm text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} FreeToolsPro. All rights reserved.</p>
+          <p className="text-white/30">Free online tools. No signup required for most utilities.</p>
         </div>
       </div>
     </footer>

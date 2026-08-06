@@ -1,4 +1,4 @@
-import React, { useId, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   Activity,
@@ -13,13 +13,8 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
-import FaqSchema from "../../components/FaqSchema";
-import RelatedTools from "../../components/RelatedTools";
-import WhatItDoesSection from "../../components/WhatItDoesSection";
-import { getToolWhatItDoes } from "../../data/toolWhatItDoes";
-import { tools } from "../../data/toolDefinitions";
+import ToolContentLayout from "../../components/ToolContentLayout";
 import { getCategoryTheme } from "../../data/categoryThemes";
 
 const ACTIVITY_OPTIONS = [
@@ -146,46 +141,6 @@ function computeCalories({ age, weight, height, gender, method, activity, goal }
   };
 }
 
-function FaqItem({ item, open, onToggle }) {
-  const panelId = useId();
-  const buttonId = useId();
-
-  return (
-    <div className="age-faq-item" data-open={open ? "true" : "false"}>
-      <button
-        id={buttonId}
-        type="button"
-        aria-expanded={open}
-        aria-controls={panelId}
-        onClick={onToggle}
-      >
-        <span>{item.q}</span>
-        <span className="age-faq-icon" aria-hidden="true">
-          <span className="text-lg leading-none">+</span>
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open ? (
-          <motion.div
-            id={panelId}
-            role="region"
-            aria-labelledby={buttonId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="pb-5 pr-10 text-[0.95rem] leading-7 text-[var(--age-ink-soft)]">
-              {item.a}
-            </p>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 export default function CalorieCalculator() {
   const theme = getCategoryTheme("calculators");
   const [age, setAge] = useState("");
@@ -196,7 +151,6 @@ export default function CalorieCalculator() {
   const [activity, setActivity] = useState("1.2");
   const [goal, setGoal] = useState("maintain");
   const [copied, setCopied] = useState(false);
-  const [openFaq, setOpenFaq] = useState(0);
   const reduceMotion = useReducedMotion();
 
   const result = useMemo(
@@ -247,7 +201,6 @@ export default function CalorieCalculator() {
   return (
     <>
       <Seo page="caloriesCalculator" />
-      <FaqSchema faqs={FAQS} pageUrl="/calculators/calorie-calculator" />
 
       <div className="relative">
         <section className="relative mx-auto max-w-7xl px-4 pb-10 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
@@ -608,136 +561,46 @@ export default function CalorieCalculator() {
           </AnimatePresence>
         </section>
 
-        <section className="relative border-t border-[var(--age-line)] bg-white/50">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr] lg:gap-16">
-              <article className="max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--age-teal-deep)]">
-                  How it works
-                </p>
-                <h2 className="age-display mt-3 text-3xl font-semibold tracking-tight text-[var(--age-ink)] sm:text-4xl">
-                  Energy math, goal-aware macros.
-                </h2>
-                <p className="mt-4 text-[1.02rem] leading-7 text-[var(--age-ink-soft)]">
-                  FreeToolsPro Calorie Calculator estimates basal metabolism, scales it by activity into
-                  TDEE, then applies a safe surplus or deficit for your goal—with protein, carbs, and fat
-                  targets to match.
-                </p>
-
-                <ol className="mt-8 space-y-5">
-                  {[
-                    {
-                      title: "Enter your metrics",
-                      body: "Age, sex, height, and weight feed BMR using Mifflin-St Jeor or Harris-Benedict.",
-                    },
-                    {
-                      title: "Set activity & goal",
-                      body: "Activity multiplies BMR into TDEE. Goals adjust ±500 kcal with a safe floor.",
-                    },
-                    {
-                      title: "Use macros & share",
-                      body: "Copy a clean summary or share your daily target in one tap.",
-                    },
-                  ].map((step, i) => (
-                    <li key={step.title} className="flex gap-4">
-                      <span className="age-display flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--age-ink)] text-sm font-semibold text-white">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <h3 className="font-semibold text-[var(--age-ink)]">{step.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-[var(--age-ink-soft)]">{step.body}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-
-                <WhatItDoesSection content={getToolWhatItDoes("/calculators/calorie-calculator")} />
-
-                <div className="mt-12">
-                  <h2 className="age-display text-2xl font-semibold text-[var(--age-ink)]">
-                    Frequently asked
-                  </h2>
-                  <div className="mt-4">
-                    {FAQS.map((item, index) => (
-                      <FaqItem
-                        key={item.q}
-                        item={item}
-                        open={openFaq === index}
-                        onToggle={() => setOpenFaq(openFaq === index ? -1 : index)}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-12">
-                  <h2 className="age-display text-2xl font-semibold text-[var(--age-ink)]">
-                    Related tools
-                  </h2>
-                  <p className="mt-2 text-sm text-[var(--age-ink-soft)]">
-                    More calculators from the FreeToolsPro suite.
-                  </p>
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {tools
-                      .filter(
-                        (t) =>
-                          t.category === "calculators" &&
-                          t.path !== "/calculators/calorie-calculator"
-                      )
-                      .slice(0, 4)
-                      .map((tool) => {
-                        const Icon = tool.icon;
-                        return (
-                          <Link
-                            key={tool.id}
-                            to={tool.path}
-                            className="group flex items-start gap-3 rounded-xl border border-[var(--age-line)] bg-white/70 px-4 py-3.5 transition hover:border-teal-300/60 hover:bg-white"
-                          >
-                            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--age-porcelain)] text-[var(--age-ink)] transition group-hover:bg-teal-50 group-hover:text-teal-800">
-                              {Icon ? <Icon className="h-4 w-4" aria-hidden="true" /> : null}
-                            </span>
-                            <span>
-                              <span className="block text-sm font-semibold text-[var(--age-ink)] group-hover:text-teal-900">
-                                {tool.name}
-                              </span>
-                              <span className="mt-0.5 block text-xs leading-5 text-[var(--age-ink-soft)] line-clamp-2">
-                                {tool.desc}
-                              </span>
-                            </span>
-                          </Link>
-                        );
-                      })}
-                  </div>
-                </div>
-              </article>
-
-              <aside className="space-y-6 self-start lg:sticky lg:top-24 lg:pt-2">
-                <div className="rounded-[1.25rem] border border-[var(--age-line)] bg-[var(--age-ink)] p-6 text-white">
-                  <Activity className="h-5 w-5 text-[var(--age-teal)]" aria-hidden="true" />
-                  <p className="age-display mt-4 text-xl font-semibold leading-snug">
-                    Why teams trust FreeToolsPro
-                  </p>
-                  <ul className="mt-4 space-y-3 text-sm leading-6 text-white/65">
-                    <li>Runs locally—metrics never leave the device</li>
-                    <li>Clinical formulas with safe calorie floors</li>
-                    <li>Responsive, keyboard-friendly, clear contrast</li>
-                  </ul>
-                  <a
-                    href="#cal-age"
-                    className="age-btn-primary mt-6 w-full bg-[var(--age-teal)] text-[var(--age-ink)] hover:opacity-90"
-                  >
-                    Calculate now
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </div>
-
-                <RelatedTools
-                  category="calculators"
-                  currentToolPath="/calculators/calorie-calculator"
-                />
-              </aside>
-            </div>
-          </div>
-        </section>
+        <ToolContentLayout
+          category="calculators"
+          currentToolPath="/calculators/calorie-calculator"
+          howBody="FreeToolsPro Calorie Calculator estimates basal metabolism, scales it by activity into TDEE, then applies a safe surplus or deficit for your goal—with protein, carbs, and fat targets to match."
+          steps={[
+            {
+              title: "Enter your metrics",
+              body: "Age, sex, height, and weight feed BMR using Mifflin-St Jeor or Harris-Benedict.",
+            },
+            {
+              title: "Set activity & goal",
+              body: "Activity multiplies BMR into TDEE. Goals adjust ±500 kcal with a safe floor.",
+            },
+            {
+              title: "Use macros & share",
+              body: "Copy a clean summary or share your daily target in one tap.",
+            },
+          ]}
+          faqs={FAQS}
+          examplePairs={[
+            {
+              input:
+                "Age: 30 · Sex: female · Height: 165 cm · Weight: 62 kg\nActivity: moderately active · Goal: maintain",
+              result:
+                "BMR: ~1,385 kcal · TDEE: ~2,147 kcal/day\nMacros (illustrative): 161g protein · 215g carbs · 72g fat",
+            },
+          ]}
+          privacyStatement="Body metrics and goals are processed only in your browser. FreeToolsPro does not upload or store calorie calculator inputs on its servers."
+          limitations={[
+            "TDEE and macro targets are estimates—not personalized medical nutrition advice.",
+            "Clinical conditions, pregnancy, and medications can change energy needs.",
+            "Safe calorie floors are applied but may still be inappropriate for some individuals—consult a clinician when unsure.",
+          ]}
+          trustBullets={[
+            "Runs locally—metrics never leave the device",
+            "Clinical formulas with safe calorie floors",
+            "Responsive, keyboard-friendly, clear contrast",
+          ]}
+          ctaLabel="Calculate now"
+        />
       </div>
     </>
   );

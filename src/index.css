@@ -22,6 +22,7 @@
   --ftp-radius: 12px;
   --ftp-display: "Syne", system-ui, sans-serif;
   --ftp-sans: "Figtree", system-ui, sans-serif;
+  --age-ink: #0a0a0a;
 }
 
 .site-app {
@@ -40,6 +41,12 @@
 
 .ftp-page {
   position: relative;
+}
+
+/* Skip layout/paint work for below-fold home sections until near viewport */
+.ftp-defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
 }
 
 .ftp-chip {
@@ -2734,7 +2741,7 @@ ul.mergePdf li {
 
 /* ── Age Calculator · Chronograph design system ── */
 .age-app {
-  --age-ink: var(--ftp-ink);
+  --age-ink: #0a0a0a;
   --age-ink-soft: var(--ftp-ink-soft);
   --age-mist: var(--ftp-mist);
   --age-porcelain: var(--ftp-porcelain);
@@ -3442,12 +3449,14 @@ ul.mergePdf li {
 
 :root, :host{
     --color-teal-300: oklch(0.72 0.14 234.51);
+    --color-emerald-300: oklch(0.72 0.14 234.51);
     --ftp-ink: #0a0a0a;
     --age-teal: #0d9488;
     --text-4xl: 2.5rem;
     --color-indigo-700: oklch(0.28 0.15 265.51)!important;
     --color-blue-500: oklch(0.94 0.03 229.21)!important;
     --color-emerald-500: oklch(0.87 0.09 228.12)!important;
+    --color-emerald-600: oklch(0.77 0.12 231.07);
     --color-orange-600: oklch(0.28 0.15 265.51)!important;
     --color-violet-500: oklch(0.28 0.15 265.51)!important;
     -color-violet-600:  oklch(0.28 0.15 265.101)!important;
