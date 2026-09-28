@@ -4145,3 +4145,26 @@ ul.mergePdf li {
   border: 0;
   border-top: 1px solid var(--ftp-line);
 }
+
+/* Beat the global textarea cap (max-height: 54px) inside SaaS tool workspaces. */
+.saas-tool-field {
+  max-height: none !important;
+  min-height: 240px !important;
+  height: 280px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-radius: 0.75rem !important;
+}
+[data-theme="light"] .saas-tool-field {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+[data-theme="dark"] .saas-tool-field {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+[data-theme="dark"] .saas-tool-field::placeholder {
+  color: #64748b;
+}
