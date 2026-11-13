@@ -166,7 +166,7 @@ function Preview({ p }) {
   if (p.type === "share")
     return (
       <figure className="share" aria-label="Link preview">
-        {p.image ? <img src={p.image} alt="" loading="lazy" className="share__img" onError={(e) => (e.currentTarget.style.visibility = "hidden")} /> : <div className="share__img" />}
+        {p.image ? <img src={p.image} alt="" width={1200} height={630} loading="lazy" className="share__img" onError={(e) => (e.currentTarget.style.visibility = "hidden")} /> : <div className="share__img" />}
         <div className="share__body">
           <p className="share__host">{p.host}</p>
           <p className="share__title">{p.title}</p>

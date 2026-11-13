@@ -1564,6 +1564,7 @@ img {
 .share__img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1200 / 630;
   object-fit: cover;
   background: var(--wash-2);

@@ -83,7 +83,11 @@ function analyse(url, r) {
     if (/^(og|twitter):/.test(p) && !(p in og)) og[p] = decode(attr(t, "content") || "");
   }
   // Scripts, styles and templates can contain markup as text (e.g. a JSON search index), so skip them.
-  const hc = h.replace(/<(script|style|template|noscript)\b[\s\S]*?<\/\1>/gi, " ");
+  // Attribute values may also contain "<img>" as text (e.g. a meta description that mentions HTML tags).
+  const hc = h
+    .replace(/<(script|style|template|noscript)\b[\s\S]*?<\/\1>/gi, " ")
+    .replace(/(=\s*)"([^"]*)"/g, (m, eq, v) => (v.includes("<") ? `${eq}""` : m))
+    .replace(/(=\s*)'([^']*)'/g, (m, eq, v) => (v.includes("<") ? `${eq}''` : m));
   const anchors = [];
   for (const m of hc.matchAll(/<a\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/a>/gi)) {
     const tag = `<a${m[1]}>`;
