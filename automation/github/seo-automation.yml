@@ -28,7 +28,7 @@ on:
     - cron: "30 4 * * 1" # Mondays 10:00 IST
     - cron: "30 5 1 * *" # 1st of the month 11:00 IST
   push:
-    paths: ["src/**", "public/**", "astro.config.mjs", "package.json", "scripts/**"]
+    paths: ["src/**", "public/**", "astro.config.mjs", "package.json", "scripts/**", ".github/workflows/seo-automation.yml"]
   pull_request:
     paths: ["src/**", "public/**", "astro.config.mjs", "scripts/**"]
   workflow_dispatch:
@@ -66,7 +66,10 @@ jobs:
         if: always()
         run: |
           f=$(ls automation/reports/audit/*-issues.csv 2>/dev/null | head -1)
-          if [ -n "$f" ]; then { echo "### SEO audit of dist/"; echo; echo '```'; grep -E '^(error|warning)' "$f" | cut -c1-220 | head -40; echo '```'; } >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -n "$f" ]; then
+            echo "Errors and warnings:"; grep -E '^(error|warning)' "$f" | cut -c1-300 | head -60 || echo "(none)"
+            { echo "### SEO audit of dist/"; echo; echo '```'; grep -E '^(error|warning)' "$f" | cut -c1-220 | head -40; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: predeploy-audit, path: automation/reports/audit/, retention-days: 14 }
