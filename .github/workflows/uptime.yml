@@ -1,0 +1,83 @@
+# Uptime monitor for freetoolspro.in, every 15 minutes.
+#
+# Checks the home page, a tool page, /sitemap.xml, /robots.txt and the SSL certificate.
+# After 2 failed runs in a row it alerts by email (EmailJS), SMS (Twilio) and webhook, whichever are
+# configured, and opens a "Site down" GitHub issue; when the site is back it alerts once more and
+# closes the issue. An SSL certificate with under 14 days left also alerts.
+#
+# Repository secrets (all optional; the GitHub issue works without any):
+#   ALERT_EMAIL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY, EMAILJS_PRIVATE_KEY
+#   ALERT_PHONE, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER
+#   SEO_ALERT_WEBHOOK
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: "Send a test alert"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/automation
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Restore state
+        uses: actions/cache/restore@v4
+        with:
+          path: automation/state/uptime.json
+          key: uptime-${{ github.run_id }}
+          restore-keys: uptime-
+      - name: Check the site
+        id: check
+        env:
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+          ALERT_PHONE: ${{ secrets.ALERT_PHONE }}
+          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          EMAILJS_PRIVATE_KEY: ${{ secrets.EMAILJS_PRIVATE_KEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+          SEO_ALERT_WEBHOOK: ${{ secrets.SEO_ALERT_WEBHOOK }}
+        run: node scripts/automation/uptime-check.mjs ${{ inputs.test_alert && '--force-alert' || '' }}
+      - name: Save state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: automation/state/uptime.json
+          key: uptime-${{ github.run_id }}
+      - name: Open or close the "Site down" issue
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ steps.check.outputs.status }}
+          DETAILS: ${{ steps.check.outputs.details }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create site-down --color B60205 --description "Uptime monitor" 2>/dev/null || true
+          n=$(gh issue list --label site-down --state open --json number --jq '.[0].number // empty')
+          if [ "$STATUS" = "down" ] && [ -z "$n" ]; then
+            printf 'freetoolspro.in failed its uptime checks twice in a row.\n\n```\n%s\n```\n\n%s\n' "$DETAILS" "$RUN_URL" > body.md
+            gh issue create --title "Site down: freetoolspro.in" --label site-down --body-file body.md
+          elif [ "$STATUS" = "up" ] && [ -n "$n" ]; then
+            gh issue comment "$n" --body "Site is back up. $RUN_URL" && gh issue close "$n"
+          fi

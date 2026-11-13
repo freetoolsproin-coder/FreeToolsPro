@@ -1,5 +1,7 @@
 # SEO, indexing and AEO automation
 
+> Everything that runs automatically (SEO, deploy, Instagram, uptime, dependency updates) and the one-time GitHub setup: [`AUTOMATION.md`](AUTOMATION.md).
+
 Everything here is in `scripts/automation/` and needs no extra npm packages. The daily jobs are **read-only** for the website, with one exception: `sitemap-submit` submits the sitemap to Search Console and IndexNow when it has changed.
 
 ## Commands
@@ -105,9 +107,7 @@ In Task Scheduler, tick **Run task as soon as possible after a scheduled start i
 
 Setup on GitHub: add the secrets listed at the top of each file under Settings → Secrets and variables → Actions. Then, under Settings → Actions → General → Workflow permissions, choose **Read and write** and tick **Allow GitHub Actions to create and approve pull requests**.
 
-GitHub only runs scheduled workflows from the repository's default branch (`main`). While the redesign lives on the `astro-redesign` branch, GitHub runs only the build-and-audit check on each push, so keep the Windows tasks for the daily and weekly runs. Once `astro-redesign` is merged into `main`, the schedules, the monthly PR and the deploy workflow switch on, and you can delete the Windows tasks. Use one or the other, not both.
-
-To push the project from your PC, double-click `automation/push-to-github.bat`. It creates the `astro-redesign` branch, copies the workflows into `.github/workflows/`, and pushes. Your `.env` and Google key are never committed.
+`astro-redesign` is the repository's default branch, so the schedules, the monthly PR and the deploy workflow are active. Delete the Windows tasks (commands in `AUTOMATION.md`) so nothing runs twice.
 
 **Before each deploy:** `npm run build && npm run seo:audit:dist`. After deploying, `npm run seo:sitemap` submits the changes right away instead of waiting for the next daily run.
 

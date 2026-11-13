@@ -1,0 +1,77 @@
+# Daily Instagram post for @freetoolsproin26 (moves npm run ig:post from your PC to GitHub).
+#
+# Posts the tool that has gone longest without a post, with an AI-written caption, at 18:30 IST.
+# A run is skipped if the last post was less than 20 hours ago, so a double run can't double post.
+#
+# Repository secrets:
+#   IG_ACCESS_TOKEN     long-lived Instagram token (the script refreshes it so it doesn't expire)   (required)
+#   LLM_PROVIDER + ANTHROPIC_API_KEY / GEMINI_API_KEY / OPENAI_API_KEY   for captions (optional: template caption otherwise)
+#
+# Post history (which tool was posted when) is kept between runs in the Actions cache. To carry over
+# the history from your PC, commit your automation/state/ig-posts.json once as automation/ig-posts-seed.json.
+# The token is never cached or committed; it is read from the secret on every run.
+#
+# Turn off the Windows "FreeToolsPro Instagram post" task once this runs, so posts don't double up.
+name: Instagram post
+
+on:
+  schedule:
+    - cron: "0 13 * * *" # 18:30 IST
+  workflow_dispatch:
+    inputs:
+      tool:
+        description: "Post a specific tool id (optional)"
+        required: false
+      dry_run:
+        description: "Dry run (show the caption, post nothing)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      LLM_PROVIDER: ${{ secrets.LLM_PROVIDER || 'anthropic' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Restore post history
+        uses: actions/cache/restore@v4
+        with:
+          path: automation/state/ig-posts.json
+          key: ig-history-${{ github.run_id }}
+          restore-keys: ig-history-
+      - name: Seed history from the repo on the first run
+        run: |
+          mkdir -p automation/state
+          if [ ! -f automation/state/ig-posts.json ] && [ -f automation/ig-posts-seed.json ]; then cp automation/ig-posts-seed.json automation/state/ig-posts.json; echo "Seeded post history from automation/ig-posts-seed.json"; fi
+      - name: Post
+        env:
+          TOOL: ${{ inputs.tool }}
+          DRY: ${{ inputs.dry_run }}
+        run: |
+          if [ -z "$IG_ACCESS_TOKEN" ] && [ "$DRY" != "true" ]; then echo "::error::IG_ACCESS_TOKEN secret is not set."; exit 1; fi
+          args=""
+          [ -n "$TOOL" ] && args="$args --tool $TOOL"
+          [ "$DRY" = "true" ] && args="$args --dry-run"
+          node scripts/automation/ig-post.mjs $args
+      - name: Never keep the token
+        if: always()
+        run: rm -f automation/state/ig-token.json
+      - name: Save post history
+        if: success() && inputs.dry_run != true
+        uses: actions/cache/save@v4
+        with:
+          path: automation/state/ig-posts.json
+          key: ig-history-${{ github.run_id }}

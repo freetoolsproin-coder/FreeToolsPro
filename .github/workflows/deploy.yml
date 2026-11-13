@@ -1,6 +1,6 @@
 # Copy this file to .github/workflows/deploy.yml to enable it. Optional: replaces uploading dist/ by hand.
 #
-# On every push to main (or Actions → Deploy → Run workflow): build → SEO audit gate → upload dist/
+# On every push to astro-redesign, the default branch (or Actions → Deploy → Run workflow): build → SEO audit gate → upload dist/
 # to your server over SSH → tell Google (sitemap) and Bing/IndexNow about changed pages, straight away.
 # A build with SEO errors (broken links, missing canonicals, invalid schema) is not deployed.
 #
@@ -15,7 +15,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [astro-redesign] # the default branch; change this if you later rename it to main
   workflow_dispatch:
 
 concurrency:
@@ -28,22 +28,27 @@ jobs:
     timeout-minutes: 30
     environment: production
     env:
+      DEPLOY_CONFIGURED: ${{ secrets.DEPLOY_HOST != '' && secrets.DEPLOY_SSH_KEY != '' }}
       GSC_KEY_FILE: automation/state/gsc-key.json
       GSC_SITE: ${{ secrets.GSC_SITE || 'sc-domain:freetoolspro.in' }}
     steps:
       - name: Check deploy settings
-        env:
-          HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
-          if [ -z "$HOST" ]; then echo "::error::DEPLOY_HOST and the other DEPLOY_* secrets are not set (see the top of this file)."; exit 1; fi
+          if [ "$DEPLOY_CONFIGURED" != "true" ]; then echo "::notice::Deploy skipped: add the DEPLOY_* secrets (see the top of deploy.yml) to turn on automatic deploys."; fi
       - uses: actions/checkout@v4
+        if: env.DEPLOY_CONFIGURED == 'true'
       - uses: actions/setup-node@v4
+        if: env.DEPLOY_CONFIGURED == 'true'
         with: { node-version: 22, cache: npm }
       - run: npm ci
+        if: env.DEPLOY_CONFIGURED == 'true'
       - run: npm run build
+        if: env.DEPLOY_CONFIGURED == 'true'
       - name: SEO gate (blocks the deploy on errors)
+        if: env.DEPLOY_CONFIGURED == 'true'
         run: npm run seo:audit:dist
       - name: Upload dist/ over SSH
+        if: env.DEPLOY_CONFIGURED == 'true'
         env:
           SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           HOST: ${{ secrets.DEPLOY_HOST }}
@@ -59,6 +64,7 @@ jobs:
           rsync -az --delete --exclude '.well-known' -e "ssh -i ~/.ssh/id_deploy -p $PORT" dist/ "$USER@$HOST:$DEST/"
           rm -f ~/.ssh/id_deploy
       - name: Smoke test the live site
+        if: env.DEPLOY_CONFIGURED == 'true'
         run: |
           sleep 10
           for p in / /sitemap.xml /robots.txt /calculators/emi-calculator; do
@@ -66,6 +72,7 @@ jobs:
             [ "$code" = "200" ] || { echo "::error::$p answered $code after deploy"; exit 1; }
           done
       - name: Tell search engines (sitemap to Google if changed, changed URLs to IndexNow)
+        if: env.DEPLOY_CONFIGURED == 'true'
         env:
           KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
         run: |

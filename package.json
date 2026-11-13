@@ -28,7 +28,8 @@
     "seo:cwv": "node scripts/automation/cwv-monitor.mjs",
     "seo:report": "node scripts/automation/seo-report.mjs",
     "seo:daily": "node scripts/automation/sitemap-submit.mjs && node scripts/automation/gsc-index-monitor.mjs && node scripts/automation/seo-audit.mjs && node scripts/automation/seo-report.mjs",
-    "seo:perf": "node scripts/automation/gsc-performance.mjs"
+    "seo:perf": "node scripts/automation/gsc-performance.mjs",
+    "uptime": "node scripts/automation/uptime-check.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
