@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Under maintenance | FreeToolsPro</title>
+<meta name="description" content="FreeToolsPro is being upgraded and will be back very soon.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --ink:#13203b; --ink-2:#4a5672; --paper:#ffffff; --wash:#f3f5f9; --line:#dce2ec; --brand:#D98327; --green:#186049; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#e7ebf3; --ink-2:#b3bdd2; --paper:#0e1424; --wash:#151d31; --line:#2a3550; --green:#3fb07f; } }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; display: grid; place-items: center; padding: 24px 16px; background: var(--paper); color: var(--ink);
+    font: 400 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+    background-image: radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--brand) 14%, transparent), transparent 70%); }
+  main { width: 100%; max-width: 560px; text-align: center; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .logo svg { width: 44px; height: 44px; }
+  .logo b { color: var(--green); font-weight: 800; } .logo i { color: var(--brand); font-style: normal; }
+  .card { margin-top: 28px; padding: 36px 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--paper); box-shadow: 0 10px 40px -20px rgba(19,32,59,.35); }
+  .gear { width: 64px; height: 64px; margin: 0 auto 14px; color: var(--brand); animation: spin 6s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .gear { animation: none; } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { margin: 0 0 10px; font-size: clamp(1.6rem, 5vw, 2.1rem); line-height: 1.2; letter-spacing: -0.02em; }
+  p { margin: 0 0 12px; color: var(--ink-2); }
+  .bar { height: 6px; margin: 22px auto 6px; max-width: 280px; border-radius: 99px; background: var(--wash); overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 40%; border-radius: 99px; background: linear-gradient(90deg, var(--brand), var(--green)); animation: slide 1.8s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .bar span { animation: none; width: 70%; } }
+  @keyframes slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(260%); } }
+  .small { font-size: .9rem; }
+  a { color: var(--brand); }
+  footer { margin-top: 22px; font-size: .85rem; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="/" aria-label="FreeToolsPro">
+    <svg viewBox="-2.5 0 71 71" fill="none" aria-hidden="true">
+<circle cx="32.7692" cy="36.5503" r="5.04142" fill="#D98327"/>
+<path d="M10.9231 26.8876C16.1203 -4.81057 50.101 -4.15019 55.8757 26.8876" stroke="#8fa9a0" stroke-width="1.4"/>
+<circle cx="56.2959" cy="27.7278" r="2.52071" fill="#D98327"/>
+<circle cx="10.9231" cy="27.7278" r="2.52071" fill="#D98327"/>
+<path d="M2.52071 2.52069H63.0178" stroke="#8fa9a0" stroke-width="1.4"/>
+<circle cx="2.52071" cy="2.52071" r="2.52071" fill="#D98327"/>
+<path d="M32.7692 5.04141L52.9349 45.3728C49.3763 46.003 42.259 48.3976 42.259 52.9349" stroke="#8fa9a0" stroke-width="1.4"/>
+<path d="M32.7692 5.04141L12.6036 45.3728C16.1622 46.003 23.2795 48.3976 23.2795 52.9349" stroke="#8fa9a0" stroke-width="1.4"/>
+<path d="M22.6864 52.9349L42.8521 52.9349" stroke="#8fa9a0" stroke-width="1.4"/>
+<path d="M21.426 59.2367H44.1124V69.5799C44.1124 70.1322 43.6647 70.5799 43.1124 70.5799H22.426C21.8737 70.5799 21.426 70.1322 21.426 69.5799V59.2367Z" fill="#186049"/>
+<rect x="15.1243" y="51.6746" width="34.0296" height="7.56213" rx="3.78107" fill="#D98327"/>
+<circle cx="32.7692" cy="2.52071" r="2.52071" fill="#D98327"/>
+<circle cx="63.0178" cy="2.52071" r="2.52071" fill="#D98327"/>
+    </svg>
+    <span>Free<b>Tools</b><i>Pro</i></span>
+  </a>
+  <div class="card">
+    <svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+    <h1>We'll be back very soon</h1>
+    <p>FreeToolsPro is under maintenance while we upgrade the site with new tools and a faster design.</p>
+    <p class="small">Your calculators, PDF and image tools will be available again shortly. Thank you for your patience.</p>
+    <div class="bar" role="progressbar" aria-label="Upgrade in progress"><span></span></div>
+  </div>
+  <footer>Need help meanwhile? Write to <a href="mailto:support@freetoolspro.in">support@freetoolspro.in</a></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,102 @@
+---
+import "../styles/global.css";
+import { SITE } from "../data/site.js";
+import { CONSENT_DEFAULTS } from "../lib/head.js";
+import { Header, Footer, ConsentBar } from "../components/static/Chrome.jsx";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  jsonld?: object[];
+  noindex?: boolean;
+  ogType?: string;
+  ogTitle?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ads?: boolean;
+}
+const { title, description, path, jsonld = [], noindex = false, ogType = "website", ogTitle, ogImage, ogImageAlt, ads = true } = Astro.props;
+const canonical = SITE.url + (path === "/" ? "/" : path);
+const fullTitle = path === "/" ? title : `${title} | ${SITE.name}`;
+// Social previews: the page's own title (the site name is shown separately by og:site_name) and its own image.
+const shareTitle = ogTitle || title.replace(/\s*\|\s*FreeToolsPro$/, "");
+const shareImage = ogImage ? SITE.url + ogImage : SITE.ogImage;
+const shareAlt = ogImageAlt || `${shareTitle} – ${SITE.name}`;
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+    {!noindex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1424" media="(prefers-color-scheme: dark)" />
+    <meta name="google-adsense-account" content={SITE.adsenseClient} />
+    <link rel="preload" href="/fonts/open-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" title="LLM guide" href="/llms.txt" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:secure_url" content={shareImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={shareAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={shareTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={shareImage} />
+    <meta name="twitter:image:alt" content={shareAlt} />
+
+    {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+    <script is:inline set:html={CONSENT_DEFAULTS} />
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-K3BPNTKNHS"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-K3BPNTKNHS');
+    </script>
+    {ads && (
+      <script
+        is:inline
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8047633846274756"
+        crossorigin="anonymous"
+      ></script>
+    )}
+    <slot name="head" />
+  </head>
+  <body>
+    <Header path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <ConsentBar />
+    <script>
+      import "../scripts/consent.js";
+      import "../scripts/navmore.js";
+      import "../scripts/palette.js";
+      import "../scripts/search.js";
+      import "../scripts/recent.js";
+    </script>
+  </body>
+</html>

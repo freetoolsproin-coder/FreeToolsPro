@@ -1,0 +1,75 @@
+# Copy this file to .github/workflows/deploy.yml to enable it. Optional: replaces uploading dist/ by hand.
+#
+# On every push to main (or Actions → Deploy → Run workflow): build → SEO audit gate → upload dist/
+# to your server over SSH → tell Google (sitemap) and Bing/IndexNow about changed pages, straight away.
+# A build with SEO errors (broken links, missing canonicals, invalid schema) is not deployed.
+#
+# Repository secrets:
+#   DEPLOY_HOST       server hostname or IP
+#   DEPLOY_USER       SSH user
+#   DEPLOY_SSH_KEY    private key for that user (add the public key to ~/.ssh/authorized_keys on the server)
+#   DEPLOY_PATH       folder nginx serves, e.g. /var/www/freetoolspro
+#   DEPLOY_PORT       SSH port (optional, default 22)
+#   GSC_KEY_JSON      Search Console key, for the sitemap submission after deploy
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    env:
+      GSC_KEY_FILE: automation/state/gsc-key.json
+      GSC_SITE: ${{ secrets.GSC_SITE || 'sc-domain:freetoolspro.in' }}
+    steps:
+      - name: Check deploy settings
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+        run: |
+          if [ -z "$HOST" ]; then echo "::error::DEPLOY_HOST and the other DEPLOY_* secrets are not set (see the top of this file)."; exit 1; fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - name: SEO gate (blocks the deploy on errors)
+        run: npm run seo:audit:dist
+      - name: Upload dist/ over SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+          DEST: ${{ secrets.DEPLOY_PATH }}
+          PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          mkdir -p ~/.ssh && printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # Assets first (new hashed files must exist before pages reference them), then pages and deletions.
+          # .well-known (SSL certificate checks) is never touched.
+          rsync -az -e "ssh -i ~/.ssh/id_deploy -p $PORT" dist/_astro/ "$USER@$HOST:$DEST/_astro/"
+          rsync -az --delete --exclude '.well-known' -e "ssh -i ~/.ssh/id_deploy -p $PORT" dist/ "$USER@$HOST:$DEST/"
+          rm -f ~/.ssh/id_deploy
+      - name: Smoke test the live site
+        run: |
+          sleep 10
+          for p in / /sitemap.xml /robots.txt /calculators/emi-calculator; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://freetoolspro.in$p"); echo "$p $code"
+            [ "$code" = "200" ] || { echo "::error::$p answered $code after deploy"; exit 1; }
+          done
+      - name: Tell search engines (sitemap to Google if changed, changed URLs to IndexNow)
+        env:
+          KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
+        run: |
+          mkdir -p automation/state
+          [ -n "$KEY_JSON" ] && printf '%s' "$KEY_JSON" > automation/state/gsc-key.json
+          npm run seo:sitemap -- --force || true
+          rm -f automation/state/gsc-key.json

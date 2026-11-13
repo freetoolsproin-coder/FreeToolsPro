@@ -1,0 +1,34 @@
+{
+  "name": "freetoolspro",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "FreeToolsPro: fast, SEO-focused, browser-only tools. Astro static site with React islands.",
+  "engines": {
+    "node": ">=18.20.8"
+  },
+  "scripts": {
+    "dev": "node scripts/write-ebooks.mjs && astro dev --host",
+    "check:catalog": "node scripts/check-catalog.mjs",
+    "build": "node scripts/check-catalog.mjs && node scripts/write-ebooks.mjs && astro build && node scripts/write-redirects.mjs",
+    "preview": "astro preview --host",
+    "start": "node server.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "check:live": "node scripts/check-live.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.2.8",
+    "astro": "^5.13.0",
+    "js-yaml": "^4.1.0",
+    "lucide-react": "^0.460.0",
+    "marked": "^15.0.12",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sharp": "^0.34.5",
+    "sql-formatter": "^15.6.6"
+  }
+}

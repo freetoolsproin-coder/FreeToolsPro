@@ -1,0 +1,212 @@
+# Copy this file to .github/workflows/seo-automation.yml in your repository to enable it.
+#
+# SEO automation for freetoolspro.in on GitHub Actions (runs even when your PC is off).
+#
+#   Every push / PR      build the site and audit dist/ (fails on broken links, missing canonicals, bad schema...)
+#   Daily   09:15 IST    sitemap check + submit if changed → URL Inspection → technical audit → report
+#   Monday  10:00 IST    + Core Web Vitals and keyword/traffic opportunities
+#   1st of month         AI SEO refresh of underperforming pages, opened as a pull request for you to review
+#   Any time             Actions tab → SEO automation → Run workflow
+#
+# Results: one GitHub issue labelled "seo-health" is kept up to date with what needs attention (it closes
+# itself when everything is fine), and every run attaches the full reports as the "seo-reports" artifact
+# (open seo-health-latest.html).
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   GSC_KEY_JSON        full contents of the Search Console service-account JSON key   (required)
+#   GSC_SITE            e.g. sc-domain:freetoolspro.in                                 (optional)
+#   PSI_API_KEY         PageSpeed Insights API key                                     (recommended)
+#   SEO_ALERT_WEBHOOK   Slack / Discord / Google Chat webhook                          (optional)
+#   LLM_PROVIDER + ANTHROPIC_API_KEY / GEMINI_API_KEY / OPENAI_API_KEY   for the monthly AI refresh (optional)
+# Settings → Actions → General → Workflow permissions: allow "Read and write" and
+# "Allow GitHub Actions to create and approve pull requests" (needed for the issue and the monthly PR).
+name: SEO automation
+
+on:
+  schedule:
+    - cron: "45 3 * * *" # daily 09:15 IST
+    - cron: "30 4 * * 1" # Mondays 10:00 IST
+    - cron: "30 5 1 * *" # 1st of the month 11:00 IST
+  push:
+    paths: ["src/**", "public/**", "astro.config.mjs", "package.json", "scripts/**"]
+  pull_request:
+    paths: ["src/**", "public/**", "astro.config.mjs", "scripts/**"]
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "What to run"
+        type: choice
+        options: [daily, weekly, seo-refresh-pr]
+        default: daily
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: seo-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ------------------------------------------------------------------ quality gate before deploy
+  predeploy-audit:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - name: SEO audit of the built site
+        run: npm run seo:audit:dist
+      - name: Summary
+        if: always()
+        run: |
+          f=$(ls automation/reports/audit/*-issues.csv 2>/dev/null | head -1)
+          if [ -n "$f" ]; then { echo "### SEO audit of dist/"; echo; echo '```'; grep -E '^(error|warning)' "$f" | cut -c1-220 | head -40; echo '```'; } >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: predeploy-audit, path: automation/reports/audit/, retention-days: 14 }
+
+  # ------------------------------------------------------------------ scheduled monitoring
+  monitor:
+    if: (github.event_name == 'schedule' && github.event.schedule != '30 5 1 * *') || (github.event_name == 'workflow_dispatch' && inputs.job != 'seo-refresh-pr')
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      GSC_KEY_FILE: automation/state/gsc-key.json
+      GSC_SITE: ${{ secrets.GSC_SITE || 'sc-domain:freetoolspro.in' }}
+      PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+      SEO_ALERT_WEBHOOK: ${{ secrets.SEO_ALERT_WEBHOOK }}
+      WEEKLY: ${{ github.event.schedule == '30 4 * * 1' || inputs.job == 'weekly' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Restore history
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            automation/state/indexing
+            automation/state/audit
+            automation/state/cwv
+            automation/state/performance
+            automation/state/sitemap-submit.json
+            automation/state/sitemap-latest.json
+            automation/reports/indexing
+          key: seo-state-${{ github.run_id }}
+          restore-keys: seo-state-
+      - name: Write Search Console key
+        env:
+          KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
+        run: |
+          mkdir -p automation/state
+          if [ -n "$KEY_JSON" ]; then printf '%s' "$KEY_JSON" > automation/state/gsc-key.json; else echo "::warning::GSC_KEY_JSON secret is not set; Search Console steps will fail."; fi
+      - name: Sitemap (validate, submit if changed, IndexNow)
+        continue-on-error: true
+        run: npm run seo:sitemap
+      - name: URL Inspection monitor
+        continue-on-error: true
+        run: npm run seo:index
+      - name: Technical SEO / AEO audit
+        continue-on-error: true
+        run: npm run seo:audit
+      - name: Traffic and keyword opportunities
+        if: env.WEEKLY == 'true'
+        continue-on-error: true
+        run: npm run seo:perf
+      - name: Core Web Vitals
+        if: env.WEEKLY == 'true'
+        continue-on-error: true
+        run: npm run seo:cwv
+      - name: Combined report
+        run: npm run seo:report
+      - name: Remove key
+        if: always()
+        run: rm -f automation/state/gsc-key.json
+      - name: Save history
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            automation/state/indexing
+            automation/state/audit
+            automation/state/cwv
+            automation/state/performance
+            automation/state/sitemap-submit.json
+            automation/state/sitemap-latest.json
+            automation/reports/indexing
+          key: seo-state-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: seo-reports, path: automation/reports/, retention-days: 30 }
+      - name: Update the "SEO health" issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -f automation/reports/seo-alerts.md ] || exit 0
+          cp automation/reports/seo-alerts.md body.md
+          printf '\nRun: %s\n' "$RUN_URL" >> body.md
+          cat body.md >> "$GITHUB_STEP_SUMMARY"
+          gh label create seo-health --color D93F0B --description "Automated SEO monitoring" 2>/dev/null || true
+          n=$(gh issue list --label seo-health --state open --json number --jq '.[0].number // empty')
+          count=$(cat automation/reports/seo-alert-count.txt 2>/dev/null || echo 0)
+          if [ "$count" -gt 0 ]; then
+            if [ -n "$n" ]; then
+              gh issue edit "$n" --title "SEO health: $count alert(s)" --body-file body.md
+              gh issue comment "$n" --body "Updated $(date -u +%F): $count alert(s). $RUN_URL"
+            else
+              gh issue create --title "SEO health: $count alert(s)" --label seo-health --body-file body.md
+            fi
+          elif [ -n "$n" ]; then
+            gh issue comment "$n" --body "All clear on $(date -u +%F). Closing. $RUN_URL"
+            gh issue close "$n"
+          fi
+
+  # ------------------------------------------------------------------ monthly AI SEO refresh as a pull request
+  seo-refresh-pr:
+    if: github.event.schedule == '30 5 1 * *' || (github.event_name == 'workflow_dispatch' && inputs.job == 'seo-refresh-pr')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GSC_KEY_FILE: automation/state/gsc-key.json
+      GSC_SITE: ${{ secrets.GSC_SITE || 'sc-domain:freetoolspro.in' }}
+      LLM_PROVIDER: ${{ secrets.LLM_PROVIDER || 'anthropic' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Write Search Console key
+        env:
+          KEY_JSON: ${{ secrets.GSC_KEY_JSON }}
+        run: mkdir -p automation/state && printf '%s' "$KEY_JSON" > automation/state/gsc-key.json
+      - name: AI refresh of underperforming pages (writes src/data/seo-overrides.js)
+        run: npm run seo:apply
+      - name: Check the site still builds and passes the SEO audit
+        run: npm run build && npm run seo:audit:dist
+      - name: Prepare PR text
+        if: always()
+        run: |
+          rm -f automation/state/gsc-key.json
+          f=$(ls -t automation/reports/seo-refresh-*.md 2>/dev/null | head -1)
+          { echo "Monthly AI SEO refresh based on the last 28 days of Search Console data. Review the quick answers (especially money and tax figures) before merging, then build and deploy."; echo; [ -n "$f" ] && cat "$f"; } > pr-body.md
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: seo/refresh-${{ github.run_id }}
+          add-paths: src/data/seo-overrides.js
+          commit-message: "SEO refresh: new titles, descriptions, quick answers and FAQs for underperforming pages"
+          title: "SEO refresh: AI proposals for underperforming pages"
+          body-path: pr-body.md
+          labels: seo
+          delete-branch: true

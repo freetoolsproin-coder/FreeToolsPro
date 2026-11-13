@@ -1,0 +1,10 @@
+---
+import Base from "../layouts/Base.astro";
+import { LegalPage } from "../components/static/Pages.jsx";
+import { LEGAL } from "../components/static/Legal.jsx";
+const page = LEGAL["terms"];
+---
+
+<Base title={page.title} description={page.description} path="/terms" ads={false}>
+  <LegalPage page={page} />
+</Base>

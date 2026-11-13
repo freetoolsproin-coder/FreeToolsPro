@@ -1,0 +1,51 @@
+---
+import { readFileSync } from "node:fs";
+import Base from "../layouts/Base.astro";
+import { EbooksPage } from "../components/static/EbooksPage.jsx";
+import { EBOOKS } from "../data/ebooks.js";
+import { SITE } from "../data/site.js";
+import { bytes } from "../lib/format.js";
+import { breadcrumbJsonLd, personJsonLd } from "../lib/schema.js";
+
+const manifest = JSON.parse(readFileSync(new URL("../../public/ebooks/manifest.json", import.meta.url), "utf8"));
+const meta = new Map(manifest.map((row) => [row.slug, row]));
+const books = EBOOKS.map((book) => {
+  const row = meta.get(book.slug);
+  return { slug: book.slug, pages: row?.pages, size: row ? bytes(row.bytes) : "" };
+});
+
+const title = "Free Ebooks";
+const description = `Download ${EBOOKS.length} original PDF books by Lalaji Prashanth Kumar, about 90 pages each, on loans, tax, salary, study, files and writing. No signup.`;
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: `${SITE.url}/ebooks`,
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    inLanguage: "en-IN",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: EBOOKS.length,
+      itemListElement: EBOOKS.map((book, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "DigitalDocument",
+          name: book.title,
+          encodingFormat: "application/pdf",
+          url: `${SITE.url}/ebooks/${book.slug}.pdf`,
+          author: personJsonLd(),
+        },
+      })),
+    },
+  },
+  breadcrumbJsonLd([["Home", "/"], [title, "/ebooks"]]),
+];
+---
+
+<Base title={title} description={description} path="/ebooks" jsonld={jsonld}>
+  <EbooksPage books={books} />
+</Base>

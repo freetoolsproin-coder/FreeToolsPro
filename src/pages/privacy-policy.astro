@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import { LegalPage } from "../components/static/Pages.jsx";
+import { LEGAL } from "../components/static/Legal.jsx";
+import { webPageJsonLd } from "../lib/schema.js";
+const page = LEGAL["privacy-policy"];
+const jsonld = webPageJsonLd({ type: "WebPage", path: "/privacy-policy", name: page.title, description: page.description });
+---
+
+<Base title={page.title} description={page.description} path="/privacy-policy" jsonld={jsonld}>
+  <LegalPage page={page} />
+</Base>

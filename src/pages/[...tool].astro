@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import { ToolHead, ToolArticle, toolJsonLd } from "../components/static/ToolPage.jsx";
+import Calculator from "../components/islands/Calculator.jsx";
+import TextTool from "../components/islands/TextTool.jsx";
+import BuilderTool from "../components/islands/BuilderTool.jsx";
+import ImageTool from "../components/islands/ImageTool.jsx";
+import PdfTool from "../components/islands/PdfTool.jsx";
+import UnitConverter from "../components/islands/UnitConverter.jsx";
+import QrTool from "../components/islands/QrTool.jsx";
+import CanvasTool from "../components/islands/CanvasTool.jsx";
+import NotesSummarizer from "../components/islands/study/NotesSummarizer.jsx";
+import FlashcardGenerator from "../components/islands/study/FlashcardGenerator.jsx";
+import QuizGenerator from "../components/islands/study/QuizGenerator.jsx";
+import ConceptExplainer from "../components/islands/study/ConceptExplainer.jsx";
+import RevisionPlan from "../components/islands/study/RevisionPlan.jsx";
+import EquationEditor from "../components/islands/latex/EquationEditor.jsx";
+import SymbolGenerator from "../components/islands/latex/SymbolGenerator.jsx";
+import MatrixGenerator from "../components/islands/latex/MatrixGenerator.jsx";
+import EquationImage from "../components/islands/latex/EquationImage.jsx";
+import TableGenerator from "../components/islands/latex/TableGenerator.jsx";
+import CodeFormatter from "../components/islands/latex/CodeFormatter.jsx";
+import ImageToLatex from "../components/islands/latex/ImageToLatex.jsx";
+import Templates from "../components/islands/latex/Templates.jsx";
+import FormulaLibrary from "../components/islands/latex/FormulaLibrary.jsx";
+import MathmlToLatex from "../components/islands/latex/MathmlToLatex.jsx";
+import LatexToPdf from "../components/islands/latex/LatexToPdf.jsx";
+import LatexToWord from "../components/islands/latex/LatexToWord.jsx";
+import { TOOLS, categoryById, relatedTools } from "../data/catalog.js";
+
+export function getStaticPaths() {
+  return TOOLS.map((tool) => ({ params: { tool: tool.path.slice(1) }, props: { tool } }));
+}
+const { tool } = Astro.props;
+const cat = categoryById[tool.cat];
+const related = relatedTools(tool);
+---
+
+<Base title={tool.title} description={tool.description} path={tool.path} jsonld={toolJsonLd(tool, cat)} ogTitle={`${tool.title} – Free Online`} ogImage={`/og/${tool.id}.png`} ogImageAlt={`${tool.name}: ${tool.short}`}>
+  <div class="wrap">
+    <ToolHead tool={tool} cat={cat} />
+    <section class="tool-app" aria-label={tool.name}>
+      {tool.engine === "calc" && <Calculator client:load id={tool.id} />}
+      {tool.engine === "text" && <TextTool client:load id={tool.id} />}
+      {tool.engine === "builder" && <BuilderTool client:load id={tool.id} />}
+      {tool.engine === "image" && <ImageTool client:load id={tool.id} />}
+      {tool.engine === "pdf" && <PdfTool client:load id={tool.id} />}
+      {tool.engine === "unit" && <UnitConverter client:load />}
+      {tool.engine === "qr" && <QrTool client:load />}
+      {tool.engine === "canvas" && <CanvasTool client:load id={tool.id} />}
+      {tool.id === "notes-summarizer" && <NotesSummarizer client:load />}
+      {tool.id === "flashcard-generator" && <FlashcardGenerator client:load />}
+      {tool.id === "quiz-generator" && <QuizGenerator client:load />}
+      {tool.id === "concept-explainer" && <ConceptExplainer client:load />}
+      {tool.id === "revision-plan-generator" && <RevisionPlan client:load />}
+      {tool.id === "latex-equation-editor" && <EquationEditor client:load />}
+      {tool.id === "latex-symbol-generator" && <SymbolGenerator client:load />}
+      {tool.id === "latex-matrix-generator" && <MatrixGenerator client:load />}
+      {tool.id === "latex-equation-to-image" && <EquationImage client:load />}
+      {tool.id === "latex-table-generator" && <TableGenerator client:load />}
+      {tool.id === "latex-code-formatter" && <CodeFormatter client:load />}
+      {tool.id === "image-to-latex" && <ImageToLatex client:load />}
+      {tool.id === "latex-templates" && <Templates client:load />}
+      {tool.id === "latex-formula-library" && <FormulaLibrary client:load />}
+      {tool.id === "mathml-to-latex" && <MathmlToLatex client:load />}
+      {tool.id === "latex-to-pdf" && <LatexToPdf client:load />}
+      {tool.id === "latex-equation-to-word" && <LatexToWord client:load />}
+    </section>
+    <ToolArticle tool={tool} cat={cat} related={related} />
+  </div>
+</Base>

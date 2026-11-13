@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import { CatalogPage } from "../components/static/Pages.jsx";
+import { SITE } from "../data/site.js";
+import { TOOLS } from "../data/catalog.js";
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `All ${SITE.name} tools`,
+    numberOfItems: TOOLS.length,
+    itemListElement: TOOLS.map((t, i) => ({ "@type": "ListItem", position: i + 1, url: SITE.url + t.path, name: t.name })),
+  },
+];
+---
+
+<Base
+  title={`All ${TOOLS.length} Free Online Tools`}
+  description={`Browse and search all ${TOOLS.length} free tools on ${SITE.name}: finance and tax calculators, text, developer, image and PDF tools.`}
+  path="/tools"
+  jsonld={jsonld}
+  ogImage="/og/tools.png"
+>
+  <CatalogPage />
+</Base>

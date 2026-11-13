@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import { HubPage } from "../components/static/Pages.jsx";
+import { CATEGORIES, toolsIn } from "../data/catalog.js";
+import { SITE } from "../data/site.js";
+import { HUB_CONTENT, plainText } from "../data/hub-content.js";
+import { answerFor } from "../lib/worked-example.js";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((cat) => ({ params: { hub: cat.path.slice(1) }, props: { cat } }));
+}
+const { cat } = Astro.props;
+const tools = toolsIn(cat.id);
+const guide = HUB_CONTENT[cat.id];
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: cat.name,
+    url: SITE.url + cat.path,
+    description: cat.description,
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${SITE.url}/#website` },
+    publisher: { "@id": `${SITE.url}/#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: tools.length,
+      itemListElement: tools.map((t, i) => ({ "@type": "ListItem", position: i + 1, url: SITE.url + t.path, name: t.name })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url + "/" },
+      { "@type": "ListItem", position: 2, name: cat.name, item: SITE.url + cat.path },
+    ],
+  },
+  ...(guide
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [...(guide.answers || []).map((a) => [a.q, answerFor(a).text]), ...guide.faqs].map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: plainText(a) } })),
+        },
+      ]
+    : []),
+];
+---
+
+<Base title={cat.title.replace(/ \| FreeToolsPro$/, "")} description={cat.description} path={cat.path} jsonld={jsonld} ogTitle={`${cat.name}: ${tools.length} Free Online Tools`} ogImage={`/og/hub-${cat.id}.png`}>
+  <HubPage cat={cat} />
+</Base>

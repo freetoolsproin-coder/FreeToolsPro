@@ -1,0 +1,10 @@
+---
+import Base from "../layouts/Base.astro";
+import { NotFound } from "../components/static/Pages.jsx";
+import { searchIndex } from "../data/catalog.js";
+---
+
+<Base title="Page not found" description="This page could not be found. Search all FreeToolsPro tools." path="/404" noindex>
+  <NotFound />
+  <script type="application/json" id="tool-index" set:html={JSON.stringify(searchIndex())} />
+</Base>

@@ -1,0 +1,63 @@
+---
+import Base from "../layouts/Base.astro";
+import { HomePage } from "../components/static/Pages.jsx";
+import { SITE } from "../data/site.js";
+import { searchIndex, TOOLS, CATEGORIES } from "../data/catalog.js";
+import { HOME_FAQS, ABOUT } from "../data/home.js";
+
+const jsonld = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE.url}/#organization`,
+    name: SITE.name,
+    url: SITE.url,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
+    email: SITE.email,
+    description: ABOUT,
+    areaServed: { "@type": "Country", name: "India" },
+    knowsAbout: CATEGORIES.map((c) => c.name),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.url}/#website`,
+    name: SITE.name,
+    url: SITE.url,
+    inLanguage: "en-IN",
+    publisher: { "@id": `${SITE.url}/#organization` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${SITE.url}/tools?search={search_term_string}` },
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Most used tools on ${SITE.name}`,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: 20,
+    itemListElement: TOOLS.slice(0, 20).map((t, i) => ({ "@type": "ListItem", position: i + 1, url: SITE.url + t.path, name: t.name })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: HOME_FAQS.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+  },
+];
+---
+
+<Base
+  title={`Free Online Tools: EMI, Tax, Image, PDF & JSON | ${SITE.name}`}
+  description={`${TOOLS.length} free online tools for India: EMI, SIP and income tax calculators, image compressor, PDF merge, JSON formatter and more. No sign-up; files never leave your device.`}
+  path="/"
+  jsonld={jsonld}
+  ogTitle={`${SITE.name}: ${TOOLS.length} Free Online Tools for Money, PDFs, Images & More`}
+  ogImage="/og/home.png"
+>
+  <HomePage />
+  <script>
+    import "../scripts/command-center.js";
+  </script>
+</Base>

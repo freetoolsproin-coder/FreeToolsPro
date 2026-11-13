@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.env
+.DS_Store
+# Instagram token, post history and Google key for scripts/automation
+automation/state/
+# Generated SEO reports (GitHub Actions attaches them to each run instead)
+automation/reports/

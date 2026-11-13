@@ -1,0 +1,14 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../data/site.js";
+import { LegalPage } from "../components/static/Pages.jsx";
+import { LEGAL } from "../components/static/Legal.jsx";
+import { webPageJsonLd, organizationJsonLd } from "../lib/schema.js";
+const page = LEGAL["about"];
+const jsonld = webPageJsonLd({ type: "AboutPage", path: "/about", name: page.title, description: page.description, extra: { mainEntity: { "@id": `${SITE.url}/#organization` } } });
+jsonld.push(organizationJsonLd());
+---
+
+<Base title={page.title} description={page.description} path="/about" jsonld={jsonld}>
+  <LegalPage page={page} />
+</Base>
